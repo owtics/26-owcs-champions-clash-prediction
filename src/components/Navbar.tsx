@@ -10,8 +10,16 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 bg-brand-card border-b border-brand-border">
       <div className="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between">
-        <Link href="/" className="text-white font-bold text-lg tracking-wide hover:text-brand-accent transition-colors">
-          {TOURNAMENT_NAME}
+        <Link href="/" className="flex items-center gap-2.5 hover:opacity-90 transition-opacity">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logos/site/logo.png"
+            alt={TOURNAMENT_NAME}
+            className="h-9 w-9 object-contain"
+          />
+          <span className="text-white font-bold text-lg tracking-wide">
+            {TOURNAMENT_NAME}
+          </span>
         </Link>
 
         <div className="flex items-center gap-4 text-sm">

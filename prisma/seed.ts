@@ -8,14 +8,14 @@ async function main() {
 
   // ─── Teams ───────────────────────────────────────────────
   const teams = [
-    { code: "TM",   name: "Team Miracles",   seed: 1 },
-    { code: "WBG",  name: "World BG",        seed: 2 },
-    { code: "ZETA", name: "ZETA Division",   seed: 3 },
-    { code: "DAL",  name: "Dallas",          seed: 4 },
-    { code: "CR",   name: "Crazy Raccoon",   seed: 5 },
-    { code: "SSG",  name: "Steven's Snakes", seed: 6 },
-    { code: "VP",   name: "Virtus.pro",      seed: 7 },
-    { code: "AG",   name: "Acend Gaming",    seed: 8 },
+    { code: "TM",   name: "Team Miracles",   seed: 1, logoUrl: "/logos/teams/tm.png"   },
+    { code: "WBG",  name: "World BG",        seed: 2, logoUrl: "/logos/teams/wbg.png"  },
+    { code: "ZETA", name: "ZETA Division",   seed: 3, logoUrl: "/logos/teams/zeta.png" },
+    { code: "DAL",  name: "Dallas",          seed: 4, logoUrl: "/logos/teams/dal.png"  },
+    { code: "CR",   name: "Crazy Raccoon",   seed: 5, logoUrl: "/logos/teams/cr.png"   },
+    { code: "SSG",  name: "Steven's Snakes", seed: 6, logoUrl: "/logos/teams/ssg.png"  },
+    { code: "VP",   name: "Virtus.pro",      seed: 7, logoUrl: "/logos/teams/vp.png"   },
+    { code: "AG",   name: "Acend Gaming",    seed: 8, logoUrl: "/logos/teams/ag.png"   },
   ];
 
   const teamMap = new Map<string, string>(); // code → id
@@ -23,8 +23,8 @@ async function main() {
   for (const t of teams) {
     const team = await prisma.team.upsert({
       where: { code: t.code },
-      update: { name: t.name, seed: t.seed },
-      create: { code: t.code, name: t.name, seed: t.seed },
+      update: { name: t.name, seed: t.seed, logoUrl: t.logoUrl },
+      create: { code: t.code, name: t.name, seed: t.seed, logoUrl: t.logoUrl },
     });
     teamMap.set(t.code, team.id);
     console.log(`  Team: ${t.code} (${team.id})`);

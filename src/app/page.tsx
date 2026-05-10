@@ -31,20 +31,30 @@ export default async function HomePage() {
   const deadlinePassed = new Date() >= PREDICTION_DEADLINE;
 
   const teams = [
-    { seed: 1, code: "TM" },
-    { seed: 2, code: "WBG" },
-    { seed: 3, code: "ZETA" },
-    { seed: 4, code: "DAL" },
-    { seed: 5, code: "CR" },
-    { seed: 6, code: "SSG" },
-    { seed: 7, code: "VP" },
-    { seed: 8, code: "AG" },
+    { seed: 1, code: "TM",   logoUrl: "/logos/teams/tm.png"   },
+    { seed: 2, code: "WBG",  logoUrl: "/logos/teams/wbg.png"  },
+    { seed: 3, code: "ZETA", logoUrl: "/logos/teams/zeta.png" },
+    { seed: 4, code: "DAL",  logoUrl: "/logos/teams/dal.png"  },
+    { seed: 5, code: "CR",   logoUrl: "/logos/teams/cr.png"   },
+    { seed: 6, code: "SSG",  logoUrl: "/logos/teams/ssg.png"  },
+    { seed: 7, code: "VP",   logoUrl: "/logos/teams/vp.png"   },
+    { seed: 8, code: "AG",   logoUrl: "/logos/teams/ag.png"   },
   ];
 
   return (
     <div className="space-y-12">
       {/* Hero */}
       <section className="text-center space-y-4 py-12">
+        {/* Tournament logo — renders only if file exists; browser silently hides on 404 */}
+        {/* Place your image at: public/logos/tournament/champions-clash.png */}
+        <div className="flex justify-center mb-2">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logos/tournament/champions-clash.png"
+            alt={TOURNAMENT_NAME}
+            className="h-28 sm:h-36 w-auto object-contain drop-shadow-[0_0_18px_rgba(59,130,246,0.35)]"
+          />
+        </div>
         <div className="inline-block px-3 py-1 bg-brand-accent/20 border border-brand-accent/40 rounded-full text-xs text-brand-accent font-medium tracking-widest uppercase mb-2">
           토너먼트 승부예측
         </div>
@@ -132,8 +142,13 @@ export default async function HomePage() {
               key={t.code}
               className="flex items-center gap-3 bg-brand-border/30 rounded-lg px-3 py-2.5"
             >
-              <div className="w-8 h-8 rounded-md bg-brand-border flex items-center justify-center flex-shrink-0">
-                <span className="text-xs font-bold text-brand-subtext">{t.code.charAt(0)}</span>
+              <div className="w-8 h-8 rounded-md bg-brand-border flex items-center justify-center flex-shrink-0 overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={t.logoUrl}
+                  alt={t.code}
+                  className="w-full h-full object-contain"
+                />
               </div>
               <div>
                 <div className="text-sm font-semibold text-white">{t.code}</div>

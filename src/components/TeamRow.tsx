@@ -1,7 +1,10 @@
+import TeamLogo from "./TeamLogo";
+
 interface TeamRowProps {
   code: string | null;
   name?: string | null;
   seed?: number | null;
+  logoUrl?: string | null;
   isWinner: boolean;
   isLoser: boolean;
   isPredicted?: boolean;
@@ -12,8 +15,8 @@ interface TeamRowProps {
 
 export default function TeamRow({
   code,
-  name,
   seed,
+  logoUrl,
   isWinner,
   isLoser,
   isPredicted,
@@ -57,14 +60,8 @@ export default function TeamRow({
         <span className="text-[10px] text-brand-muted w-4 flex-shrink-0">{seed}</span>
       )}
 
-      {/* Logo placeholder */}
-      <div className="w-5 h-5 rounded-sm bg-brand-border flex items-center justify-center flex-shrink-0">
-        {code && (
-          <span className="text-[8px] font-bold text-brand-subtext">
-            {code.charAt(0)}
-          </span>
-        )}
-      </div>
+      {/* Team logo (image with letter fallback) */}
+      <TeamLogo code={code} logoUrl={logoUrl} size={22} />
 
       {/* Team code */}
       <span className={`text-sm font-semibold tracking-wide flex-1 ${textColor}`}>

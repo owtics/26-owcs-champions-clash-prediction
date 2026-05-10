@@ -89,10 +89,18 @@ export default async function PredictionViewPage({ params }: Props) {
     matchNumber:     m.matchNumber,
     roundName:       m.roundName,
     bracketType:     m.bracketType,
-    team1:           m.team1 ? { code: m.team1.code, seed: m.team1.seed } : null,
-    team2:           m.team2 ? { code: m.team2.code, seed: m.team2.seed } : null,
+    team1:           m.team1 ? { code: m.team1.code, seed: m.team1.seed, logoUrl: m.team1.logoUrl } : null,
+    team2:           m.team2 ? { code: m.team2.code, seed: m.team2.seed, logoUrl: m.team2.logoUrl } : null,
     actualWinnerCode: m.actualWinner?.code ?? null,
   }));
+
+  // Build team lookup maps for bracket display (propagated slots)
+  const teamSeeds:  Record<string, number | null> = {};
+  const teamLogos:  Record<string, string | null> = {};
+  for (const m of matches) {
+    if (m.team1) { teamSeeds[m.team1.code] = m.team1.seed; teamLogos[m.team1.code] = m.team1.logoUrl; }
+    if (m.team2) { teamSeeds[m.team2.code] = m.team2.seed; teamLogos[m.team2.code] = m.team2.logoUrl; }
+  }
 
   const champion    = userData.prediction?.champion?.code ?? null;
   const score       = userData.score;
@@ -175,6 +183,8 @@ export default async function PredictionViewPage({ params }: Props) {
           disabled
           showResults={deadlinePassed}
           correctPicks={correctPicks}
+          teamSeeds={teamSeeds}
+          teamLogos={teamLogos}
         />
       </div>
 

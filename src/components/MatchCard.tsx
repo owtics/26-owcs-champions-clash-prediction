@@ -4,6 +4,7 @@ export interface MatchCardTeam {
   code: string | null;
   name?: string | null;
   seed?: number | null;
+  logoUrl?: string | null;
 }
 
 export interface MatchCardProps {
@@ -33,7 +34,6 @@ export default function MatchCard({
 }: MatchCardProps) {
   const bothTeamsKnown = !!team1?.code && !!team2?.code;
 
-  // Correctness indicator color
   let resultBadge = null;
   if (showResult && isCorrect !== null && isCorrect !== undefined) {
     resultBadge = (
@@ -64,6 +64,7 @@ export default function MatchCard({
         <TeamRow
           code={team1?.code ?? null}
           seed={team1?.seed ?? null}
+          logoUrl={team1?.logoUrl ?? null}
           isWinner={predictedWinner === team1?.code}
           isLoser={!!predictedWinner && predictedWinner !== team1?.code}
           isPredicted={predictedWinner === team1?.code}
@@ -78,6 +79,7 @@ export default function MatchCard({
         <TeamRow
           code={team2?.code ?? null}
           seed={team2?.seed ?? null}
+          logoUrl={team2?.logoUrl ?? null}
           isWinner={predictedWinner === team2?.code}
           isLoser={!!predictedWinner && predictedWinner !== team2?.code}
           isPredicted={predictedWinner === team2?.code}

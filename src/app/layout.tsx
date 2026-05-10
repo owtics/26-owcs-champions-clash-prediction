@@ -4,8 +4,12 @@ import Providers from "./providers";
 import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
-  title: "Champions Clash – Prediction",
-  description: "Predict the Champions Clash tournament bracket and compete on the leaderboard.",
+  title: "Champions Clash – 승부예측",
+  description: "Champions Clash 토너먼트 브라켓 승부예측에 참여하고 순위표에서 경쟁하세요.",
+  icons: {
+    icon: "/logos/site/favicon.ico",
+    shortcut: "/logos/site/favicon.ico",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

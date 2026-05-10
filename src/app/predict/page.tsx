@@ -11,6 +11,7 @@ import { propagateBracket, buildPickMap, buildInitialTeams } from "@/lib/bracket
 interface Team {
   code: string;
   seed: number | null;
+  logoUrl?: string | null;
 }
 
 interface MatchData {
@@ -125,11 +126,18 @@ export default function PredictPage() {
     initialTeams
   );
 
-  // Build team seeds map for display
-  const teamSeeds: Record<string, number | null> = {};
+  // Build team lookup maps for bracket display
+  const teamSeeds:  Record<string, number | null> = {};
+  const teamLogos:  Record<string, string | null> = {};
   for (const m of matches) {
-    if (m.team1?.code) teamSeeds[m.team1.code] = m.team1.seed;
-    if (m.team2?.code) teamSeeds[m.team2.code] = m.team2.seed;
+    if (m.team1?.code) {
+      teamSeeds[m.team1.code] = m.team1.seed;
+      teamLogos[m.team1.code] = m.team1.logoUrl ?? null;
+    }
+    if (m.team2?.code) {
+      teamSeeds[m.team2.code] = m.team2.seed;
+      teamLogos[m.team2.code] = m.team2.logoUrl ?? null;
+    }
   }
 
   async function handleSave() {
@@ -240,6 +248,7 @@ export default function PredictPage() {
           disabled={deadlinePassed}
           showResults={false}
           teamSeeds={teamSeeds}
+          teamLogos={teamLogos}
         />
       </div>
 

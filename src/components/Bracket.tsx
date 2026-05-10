@@ -14,6 +14,7 @@ export interface BracketTeam {
   code: string | null;
   name?: string | null;
   seed?: number | null;
+  logoUrl?: string | null;
 }
 
 export interface BracketMatch {
@@ -35,6 +36,7 @@ export interface BracketProps {
   showResults?: boolean;
   correctPicks?: Record<number, boolean | null>;
   teamSeeds?: Record<string, number | null>;
+  teamLogos?: Record<string, string | null>;
 }
 
 // ─── Layout constants ──────────────────────────────────────────────────────
@@ -149,6 +151,7 @@ export default function Bracket({
   showResults,
   correctPicks,
   teamSeeds,
+  teamLogos,
 }: BracketProps) {
   const matchByNum = useMemo(() => {
     const m = new Map<number, BracketMatch>();
@@ -179,9 +182,15 @@ export default function Bracket({
     return propagateBracket(pickMap, initialTeams);
   }, [picks, initialTeams]);
 
-  const resolveTeam = (code: string | null) => {
+  // Resolve a team code into a full BracketTeam object for propagated (non-seeded) slots.
+  // Looks up seed and logoUrl from the caller-provided lookup maps.
+  const resolveTeam = (code: string | null): BracketTeam => {
     if (!code) return { code: null };
-    return { code, seed: teamSeeds?.[code] ?? null };
+    return {
+      code,
+      seed:    teamSeeds?.[code]  ?? null,
+      logoUrl: teamLogos?.[code]  ?? null,
+    };
   };
 
   const renderMatch = (mn: number) => {
