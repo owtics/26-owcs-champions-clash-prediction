@@ -1,0 +1,117 @@
+// Prisma schema for Champions Clash tournament prediction app
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  username     String   @unique
+  passwordHash String
+  role         String   @default("USER") // "USER" | "ADMIN"
+  createdAt    DateTime @default(now())
+
+  prediction Prediction?
+  score      Score?
+}
+
+model Team {
+  id      String  @id @default(cuid())
+  code    String  @unique // e.g. "TM", "WBG"
+  name    String  // full name
+  seed    Int?
+  logoUrl String?
+
+  // Matches this team is assigned to
+  team1Matches Match[] @relation("Team1Matches")
+  team2Matches Match[] @relation("Team2Matches")
+
+  // Actual results
+  wonMatches    Match[]         @relation("ActualWinner")
+  picks1        PredictionPick[] @relation("PickTeam1")
+  picks2        PredictionPick[] @relation("PickTeam2")
+  picksWinner   PredictionPick[] @relation("PickWinner")
+
+  champPredictions Prediction[] @relation("ChampionPrediction")
+}
+
+model Match {
+  id          String  @id @default(cuid())
+  matchNumber Int     @unique
+  roundName   String  // e.g. "WB Round 1"
+  bracketType String  // "WB" | "LB" | "GF"
+  orderIndex  Int
+
+  // Seeded teams for initial matches (nullable — TBD for later rounds)
+  team1Id String?
+  team2Id String?
+  team1   Team?   @relation("Team1Matches", fields: [team1Id], references: [id])
+  team2   Team?   @relation("Team2Matches", fields: [team2Id], references: [id])
+
+  // Where winner / loser advance to (match numbers, stored as JSON-like ints)
+  winnerToMatch  Int? // matchNumber of where winner goes
+  winnerSlot     Int? // 1 or 2 (team1 or team2 slot in target match)
+  loserToMatch   Int? // matchNumber of where loser goes
+  loserSlot      Int? // 1 or 2
+
+  // Actual result (set by admin)
+  actualWinnerTeamId String?
+  actualWinner       Team?   @relation("ActualWinner", fields: [actualWinnerTeamId], references: [id])
+
+  // Resolved team slots (propagated from earlier matches by bracket logic)
+  resolvedTeam1Id String?
+  resolvedTeam2Id String?
+}
+
+model Prediction {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  championTeamId String?
+  champion       Team?   @relation("ChampionPrediction", fields: [championTeamId], references: [id])
+
+  submittedAt DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  locked      Boolean   @default(false)
+
+  picks PredictionPick[]
+}
+
+model PredictionPick {
+  id           String @id @default(cuid())
+  predictionId String
+  prediction   Prediction @relation(fields: [predictionId], references: [id], onDelete: Cascade)
+
+  matchNumber Int
+
+  predictedTeam1Id String?
+  predictedTeam1   Team?   @relation("PickTeam1", fields: [predictedTeam1Id], references: [id])
+
+  predictedTeam2Id String?
+  predictedTeam2   Team?   @relation("PickTeam2", fields: [predictedTeam2Id], references: [id])
+
+  predictedWinnerTeamId String?
+  predictedWinner        Team?   @relation("PickWinner", fields: [predictedWinnerTeamId], references: [id])
+
+  isCorrect     Boolean? // null until results are in
+  pointsAwarded Int      @default(0)
+
+  @@unique([predictionId, matchNumber])
+}
+
+model Score {
+  id              String   @id @default(cuid())
+  userId          String   @unique
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  totalScore      Int      @default(0)
+  correctMatchCount Int    @default(0)
+  championCorrect Boolean  @default(false)
+  updatedAt       DateTime @updatedAt
+}
