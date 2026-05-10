@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { PREDICTION_DEADLINE } from "@/lib/constants";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   const now = new Date();
   const deadlinePassed = now >= PREDICTION_DEADLINE;
