@@ -38,7 +38,7 @@ export default function Navbar() {
             className="h-9 w-9 object-contain"
           />
           <span className="text-white font-bold text-lg tracking-wide">
-            OWTICS.GG Prediction
+            OWTICS.GG Pick'Ems
           </span>
         </Link>
 

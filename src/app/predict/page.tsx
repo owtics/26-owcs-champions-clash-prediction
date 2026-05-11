@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import BracketViewer from "@/components/BracketViewer";
 import { BracketMatch, PickMap } from "@/components/Bracket";
 import DeadlineBanner from "@/components/DeadlineBanner";
-import { PREDICTION_DEADLINE } from "@/lib/constants";
+import { PREDICTION_DEADLINE, MATCH_POINTS } from "@/lib/constants";
 import { propagateBracket, buildPickMap, buildInitialTeams } from "@/lib/bracket";
 
 interface Team {
@@ -29,14 +29,16 @@ export default function PredictPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
 
-  const [matches, setMatches]   = useState<MatchData[]>([]);
-  const [picks, setPicks]       = useState<PickMap>({});
-  const [champion, setChampion] = useState<string | null>(null);
-  const [saving, setSaving]     = useState(false);
-  const [saved, setSaved]       = useState(false);
-  const [error, setError]       = useState<string | null>(null);
+  const [matches, setMatches]         = useState<MatchData[]>([]);
+  const [picks, setPicks]             = useState<PickMap>({});
+  const [champion, setChampion]       = useState<string | null>(null);
+  const [correctPicks, setCorrectPicks] = useState<Record<number, boolean | null>>({});
+  const [pickPoints, setPickPoints]   = useState<Record<number, number>>({});
+  const [saving, setSaving]           = useState(false);
+  const [saved, setSaved]             = useState(false);
+  const [error, setError]             = useState<string | null>(null);
   const [loadingData, setLoadingData] = useState(true);
-  const [deadline, setDeadline] = useState<Date>(PREDICTION_DEADLINE);
+  const [deadline, setDeadline]       = useState<Date>(PREDICTION_DEADLINE);
 
   const deadlinePassed = new Date() >= deadline;
 
@@ -61,18 +63,49 @@ export default function PredictPage() {
       ]);
 
       const matchData = await matchRes.json();
-      setMatches(matchData.matches ?? []);
+      const loadedMatches: MatchData[] = matchData.matches ?? [];
+      setMatches(loadedMatches);
+
+      // Build actual winner lookup for fallback scoring
+      const actualByMatch: Record<number, string | null> = {};
+      for (const m of loadedMatches) {
+        actualByMatch[m.matchNumber] = m.actualWinner?.code ?? null;
+      }
 
       const predData = await predRes.json();
       if (predData.prediction) {
         const p = predData.prediction;
         const restored: PickMap = {};
+        const restoredCorrect: Record<number, boolean | null> = {};
+        const restoredPoints: Record<number, number> = {};
+
         for (const pick of p.picks ?? []) {
+          const mn: number = pick.matchNumber;
           if (pick.predictedWinner?.code) {
-            restored[pick.matchNumber] = pick.predictedWinner.code;
+            restored[mn] = pick.predictedWinner.code;
+          }
+
+          // Use stored isCorrect/pointsAwarded when scoring has run (isCorrect non-null),
+          // otherwise derive from predicted vs actual winner code.
+          if (pick.isCorrect !== null && pick.isCorrect !== undefined) {
+            restoredCorrect[mn] = pick.isCorrect as boolean;
+            restoredPoints[mn]  = pick.pointsAwarded as number;
+          } else {
+            const actual = actualByMatch[mn];
+            if (actual !== null && actual !== undefined) {
+              const correct = pick.predictedWinner?.code === actual;
+              restoredCorrect[mn] = correct;
+              restoredPoints[mn]  = correct ? (MATCH_POINTS[mn] ?? 0) : 0;
+            } else {
+              restoredCorrect[mn] = null;
+              restoredPoints[mn]  = 0;
+            }
           }
         }
+
         setPicks(restored);
+        setCorrectPicks(restoredCorrect);
+        setPickPoints(restoredPoints);
         setChampion(p.champion?.code ?? null);
       }
 
@@ -244,7 +277,9 @@ export default function PredictPage() {
           picks={picks}
           onPick={deadlinePassed ? undefined : handlePick}
           disabled={deadlinePassed}
-          showResults={false}
+          showResults
+          correctPicks={correctPicks}
+          pickPoints={pickPoints}
           teamSeeds={teamSeeds}
           teamLogos={teamLogos}
         />

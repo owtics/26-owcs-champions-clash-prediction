@@ -24,7 +24,6 @@ export interface MatchCardProps {
 
 export default function MatchCard({
   matchNumber,
-  roundName,
   team1,
   team2,
   predictedWinner,
@@ -38,50 +37,62 @@ export default function MatchCard({
 }: MatchCardProps) {
   const bothTeamsKnown = !!team1?.code && !!team2?.code;
 
-  // Border color based on result correctness
+  // Border color based on result
   let borderClass = "border-brand-border";
   if (showResult && actualWinner) {
-    if (isCorrect === true)  borderClass = "border-green-500";
-    else if (isCorrect === false) borderClass = "border-red-500";
+    if (isCorrect === true)  borderClass = "border-[#10B981]/60";
+    else if (isCorrect === false) borderClass = "border-red-500/60";
   }
 
-  // Result badge in header
-  let scoreBadge: React.ReactNode = null;
+  // Full-width status strip at top of card
+  let statusStrip: React.ReactNode = null;
   if (showResult) {
     if (!actualWinner) {
-      scoreBadge = (
-        <span className="text-[9px] text-gray-500 bg-gray-800 px-1 py-0.5 rounded font-medium">
-          Pending
-        </span>
+      statusStrip = (
+        <div className="flex items-center px-2 py-[3px] bg-zinc-800">
+          <span className="text-[9px] font-bold tracking-widest text-zinc-500 uppercase">
+            PENDING
+          </span>
+        </div>
       );
     } else if (isCorrect === true) {
-      scoreBadge = (
-        <span className="text-[9px] text-green-400 font-bold">
-          Correct +{pointsAwarded ?? 0}/{maxPoints ?? 0}pt
-        </span>
+      statusStrip = (
+        <div className="flex items-center justify-between px-2 py-[3px]" style={{ backgroundColor: "#14B8A6" }}>
+          <span className="text-[9px] font-bold tracking-widest text-white uppercase">
+            CORRECT
+          </span>
+          <span className="text-[9px] font-bold text-white">
+            +{pointsAwarded ?? 0} PTS
+          </span>
+        </div>
       );
     } else {
-      scoreBadge = (
-        <span className="text-[9px] text-red-400 font-bold">
-          Incorrect 0/{maxPoints ?? 0}pt
-        </span>
+      statusStrip = (
+        <div className="flex items-center justify-between px-2 py-[3px] bg-red-700">
+          <span className="text-[9px] font-bold tracking-widest text-white uppercase">
+            INCORRECT
+          </span>
+          <span className="text-[9px] font-bold text-white">+0 PTS</span>
+        </div>
       );
     }
   }
 
   return (
-    <div className={`relative flex flex-col w-full bg-brand-card border ${borderClass} rounded-lg overflow-hidden shadow-lg group`}>
+    <div
+      className={`relative flex flex-col w-full bg-brand-card border ${borderClass} rounded-lg overflow-hidden shadow-lg group`}
+    >
+      {/* Status strip — only rendered in result mode */}
+      {statusStrip}
+
       {/* Match header */}
-      <div className="bg-brand-border/40 px-3 py-1 flex items-center justify-between">
-        <span className="text-[10px] text-brand-subtext font-medium uppercase tracking-widest">
+      <div className="bg-brand-border/40 px-2 py-1 flex items-center justify-between">
+        <span className="text-[9px] text-brand-subtext font-medium uppercase tracking-widest">
           Match {matchNumber}
         </span>
-        <div className="flex items-center gap-1">
-          {scoreBadge}
-          {bothTeamsKnown && !disabled && !predictedWinner && onPickWinner && !showResult && (
-            <span className="text-[9px] text-brand-accent animate-pulse">Pick</span>
-          )}
-        </div>
+        {bothTeamsKnown && !disabled && !predictedWinner && onPickWinner && !showResult && (
+          <span className="text-[9px] text-brand-accent animate-pulse">Pick</span>
+        )}
       </div>
 
       {/* Teams */}

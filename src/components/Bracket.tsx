@@ -42,56 +42,59 @@ export interface BracketProps {
 }
 
 // ─── Compact layout constants ──────────────────────────────────────────────
+// Column layout (CARD_W=170, gap=50):
+//   col1=16  right=186
+//   col2=236 right=406
+//   col3=456 right=626
+//   col4=676 right=846
+//   col5=896 right=1066
+// CANVAS_W = 1066 + 16 padding = 1082
 
-const CARD_W   = 220;
-const CARD_H   = 88;
-const CANVAS_W = 1380;
-const CANVAS_H = 692;
+const CARD_W   = 200;
+const CARD_H   = 104;   // increased to account for status strip height
+const CANVAS_W = 1195;
+const CANVAS_H = 1000;
 
-// Column left positions (gap = 60px between columns)
-// col1=16  col2=296  col3=576  col4=856  col5=1136
-// WB R1 → WB Semi → WB Final →(skip col4)→ GF
-// LB R1 → LB R2  → LB R3   → LB Final  → GF
-
-// Row gap: CARD_H + 10 = 98px
-// WB start top = 60
-// LB start top = WB last card bottom + 32 = (354+88)+32 = 474
+// Column layout: col1=4, col2=236, col3=475, col4=720, col5=990
+// CARD_H=104, vertical gap between cards=56px
+// WB R1 tops: 40, 200, 360, 520
+// LB R1 tops: 640, 800 (below WB R2 bottom=624)
 
 const MATCH_POS: Record<number, { left: number; top: number }> = {
   // WB Round 1 (col1)
-  4:  { left: 16,   top: 60  },
-  3:  { left: 16,   top: 158 },
-  1:  { left: 16,   top: 256 },
-  2:  { left: 16,   top: 354 },
+  4:  { left: 4,   top: 40  },
+  3:  { left: 4,   top: 200 },
+  1:  { left: 4,   top: 360 },
+  2:  { left: 4,   top: 520 },
   // WB Semifinals (col2)
-  7:  { left: 296,  top: 109 },   // center(M4,M3) - CARD_H/2 = 153-44=109
-  8:  { left: 296,  top: 305 },   // center(M1,M2) - 44       = 349-44=305
-  // WB Final (col3)
-  12: { left: 576,  top: 207 },   // center(M7,M8) - 44       = 251-44=207
+  7:  { left: 236, top: 120 },   // center(M4,M3): (92+252)/2 − 52 = 120
+  8:  { left: 236, top: 440 },   // center(M1,M2): (412+572)/2 − 52 = 440
+  // WB Final (col4)
+  12: { left: 720, top: 280 },   // center(M7,M8): (172+492)/2 − 52 = 280
   // Grand Final (col5)
-  14: { left: 1136, top: 364 },   // center(M12,M13) - 44     = 408-44=364
+  14: { left: 990, top: 500 },   // center(M12,M13): (332+772)/2 − 52 = 500
   // LB Round 1 (col1, below WB)
-  5:  { left: 16,   top: 474 },
-  6:  { left: 16,   top: 572 },
+  5:  { left: 4,   top: 690 },
+  6:  { left: 4,   top: 850 },
   // LB Round 2 (col2)
-  9:  { left: 296,  top: 474 },
-  10: { left: 296,  top: 572 },
+  9:  { left: 236, top: 690 },
+  10: { left: 236, top: 850 },
   // LB Round 3 (col3)
-  11: { left: 576,  top: 523 },   // center(M9,M10) - 44      = 567-44=523
+  11: { left: 475, top: 770 },   // center(M9,M10): (692+852)/2 − 52 = 720
   // LB Final (col4)
-  13: { left: 856,  top: 523 },
+  13: { left: 720, top: 770 },
 };
 
 // Round labels: shown above each column section
 const ROUND_LABELS = [
-  { label: "WB Round 1",    left: 16,   top: 32  },
-  { label: "WB Semifinals", left: 296,  top: 32  },
-  { label: "WB Final",      left: 576,  top: 32  },
-  { label: "LB Round 1",    left: 16,   top: 446 },
-  { label: "LB Round 2",    left: 296,  top: 446 },
-  { label: "LB Round 3",    left: 576,  top: 446 },
-  { label: "LB Final",      left: 856,  top: 446 },
-  { label: "Grand Final",   left: 1136, top: 336 },
+  { label: "WB Round 1",    left: 64,   top: -5  },
+  { label: "WB Semifinals", left: 300,  top: -5  },
+  { label: "WB Final",      left: 790,  top: -5  },
+  { label: "LB Round 1",    left: 64,   top: 648 },
+  { label: "LB Round 2",    left: 300,  top: 648 },
+  { label: "LB Round 3",    left: 540,  top: 648 },
+  { label: "LB Final",      left: 790,  top: 648 },
+  { label: "Grand Final",   left: 1048, top: 465 },
 ];
 
 // ─── SVG Connectors ────────────────────────────────────────────────────────
@@ -246,12 +249,12 @@ export default function Bracket({
           width={CANVAS_W}
           height={CANVAS_H}
         >
-          {/* WB Round 1 → WB Semifinals (midX between col1_right=236 and col2_left=296) */}
-          <BracketConnector src1={4} src2={3} target={7}  midX={266} />
-          <BracketConnector src1={1} src2={2} target={8}  midX={266} />
+          {/* WB Round 1 → WB Semifinals (midX between col1_right=186 and col2_left=236) */}
+          <BracketConnector src1={4} src2={3} target={7}  midX={222} />
+          <BracketConnector src1={1} src2={2} target={8}  midX={222} />
 
-          {/* WB Semifinals → WB Final (midX between col2_right=516 and col3_left=576) */}
-          <BracketConnector src1={7} src2={8} target={12} midX={546} />
+          {/* WB Semifinals → WB Final (midX between col2_right=436 and col4_left=720) */}
+          <BracketConnector src1={7} src2={8} target={12} midX={578} />
 
           {/* WB Final → Grand Final */}
           <SingleConnector src={12} target={14} />
@@ -260,8 +263,8 @@ export default function Bracket({
           <SingleConnector src={5}  target={9}  />
           <SingleConnector src={6}  target={10} />
 
-          {/* LB Round 2 → LB Round 3 (midX same 546) */}
-          <BracketConnector src1={9} src2={10} target={11} midX={546} />
+          {/* LB Round 2 → LB Round 3 (midX between col2_right=406 and col3_left=456) */}
+          <BracketConnector src1={9} src2={10} target={11} midX={455} />
 
           {/* LB Round 3 → LB Final */}
           <SingleConnector src={11} target={13} />

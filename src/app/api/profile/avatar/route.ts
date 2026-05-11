@@ -24,14 +24,15 @@ export async function PATCH(req: NextRequest) {
   }
 
   // Server-side allowlist validation — no arbitrary external URLs accepted.
-  if (!(ALLOWED_AVATARS as readonly string[]).includes(avatarUrl)) {
+  if (!ALLOWED_AVATARS.includes(avatarUrl)) {
     return NextResponse.json({ error: "Invalid avatar selection." }, { status: 400 });
   }
 
-  await prisma.user.update({
+  const updated = await prisma.user.update({
     where: { id: session.user.id },
     data: { avatarUrl },
+    select: { avatarUrl: true, nickname: true, isPredictionPublic: true },
   });
 
-  return NextResponse.json({ success: true, avatarUrl });
+  return NextResponse.json({ success: true, ...updated });
 }

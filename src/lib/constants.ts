@@ -1,7 +1,7 @@
 // ─── Tournament Configuration ──────────────────────────────────────────────
 
-export const TOURNAMENT_NAME = "Champions Clash";
-export const TOURNAMENT_DATES = "May 22 – May 24, 2026";
+export const TOURNAMENT_NAME = "OWCS CHAMPIONS CLASH Pick'Ems";
+export const TOURNAMENT_DATES = "Hosted by OWTICS.GG X OWCS GALLERY";
 
 /**
  * Prediction deadline: May 22, 2026 at 00:00 KST (UTC+9)

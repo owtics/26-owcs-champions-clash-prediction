@@ -5,6 +5,61 @@ import { getEffectiveDeadline } from "@/lib/deadline";
 import DeadlineBanner from "@/components/DeadlineBanner";
 import { prisma } from "@/lib/prisma";
 
+// ─── Team external links ───────────────────────────────────────────────────
+// Edit these URLs to point to each team's official page.
+const TEAM_LINKS: Record<string, string> = {
+  TM:   "https://owtics.gg/en-US/esports/team/twisted-minds",
+  WBG:  "https://owtics.gg/en-US/esports/team/weibo-gaming",
+  ZETA: "https://owtics.gg/en-US/esports/team/zeta-division",
+  DAL:  "https://owtics.gg/en-US/esports/team/dallas-fuel",
+  CR:   "https://owtics.gg/en-US/esports/team/crazy-raccoon",
+  SSG:  "https://owtics.gg/en-US/esports/team/spacestation-gaming",
+  VP:   "https://owtics.gg/en-US/esports/team/virtuspro",
+  AG:   "https://owtics.gg/en-US/esports/team/all-gamers",
+};
+
+// ─── Community Gallery ─────────────────────────────────────────────────────
+// Add or remove src paths here. Titles are derived automatically from filenames.
+const GALLERY_IMAGES = [
+  "/gallery/고양이와 저격수.png",
+  "/gallery/관측 안된 프라우드.png",
+  "/gallery/괴짜가족.png",
+  "/gallery/동학 출전의 대한 이해와 고찰.png",
+  "/gallery/따봉하쿠.png",
+  "/gallery/명제의 복수.png",
+  "/gallery/바퀴올렛.png",
+  "/gallery/변종.png",
+  "/gallery/아들과 엄마.png",
+  "/gallery/알을못깬프라우드.png",
+  "/gallery/야만냥이의 여행.png",
+  "/gallery/좋아 대나무 헬리콥터~.png",
+  "/gallery/태양만세.png",
+  "/gallery/티원의 범인.png",
+  "/gallery/GOAT.png",
+  "/gallery/따봉선준.png",
+  "/gallery/질　주　선　준.png",
+  "/gallery/조별딱.png",
+  "/gallery/여신.png",
+  "/gallery/아앗....png",
+  "/gallery/대머리망토.png",
+  "/gallery/이예이 대회다~.png",
+  "/gallery/기모링마스크.png",
+  "/gallery/천상천하유아독존.png",
+];
+
+/** Derive a display title from an image src path.
+ *  Strips the directory prefix and extension, then replaces underscores/hyphens with spaces.
+ *  Examples:
+ *    "/gallery/grand_final_banner.png" → "grand final banner"
+ *    "/gallery/Team-Poster-FNC.webp"   → "Team Poster FNC"
+ *    "/gallery/태양만세.png"           → "태양만세"
+ */
+function getGalleryTitle(src: string): string {
+  const filename = src.split("/").pop() ?? src;
+  const noExt    = filename.replace(/\.(png|jpe?g|webp)$/i, "");
+  return noExt.replace(/[_-]+/g, " ");
+}
+
 async function getTopScores() {
   return prisma.score.findMany({
     take: 5,
@@ -55,7 +110,7 @@ export default async function HomePage() {
           <img
             src="/logos/tournament/champions-clash.png"
             alt={TOURNAMENT_NAME}
-            className="h-28 sm:h-36 w-auto object-contain drop-shadow-[0_0_18px_rgba(59,130,246,0.35)]"
+            className="h-28 sm:h-80 w-auto drop-shadow-[0_0_18px_rgba(59,130,246,0.35)]"
           />
         </div>
         <div className="inline-block px-3 py-1 bg-brand-accent/20 border border-brand-accent/40 rounded-full text-xs text-brand-accent font-medium tracking-widest uppercase mb-2">
@@ -140,25 +195,39 @@ export default async function HomePage() {
       <section className="bg-brand-card border border-brand-border rounded-xl p-6">
         <h2 className="text-lg font-bold text-white mb-4">Participating Teams</h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          {teams.map((t) => (
-            <div
-              key={t.code}
-              className="flex items-center gap-3 bg-brand-border/30 rounded-lg px-3 py-2.5"
-            >
-              <div className="w-8 h-8 rounded-md bg-brand-border flex items-center justify-center flex-shrink-0 overflow-hidden">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={t.logoUrl}
-                  alt={t.code}
-                  className="w-full h-full object-contain"
-                />
+          {teams.map((t) => {
+            const href = TEAM_LINKS[t.code];
+            const inner = (
+              <>
+                <div className="w-8 h-8 rounded-md bg-brand-border flex items-center justify-center flex-shrink-0 overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={t.logoUrl} alt={t.code} className="w-full h-full object-contain" />
+                </div>
+                <div>
+                  <div className="text-sm font-semibold text-white">{t.code}</div>
+                  <div className="text-[10px] text-brand-muted">Seed {t.seed}</div>
+                </div>
+              </>
+            );
+            if (href) {
+              return (
+                <a
+                  key={t.code}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 bg-brand-border/30 hover:bg-brand-border/60 hover:scale-[1.03] hover:border-brand-accent/50 border border-transparent rounded-lg px-3 py-2.5 transition-all duration-150"
+                >
+                  {inner}
+                </a>
+              );
+            }
+            return (
+              <div key={t.code} className="flex items-center gap-3 bg-brand-border/30 rounded-lg px-3 py-2.5 border border-transparent">
+                {inner}
               </div>
-              <div>
-                <div className="text-sm font-semibold text-white">{t.code}</div>
-                <div className="text-[10px] text-brand-muted">Seed {t.seed}</div>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
@@ -193,6 +262,39 @@ export default async function HomePage() {
       {topScores.length === 0 && (
         <section className="bg-brand-card border border-brand-border rounded-xl p-6 text-center">
           <p className="text-brand-subtext">No predictions submitted yet.</p>
+        </section>
+      )}
+
+      {/* Community Gallery */}
+      {GALLERY_IMAGES.length > 0 && (
+        <section className="bg-brand-card border border-brand-border rounded-xl p-6">
+          <h2 className="text-lg font-bold text-white mb-4">Community Gallery</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+            {GALLERY_IMAGES.map((src) => {
+              const title = getGalleryTitle(src);
+              return (
+              <a
+                key={src}
+                href={src}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col rounded-lg overflow-hidden border border-brand-border/50 hover:border-brand-accent/50 hover:shadow-[0_0_8px_rgba(59,130,246,0.25)] transition-all duration-150"
+              >
+                <div className="aspect-square overflow-hidden bg-brand-border/20">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={src}
+                    alt={title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
+                  />
+                </div>
+                <div className="px-2 py-1.5 bg-brand-border/10">
+                  <p className="text-[10px] text-brand-subtext text-center truncate">{title}</p>
+                </div>
+              </a>
+              );
+            })}
+          </div>
         </section>
       )}
 

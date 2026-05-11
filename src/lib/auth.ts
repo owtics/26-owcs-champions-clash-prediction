@@ -38,12 +38,13 @@ export const authOptions: NextAuthOptions = {
         const user = await prisma.user.findUnique({
           where: { username: credentials.username },
           select: {
-            id:           true,
-            username:     true,
-            nickname:     true,
-            passwordHash: true,
-            role:         true,
-            avatarUrl:    true,
+            id:                 true,
+            username:           true,
+            nickname:           true,
+            passwordHash:       true,
+            role:               true,
+            avatarUrl:          true,
+            isPredictionPublic: true,
           },
         });
         if (!user) return null;
@@ -52,31 +53,52 @@ export const authOptions: NextAuthOptions = {
         if (!valid) return null;
 
         return {
-          id:        user.id,
-          name:      user.username,
-          role:      user.role,
-          nickname:  user.nickname,
-          avatarUrl: user.avatarUrl ?? null,
+          id:                 user.id,
+          name:               user.username,
+          role:               user.role,
+          nickname:           user.nickname,
+          avatarUrl:          user.avatarUrl ?? null,
+          isPredictionPublic: user.isPredictionPublic ?? true,
         } as never;
       },
     }),
   ],
   callbacks: {
-    async jwt({ token, user }) {
+    async jwt({ token, user, trigger, session }) {
+      // On initial sign-in, seed token from the authorized user object
       if (user) {
-        token.id       = user.id;
-        token.role     = (user as { role?: string }).role ?? "USER";
-        token.nickname = (user as { nickname?: string }).nickname ?? "";
-        token.avatarUrl = (user as { avatarUrl?: string | null }).avatarUrl ?? null;
+        const u = user as {
+          role?: string; nickname?: string;
+          avatarUrl?: string | null; isPredictionPublic?: boolean;
+        };
+        token.id                 = user.id;
+        token.role               = u.role ?? "USER";
+        token.nickname           = u.nickname ?? "";
+        token.avatarUrl          = u.avatarUrl ?? null;
+        token.isPredictionPublic = u.isPredictionPublic ?? true;
       }
+
+      // On client-side update() call, merge in the new values
+      if (trigger === "update" && session?.user) {
+        const su = session.user as {
+          nickname?: string; avatarUrl?: string | null; isPredictionPublic?: boolean;
+        };
+        if (su.nickname    !== undefined) token.nickname    = su.nickname;
+        if (su.avatarUrl   !== undefined) token.avatarUrl   = su.avatarUrl;
+        if (typeof su.isPredictionPublic === "boolean") {
+          token.isPredictionPublic = su.isPredictionPublic;
+        }
+      }
+
       return token;
     },
     async session({ session, token }) {
       if (session.user) {
-        session.user.id        = token.id as string;
-        session.user.role      = token.role as string;
-        session.user.nickname  = (token.nickname as string) ?? "";
-        session.user.avatarUrl = (token.avatarUrl as string | null) ?? null;
+        session.user.id                 = token.id as string;
+        session.user.role               = token.role as string;
+        session.user.nickname           = (token.nickname as string) ?? "";
+        session.user.avatarUrl          = (token.avatarUrl as string | null) ?? null;
+        session.user.isPredictionPublic = (token.isPredictionPublic as boolean) ?? true;
       }
       return session;
     },

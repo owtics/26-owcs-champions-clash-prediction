@@ -23,14 +23,10 @@ interface LeaderboardTableProps {
   currentUserId?: string;
 }
 
-function getPercentileBadge(rank: number, total: number): string | null {
-  if (total === 0) return null;
-  const pct = (rank / total) * 100;
-  if (pct <= 1)  return "Top 1%";
-  if (pct <= 5)  return "Top 5%";
-  if (pct <= 10) return "Top 10%";
-  if (pct <= 30) return "Top 30%";
-  return null;
+function formatPercentile(rank: number, total: number): string {
+  if (total <= 1) return "Top 1%";
+  const pct = Math.max(1, Math.ceil((rank / total) * 100));
+  return `Top ${pct}%`;
 }
 
 function UserAvatar({ avatarUrl, nickname }: { avatarUrl: string | null; nickname: string }) {
@@ -84,9 +80,9 @@ export default function LeaderboardTable({
         </thead>
         <tbody>
           {entries.map((entry) => {
-            const isCurrentUser    = entry.userId === currentUserId;
-            const percentileBadge  = getPercentileBadge(entry.rank, total);
-            const displayNickname  = entry.nickname || entry.username;
+            const isCurrentUser   = entry.userId === currentUserId;
+            const percentile      = formatPercentile(entry.rank, total);
+            const displayNickname = entry.nickname || entry.username;
             const profileHref      = `/prediction/${entry.userId}`;
 
             // Score color tiers
@@ -104,37 +100,31 @@ export default function LeaderboardTable({
                 }`}
               >
                 {/* Total Score — primary ranking indicator */}
-                <td className="py-3 pr-4">
-                  <span className={`text-lg ${scoreColor}`}>
-                    {entry.totalScore}
-                  </span>
+                <td className="py-3 pr-4 whitespace-nowrap">
+                  <span className={`text-lg ${scoreColor}`}>{entry.totalScore}</span>
                   <span className="text-brand-muted text-xs ml-1">pts</span>
                 </td>
 
-                {/* User: avatar + nickname (username) + badges, linked to profile */}
+                {/* User: avatar + nickname (username) + percentile badge */}
                 <td className="py-3 pr-4">
                   <Link href={profileHref} className="flex items-center gap-2.5 hover:opacity-80 transition-opacity">
                     <UserAvatar avatarUrl={entry.avatarUrl} nickname={displayNickname} />
-                    <div className="flex flex-col min-w-0">
-                      <div className="flex items-center gap-1.5 flex-wrap">
-                        <span className={`font-semibold ${isCurrentUser ? "text-brand-accent" : "text-white"}`}>
-                          {displayNickname}
-                        </span>
-                        <span className="text-brand-muted text-xs">
-                          ({entry.username})
-                        </span>
-                        {isCurrentUser && (
-                          <span className="text-[10px] text-brand-accent bg-brand-accent/20 px-1.5 py-0.5 rounded">
-                            You
-                          </span>
-                        )}
-                      </div>
-                      {percentileBadge && (
-                        <span className="text-[10px] text-brand-gold font-medium mt-0.5">
-                          {percentileBadge}
+                    <div className="flex items-center gap-1.5 flex-wrap flex-1 min-w-0">
+                      <span className={`font-semibold ${isCurrentUser ? "text-brand-accent" : "text-white"}`}>
+                        {displayNickname}
+                      </span>
+                      <span className="text-brand-muted text-xs">
+                        ({entry.username})
+                      </span>
+                      {isCurrentUser && (
+                        <span className="text-[10px] text-brand-accent bg-brand-accent/20 px-1.5 py-0.5 rounded">
+                          You
                         </span>
                       )}
                     </div>
+                    <span className="ml-auto pl-3 text-[11px] font-semibold text-brand-gold bg-brand-gold/10 border border-brand-gold/30 px-2 py-0.5 rounded whitespace-nowrap flex-shrink-0">
+                      {percentile}
+                    </span>
                   </Link>
                 </td>
 

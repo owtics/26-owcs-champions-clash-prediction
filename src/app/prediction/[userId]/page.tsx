@@ -1,7 +1,7 @@
 import { notFound, redirect } from "next/navigation";
 import { getSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { PREDICTIONS_PUBLIC_AFTER_DEADLINE, MAX_SCORE } from "@/lib/constants";
+import { MAX_SCORE, MATCH_POINTS } from "@/lib/constants";
 import { getEffectiveDeadline } from "@/lib/deadline";
 import BracketViewer from "@/components/BracketViewer";
 import { BracketMatch, PickMap } from "@/components/Bracket";
@@ -16,10 +16,11 @@ async function getData(userId: string) {
   return prisma.user.findUnique({
     where: { id: userId },
     select: {
-      id:       true,
-      username: true,
-      nickname: true,
-      avatarUrl: true,
+      id:                 true,
+      username:           true,
+      nickname:           true,
+      avatarUrl:          true,
+      isPredictionPublic: true,
       prediction: {
         include: {
           picks: {
@@ -41,31 +42,53 @@ export default async function PredictionViewPage({ params }: Props) {
   const deadline       = await getEffectiveDeadline();
   const deadlinePassed = now >= deadline;
   const isOwn          = session?.user?.id === userId;
-
-  if (!isOwn) {
-    if (!deadlinePassed || !PREDICTIONS_PUBLIC_AFTER_DEADLINE) {
-      if (!session) redirect("/login");
-      return (
-        <div className="flex items-center justify-center min-h-[50vh]">
-          <div className="text-center space-y-3">
-            <p className="text-brand-subtext text-lg">Predictions are not public yet.</p>
-            <p className="text-brand-muted text-sm">Check back after the deadline.</p>
-            <Link href="/leaderboard" className="text-brand-accent hover:underline text-sm">
-              View Leaderboard →
-            </Link>
-          </div>
-        </div>
-      );
-    }
-  }
+  const isAdmin        = session?.user?.role === "ADMIN";
 
   const userData = await getData(userId);
   if (!userData) notFound();
+
+  // ── Privacy enforcement ────────────────────────────────────────────────────
+  // Only explicit `false` blocks. null/undefined/true → public (default).
+  const isPrivate = userData.isPredictionPublic === false;
+
+  if (process.env.NODE_ENV !== "production") {
+    console.log("[PredictionViewPage] access check", {
+      targetUserId:       userId,
+      viewerUserId:       session?.user?.id,
+      isOwn,
+      isAdmin,
+      isPredictionPublic: userData.isPredictionPublic,
+      isPrivate,
+      blocked:            isPrivate && !isOwn && !isAdmin,
+    });
+  }
+
+  if (isPrivate && !isOwn && !isAdmin) {
+    // Unauthenticated users → send to login so they can try as owner/admin.
+    if (!session) redirect(`/login?callbackUrl=/prediction/${userId}`);
+
+    return (
+      <div className="flex items-center justify-center min-h-[50vh]">
+        <div className="text-center space-y-3">
+          <p className="text-brand-subtext text-lg">This prediction profile is private.</p>
+          <Link href="/leaderboard" className="text-brand-accent hover:underline text-sm">
+            View Leaderboard →
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   const matches = await prisma.match.findMany({
     include: { team1: true, team2: true, actualWinner: true },
     orderBy: { matchNumber: "asc" },
   });
+
+  // Build actual winner lookup (matchNumber → code) for fallback calculation
+  const actualWinnerCodeByMatch: Record<number, string | null> = {};
+  for (const m of matches) {
+    actualWinnerCodeByMatch[m.matchNumber] = m.actualWinner?.code ?? null;
+  }
 
   // Build picks map
   const picks: PickMap = {};
@@ -75,16 +98,33 @@ export default async function PredictionViewPage({ params }: Props) {
     }
   }
 
-  // Build correctness map
+  // Build correctness map — use stored isCorrect when available, otherwise
+  // derive from predicted vs actual winner code so results show immediately
+  // even if recalculate hasn't been run yet.
   const correctPicks: Record<number, boolean | null> = {};
   for (const pick of userData.prediction?.picks ?? []) {
-    correctPicks[pick.matchNumber] = pick.isCorrect ?? null;
+    if (pick.isCorrect !== null && pick.isCorrect !== undefined) {
+      correctPicks[pick.matchNumber] = pick.isCorrect;
+    } else {
+      const actualCode = actualWinnerCodeByMatch[pick.matchNumber];
+      if (actualCode !== null && actualCode !== undefined) {
+        correctPicks[pick.matchNumber] = pick.predictedWinner?.code === actualCode;
+      } else {
+        correctPicks[pick.matchNumber] = null; // pending — no result yet
+      }
+    }
   }
 
-  // Build per-match points map
+  // Build per-match points map — use stored pointsAwarded when scoring has run
+  // (isCorrect is non-null), otherwise derive from MATCH_POINTS as fallback.
   const pickPoints: Record<number, number> = {};
   for (const pick of userData.prediction?.picks ?? []) {
-    pickPoints[pick.matchNumber] = pick.pointsAwarded;
+    if (pick.isCorrect !== null && pick.isCorrect !== undefined) {
+      pickPoints[pick.matchNumber] = pick.pointsAwarded;
+    } else {
+      const correct = correctPicks[pick.matchNumber];
+      pickPoints[pick.matchNumber] = correct === true ? (MATCH_POINTS[pick.matchNumber] ?? 0) : 0;
+    }
   }
 
   const bracketMatches: BracketMatch[] = matches.map((m) => ({
@@ -212,7 +252,7 @@ export default async function PredictionViewPage({ params }: Props) {
           matches={bracketMatches}
           picks={picks}
           disabled
-          showResults={deadlinePassed}
+          showResults
           correctPicks={correctPicks}
           pickPoints={pickPoints}
           teamSeeds={teamSeeds}

@@ -10,13 +10,14 @@ datasource db {
 }
 
 model User {
-  id           String   @id @default(cuid())
-  username     String   @unique
-  nickname     String   @default("")
-  passwordHash String
-  role         String   @default("USER") // "USER" | "ADMIN"
-  avatarUrl    String?
-  createdAt    DateTime @default(now())
+  id                 String   @id @default(cuid())
+  username           String   @unique
+  nickname           String   @default("")
+  passwordHash       String
+  role               String   @default("USER") // "USER" | "ADMIN"
+  avatarUrl          String?
+  isPredictionPublic Boolean  @default(true)
+  createdAt          DateTime @default(now())
 
   prediction Prediction?
   score      Score?
