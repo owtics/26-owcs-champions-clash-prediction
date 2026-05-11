@@ -4,7 +4,6 @@ import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
 import { checkRateLimit } from "@/lib/rate-limit";
 
-// Fail fast in production if the secret is missing.
 if (process.env.NODE_ENV === "production" && !process.env.NEXTAUTH_SECRET) {
   throw new Error(
     "NEXTAUTH_SECRET is not set. Set it to a random 32-byte string in your environment."
@@ -27,19 +26,25 @@ export const authOptions: NextAuthOptions = {
       async authorize(credentials, req) {
         if (!credentials?.username || !credentials?.password) return null;
 
-        // Rate limit: 10 login attempts per IP per minute.
         const forwarded = (req?.headers?.["x-forwarded-for"] as string | undefined)
           ?.split(",")[0]
           ?.trim();
         const ip = forwarded ?? "unknown";
         const rl = checkRateLimit(`login:${ip}`, 10, 60_000);
-        if (!rl.allowed) return null; // NextAuth will surface a generic error.
+        if (!rl.allowed) return null;
 
-        // Guard against bcrypt CPU-DoS via oversized passwords (>72 bytes).
         if (credentials.password.length > 72) return null;
 
         const user = await prisma.user.findUnique({
           where: { username: credentials.username },
+          select: {
+            id:           true,
+            username:     true,
+            nickname:     true,
+            passwordHash: true,
+            role:         true,
+            avatarUrl:    true,
+          },
         });
         if (!user) return null;
 
@@ -47,37 +52,41 @@ export const authOptions: NextAuthOptions = {
         if (!valid) return null;
 
         return {
-          id: user.id,
-          name: user.username,
-          role: user.role,
-        };
+          id:        user.id,
+          name:      user.username,
+          role:      user.role,
+          nickname:  user.nickname,
+          avatarUrl: user.avatarUrl ?? null,
+        } as never;
       },
     }),
   ],
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token.id = user.id;
-        token.role = (user as { role?: string }).role ?? "USER";
+        token.id       = user.id;
+        token.role     = (user as { role?: string }).role ?? "USER";
+        token.nickname = (user as { nickname?: string }).nickname ?? "";
+        token.avatarUrl = (user as { avatarUrl?: string | null }).avatarUrl ?? null;
       }
       return token;
     },
     async session({ session, token }) {
       if (session.user) {
-        session.user.id = token.id as string;
-        session.user.role = token.role as string;
+        session.user.id        = token.id as string;
+        session.user.role      = token.role as string;
+        session.user.nickname  = (token.nickname as string) ?? "";
+        session.user.avatarUrl = (token.avatarUrl as string | null) ?? null;
       }
       return session;
     },
   },
 };
 
-/** Convenience wrapper – returns the current session or null. */
 export async function getSession() {
   return getServerSession(authOptions);
 }
 
-/** Returns true if the current request comes from an admin. */
 export async function requireAdmin() {
   const session = await getSession();
   if (!session || session.user?.role !== "ADMIN") {

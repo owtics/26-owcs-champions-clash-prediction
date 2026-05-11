@@ -15,6 +15,8 @@ export interface MatchCardProps {
   predictedWinner?: string | null;
   actualWinner?: string | null;
   isCorrect?: boolean | null;
+  pointsAwarded?: number | null;
+  maxPoints?: number | null;
   onPickWinner?: (teamCode: string) => void;
   disabled?: boolean;
   showResult?: boolean;
@@ -28,35 +30,58 @@ export default function MatchCard({
   predictedWinner,
   actualWinner,
   isCorrect,
+  pointsAwarded,
+  maxPoints,
   onPickWinner,
   disabled,
   showResult,
 }: MatchCardProps) {
   const bothTeamsKnown = !!team1?.code && !!team2?.code;
 
-  let resultBadge = null;
-  if (showResult && isCorrect !== null && isCorrect !== undefined) {
-    resultBadge = (
-      <span
-        className={`absolute top-1 right-2 text-[10px] font-bold ${
-          isCorrect ? "text-green-400" : "text-red-400"
-        }`}
-      >
-        {isCorrect ? "+pts" : "✗"}
-      </span>
-    );
+  // Border color based on result correctness
+  let borderClass = "border-brand-border";
+  if (showResult && actualWinner) {
+    if (isCorrect === true)  borderClass = "border-green-500";
+    else if (isCorrect === false) borderClass = "border-red-500";
+  }
+
+  // Result badge in header
+  let scoreBadge: React.ReactNode = null;
+  if (showResult) {
+    if (!actualWinner) {
+      scoreBadge = (
+        <span className="text-[9px] text-gray-500 bg-gray-800 px-1.5 py-0.5 rounded font-medium">
+          대기
+        </span>
+      );
+    } else if (isCorrect === true) {
+      scoreBadge = (
+        <span className="text-[9px] text-green-400 font-bold">
+          적중 +{pointsAwarded ?? 0}점/{maxPoints ?? 0}점
+        </span>
+      );
+    } else {
+      scoreBadge = (
+        <span className="text-[9px] text-red-400 font-bold">
+          실패 0점/{maxPoints ?? 0}점
+        </span>
+      );
+    }
   }
 
   return (
-    <div className="relative flex flex-col w-full bg-brand-card border border-brand-border rounded-lg overflow-hidden shadow-lg group">
+    <div className={`relative flex flex-col w-full bg-brand-card border ${borderClass} rounded-lg overflow-hidden shadow-lg group`}>
       {/* Match header */}
       <div className="bg-brand-border/40 px-3 py-1 flex items-center justify-between">
         <span className="text-[10px] text-brand-subtext font-medium uppercase tracking-widest">
           경기 {matchNumber}
         </span>
-        {bothTeamsKnown && !disabled && !predictedWinner && onPickWinner && (
-          <span className="text-[9px] text-brand-accent animate-pulse">선택</span>
-        )}
+        <div className="flex items-center gap-1">
+          {scoreBadge}
+          {bothTeamsKnown && !disabled && !predictedWinner && onPickWinner && !showResult && (
+            <span className="text-[9px] text-brand-accent animate-pulse">선택</span>
+          )}
+        </div>
       </div>
 
       {/* Teams */}
@@ -92,8 +117,6 @@ export default function MatchCard({
           disabled={disabled || !bothTeamsKnown}
         />
       </div>
-
-      {resultBadge}
     </div>
   );
 }

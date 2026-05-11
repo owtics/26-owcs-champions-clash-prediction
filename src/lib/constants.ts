@@ -22,14 +22,16 @@ export const PREDICTIONS_PUBLIC_AFTER_DEADLINE = true;
 
 /** Points awarded for correctly predicting the winner of each match. */
 export const MATCH_POINTS: Record<number, number> = {
-  1: 1, 2: 1, 3: 1, 4: 1,           // WB Round 1
-  5: 2, 6: 2, 7: 2, 8: 2, 9: 2, 10: 2, // LB R1, WB Semis, LB R2
-  11: 3, 12: 3, 13: 3,              // LB R3, WB Final, LB Final
-  14: 5,                            // Grand Final
+  1: 5,  2: 5,  3: 5,  4: 5,  // WB Round 1
+  5: 5,  6: 5,                  // LB Round 1
+  7: 6,  8: 6,                  // WB Semifinals
+  9: 8,  10: 8, 11: 8,          // LB Round 2, LB Round 3
+  12: 10, 13: 10,               // WB Final, LB Final
+  14: 20,                       // Grand Final
 };
 
-/** Bonus points for correctly predicting the overall champion. */
-export const CHAMPION_BONUS_POINTS = 5;
+/** Maximum total score (sum of all MATCH_POINTS). */
+export const MAX_SCORE = 106;
 
 /** Total number of matches in the tournament. */
 export const TOTAL_MATCHES = 14;

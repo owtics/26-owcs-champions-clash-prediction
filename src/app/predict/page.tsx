@@ -3,7 +3,8 @@
 import { useState, useEffect, useCallback } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import Bracket, { BracketMatch, PickMap } from "@/components/Bracket";
+import BracketViewer from "@/components/BracketViewer";
+import { BracketMatch, PickMap } from "@/components/Bracket";
 import DeadlineBanner from "@/components/DeadlineBanner";
 import { PREDICTION_DEADLINE } from "@/lib/constants";
 import { propagateBracket, buildPickMap, buildInitialTeams } from "@/lib/bracket";
@@ -38,12 +39,10 @@ export default function PredictPage() {
 
   const deadlinePassed = new Date() >= PREDICTION_DEADLINE;
 
-  // Redirect unauthenticated users
   useEffect(() => {
     if (status === "unauthenticated") router.push("/login?callbackUrl=/predict");
   }, [status, router]);
 
-  // Load matches and existing prediction
   useEffect(() => {
     if (status !== "authenticated") return;
 
@@ -75,22 +74,18 @@ export default function PredictPage() {
     load().catch(() => setLoadingData(false));
   }, [status]);
 
-  // When user picks a winner, update picks and propagate
   const handlePick = useCallback(
     (matchNumber: number, teamCode: string) => {
       if (deadlinePassed) return;
 
       setPicks((prev) => {
-        // If clicking the already-selected winner, deselect it and clear downstream
         if (prev[matchNumber] === teamCode) {
           const next = { ...prev };
-          // Remove this pick and all downstream picks that depended on it
           clearDownstream(matchNumber, next, matches);
           return next;
         }
 
         const next = { ...prev, [matchNumber]: teamCode };
-        // Clear downstream picks that are now invalid (different teams)
         clearDownstream(matchNumber, next, matches, teamCode);
         return next;
       });
@@ -100,12 +95,10 @@ export default function PredictPage() {
     [deadlinePassed, matches]
   );
 
-  // Derive champion from M14 winner (auto-set when M14 is picked)
   useEffect(() => {
     if (picks[14]) setChampion(picks[14]);
   }, [picks]);
 
-  // Build bracket state for rendering
   const initialTeams = buildInitialTeams(
     matches
       .filter((m) => m.matchNumber <= 4)
@@ -126,9 +119,8 @@ export default function PredictPage() {
     initialTeams
   );
 
-  // Build team lookup maps for bracket display
-  const teamSeeds:  Record<string, number | null> = {};
-  const teamLogos:  Record<string, string | null> = {};
+  const teamSeeds: Record<string, number | null> = {};
+  const teamLogos: Record<string, string | null> = {};
   for (const m of matches) {
     if (m.team1?.code) {
       teamSeeds[m.team1.code] = m.team1.seed;
@@ -160,21 +152,21 @@ export default function PredictPage() {
     setSaving(false);
 
     if (!res.ok) {
-      setError(data.error ?? "Failed to save prediction.");
+      setError(data.error ?? "저장에 실패했습니다.");
     } else {
       setSaved(true);
     }
   }
 
-  const totalPicks = Object.keys(picks).length;
+  const totalPicks  = Object.keys(picks).length;
   const allPicksDone = totalPicks === 14;
 
   const bracketMatches: BracketMatch[] = matches.map((m) => ({
-    matchNumber:     m.matchNumber,
-    roundName:       m.roundName,
-    bracketType:     m.bracketType,
-    team1:           m.team1 ?? null,
-    team2:           m.team2 ?? null,
+    matchNumber:      m.matchNumber,
+    roundName:        m.roundName,
+    bracketType:      m.bracketType,
+    team1:            m.team1 ?? null,
+    team2:            m.team2 ?? null,
     actualWinnerCode: m.actualWinner?.code ?? null,
   }));
 
@@ -217,20 +209,18 @@ export default function PredictPage() {
         )}
       </div>
 
-      {/* Deadline banner */}
       <DeadlineBanner />
 
-      {/* Error */}
       {error && (
         <div className="bg-red-500/15 border border-red-500/40 rounded-lg px-4 py-3 text-sm text-red-400">
           {error}
         </div>
       )}
 
-      {/* Locked notice */}
+      {/* Deadline locked notice */}
       {deadlinePassed && (
         <div className="bg-brand-card border border-brand-border rounded-lg px-4 py-3 text-sm text-brand-subtext">
-          예측 마감 시각이 지났습니다. 예측이 잠금 처리되었습니다.
+          예측 마감 이후에는 등록하거나 수정할 수 없습니다.
           {champion && (
             <span className="ml-2 text-brand-gold font-semibold">
               예측 우승팀: {champion}
@@ -239,9 +229,9 @@ export default function PredictPage() {
         </div>
       )}
 
-      {/* Bracket */}
+      {/* Bracket with expand */}
       <div className="bg-brand-card border border-brand-border rounded-xl p-6">
-        <Bracket
+        <BracketViewer
           matches={bracketMatches}
           picks={picks}
           onPick={deadlinePassed ? undefined : handlePick}
@@ -256,7 +246,6 @@ export default function PredictPage() {
       {!deadlinePassed && (
         <div className="flex items-center justify-between flex-wrap gap-4 pt-2">
           <div className="flex gap-3">
-            {/* Progress pills */}
             {Array.from({ length: 14 }, (_, i) => i + 1).map((mn) => (
               <div
                 key={mn}
@@ -297,27 +286,14 @@ export default function PredictPage() {
   );
 }
 
-/**
- * Clear picks that are downstream of matchNumber.
- * When a winner changes, any picks in later matches that involved teams
- * flowing from this match must be cleared.
- */
 function clearDownstream(
   matchNumber: number,
   picks: PickMap,
   matches: MatchData[],
   newWinner?: string
 ) {
-  // Build a map of what feeds into what
-  // When match N's winner changes, we need to clear picks for all matches
-  // that receive teams from match N (transitively).
-
-  // For simplicity: recalculate which matches are now unreachable given current picks
-  // by propagating and seeing which match slots change team.
-
-  // Strategy: delete the pick for matchNumber first (if new winner provided, we keep it)
-  // Then for each downstream match, check if its teams would change and clear if so.
-
+  void matches;
+  void newWinner;
   const DOWNSTREAM: Record<number, number[]> = {
     1:  [5, 7, 9, 11, 12, 13, 14],
     2:  [6, 8, 10, 11, 12, 13, 14],

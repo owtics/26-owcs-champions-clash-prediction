@@ -1,8 +1,9 @@
 import { notFound, redirect } from "next/navigation";
 import { getSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { PREDICTION_DEADLINE, PREDICTIONS_PUBLIC_AFTER_DEADLINE } from "@/lib/constants";
-import Bracket, { BracketMatch, PickMap } from "@/components/Bracket";
+import { PREDICTION_DEADLINE, PREDICTIONS_PUBLIC_AFTER_DEADLINE, MAX_SCORE } from "@/lib/constants";
+import BracketViewer from "@/components/BracketViewer";
+import { BracketMatch, PickMap } from "@/components/Bracket";
 import DeadlineBanner from "@/components/DeadlineBanner";
 import Link from "next/link";
 
@@ -11,11 +12,13 @@ interface Props {
 }
 
 async function getData(userId: string) {
-  const user = await prisma.user.findUnique({
+  return prisma.user.findUnique({
     where: { id: userId },
     select: {
       id:       true,
       username: true,
+      nickname: true,
+      avatarUrl: true,
       prediction: {
         include: {
           picks: {
@@ -28,32 +31,23 @@ async function getData(userId: string) {
       score: true,
     },
   });
-
-  return user;
 }
 
 export default async function PredictionViewPage({ params }: Props) {
-  const { userId } = await params;
-  const session    = await getSession();
-  const now        = new Date();
+  const { userId }     = await params;
+  const session        = await getSession();
+  const now            = new Date();
   const deadlinePassed = now >= PREDICTION_DEADLINE;
+  const isOwn          = session?.user?.id === userId;
 
-  const isOwn = session?.user?.id === userId;
-
-  // Enforce visibility rules
   if (!isOwn) {
     if (!deadlinePassed || !PREDICTIONS_PUBLIC_AFTER_DEADLINE) {
       if (!session) redirect("/login");
-      // Show an "not yet visible" page
       return (
         <div className="flex items-center justify-center min-h-[50vh]">
           <div className="text-center space-y-3">
-            <p className="text-brand-subtext text-lg">
-              아직 예측이 공개되지 않았습니다.
-            </p>
-            <p className="text-brand-muted text-sm">
-              마감 후 확인해 주세요.
-            </p>
+            <p className="text-brand-subtext text-lg">아직 예측이 공개되지 않았습니다.</p>
+            <p className="text-brand-muted text-sm">마감 후 확인해 주세요.</p>
             <Link href="/leaderboard" className="text-brand-accent hover:underline text-sm">
               순위표 보기 →
             </Link>
@@ -79,24 +73,29 @@ export default async function PredictionViewPage({ params }: Props) {
     }
   }
 
-  // Build correctness map (from isCorrect on picks)
+  // Build correctness map
   const correctPicks: Record<number, boolean | null> = {};
   for (const pick of userData.prediction?.picks ?? []) {
     correctPicks[pick.matchNumber] = pick.isCorrect ?? null;
   }
 
+  // Build per-match points map
+  const pickPoints: Record<number, number> = {};
+  for (const pick of userData.prediction?.picks ?? []) {
+    pickPoints[pick.matchNumber] = pick.pointsAwarded;
+  }
+
   const bracketMatches: BracketMatch[] = matches.map((m) => ({
-    matchNumber:     m.matchNumber,
-    roundName:       m.roundName,
-    bracketType:     m.bracketType,
-    team1:           m.team1 ? { code: m.team1.code, seed: m.team1.seed, logoUrl: m.team1.logoUrl } : null,
-    team2:           m.team2 ? { code: m.team2.code, seed: m.team2.seed, logoUrl: m.team2.logoUrl } : null,
+    matchNumber:      m.matchNumber,
+    roundName:        m.roundName,
+    bracketType:      m.bracketType,
+    team1:            m.team1 ? { code: m.team1.code, seed: m.team1.seed, logoUrl: m.team1.logoUrl } : null,
+    team2:            m.team2 ? { code: m.team2.code, seed: m.team2.seed, logoUrl: m.team2.logoUrl } : null,
     actualWinnerCode: m.actualWinner?.code ?? null,
   }));
 
-  // Build team lookup maps for bracket display (propagated slots)
-  const teamSeeds:  Record<string, number | null> = {};
-  const teamLogos:  Record<string, string | null> = {};
+  const teamSeeds: Record<string, number | null> = {};
+  const teamLogos: Record<string, string | null> = {};
   for (const m of matches) {
     if (m.team1) { teamSeeds[m.team1.code] = m.team1.seed; teamLogos[m.team1.code] = m.team1.logoUrl; }
     if (m.team2) { teamSeeds[m.team2.code] = m.team2.seed; teamLogos[m.team2.code] = m.team2.logoUrl; }
@@ -106,27 +105,57 @@ export default async function PredictionViewPage({ params }: Props) {
   const score       = userData.score;
   const submittedAt = userData.prediction?.submittedAt;
 
+  const displayNickname = userData.nickname || userData.username;
+  const avatarUrl       = userData.avatarUrl ?? null;
+
   return (
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between flex-wrap gap-4">
-        <div>
-          <h1 className="text-2xl font-bold text-white">
-            {isOwn ? "내" : `${userData.username}의`} 예측
-          </h1>
-          {submittedAt && (
-            <p className="text-brand-subtext text-sm mt-0.5">
-              제출:{" "}
-              {new Date(submittedAt).toLocaleString("en-US", {
-                timeZone: "Asia/Seoul",
-                month: "short",
-                day: "numeric",
-                hour: "2-digit",
-                minute: "2-digit",
-                timeZoneName: "short",
-              })}
-            </p>
+        <div className="flex items-center gap-3">
+          {avatarUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={avatarUrl}
+              alt={displayNickname}
+              width={48}
+              height={48}
+              className="h-12 w-12 rounded-full object-cover flex-shrink-0"
+            />
+          ) : (
+            <div className="h-12 w-12 rounded-full bg-brand-border flex items-center justify-center flex-shrink-0">
+              <span className="text-lg font-bold text-brand-subtext">
+                {displayNickname[0].toUpperCase()}
+              </span>
+            </div>
           )}
+          <div>
+            <h1 className="text-2xl font-bold text-white">
+              {isOwn ? "내" : (
+                <>
+                  <span className="text-white">{displayNickname}</span>
+                  {userData.nickname && (
+                    <span className="text-brand-muted text-base font-normal ml-1">
+                      ({userData.username})
+                    </span>
+                  )}
+                  의
+                </>
+              )}{" "}예측
+            </h1>
+            {submittedAt && (
+              <p className="text-brand-subtext text-sm mt-0.5">
+                제출:{" "}
+                {new Date(submittedAt).toLocaleString("ko-KR", {
+                  timeZone: "Asia/Seoul",
+                  month: "short",
+                  day: "numeric",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
+              </p>
+            )}
+          </div>
         </div>
 
         <div className="flex items-center gap-4">
@@ -146,7 +175,7 @@ export default async function PredictionViewPage({ params }: Props) {
             <div className="bg-brand-card border border-brand-border rounded-lg px-4 py-2 text-center">
               <div className="text-2xl font-extrabold text-white">{score.totalScore}</div>
               <div className="text-[10px] text-brand-subtext uppercase tracking-widest">
-                points
+                / {MAX_SCORE}점
               </div>
             </div>
           )}
@@ -160,7 +189,7 @@ export default async function PredictionViewPage({ params }: Props) {
         <div className="grid grid-cols-3 gap-4">
           <div className="bg-brand-card border border-brand-border rounded-xl p-4 text-center">
             <div className="text-2xl font-bold text-white">{score.totalScore}</div>
-            <div className="text-xs text-brand-subtext mt-1">총점</div>
+            <div className="text-xs text-brand-subtext mt-1">총점 / {MAX_SCORE}점</div>
           </div>
           <div className="bg-brand-card border border-brand-border rounded-xl p-4 text-center">
             <div className="text-2xl font-bold text-white">{score.correctMatchCount}</div>
@@ -175,14 +204,15 @@ export default async function PredictionViewPage({ params }: Props) {
         </div>
       )}
 
-      {/* Read-only bracket */}
+      {/* Bracket with expand */}
       <div className="bg-brand-card border border-brand-border rounded-xl p-6">
-        <Bracket
+        <BracketViewer
           matches={bracketMatches}
           picks={picks}
           disabled
           showResults={deadlinePassed}
           correctPicks={correctPicks}
+          pickPoints={pickPoints}
           teamSeeds={teamSeeds}
           teamLogos={teamLogos}
         />
@@ -190,10 +220,7 @@ export default async function PredictionViewPage({ params }: Props) {
 
       {isOwn && !deadlinePassed && (
         <div className="text-center">
-          <Link
-            href="/predict"
-            className="text-brand-accent hover:underline text-sm"
-          >
+          <Link href="/predict" className="text-brand-accent hover:underline text-sm">
             ← 예측 수정하기
           </Link>
         </div>

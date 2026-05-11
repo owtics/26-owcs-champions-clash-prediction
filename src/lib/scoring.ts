@@ -3,13 +3,13 @@
  *
  * Compares each user's predicted winner per match against actual results,
  * awards points, and writes Score + PredictionPick.isCorrect to the DB.
- *
- * Uses the same bracket propagation logic as the UI so team resolutions
- * are guaranteed to be consistent.
  */
 
 import { prisma } from "@/lib/prisma";
-import { MATCH_POINTS, CHAMPION_BONUS_POINTS } from "@/lib/constants";
+import { MATCH_POINTS } from "@/lib/constants";
+
+// Re-export so callers can import from scoring.ts directly.
+export { MATCH_POINTS, MAX_SCORE } from "@/lib/constants";
 
 // ─── Types ────────────────────────────────────────────────────────────────
 
@@ -50,7 +50,7 @@ async function scoreOneUser(
   let totalScore = 0;
   let correctMatchCount = 0;
 
-  // Score each pick
+  // Score each pick (purely match-based, no champion bonus)
   for (const pick of prediction.picks) {
     const actualWinner = actualResults.get(pick.matchNumber) ?? null;
     const predicted    = pick.predictedWinner?.code ?? null;
@@ -61,20 +61,17 @@ async function scoreOneUser(
     if (isCorrect) correctMatchCount++;
     totalScore += points;
 
-    // Update pick record
     await prisma.predictionPick.update({
       where: { id: pick.id },
       data: { isCorrect, pointsAwarded: points },
     });
   }
 
-  // Champion bonus: check if the user's predicted champion won M14
+  // Track whether champion prediction was correct (stored for reference, no bonus)
   const actualChampion  = actualResults.get(14) ?? null;
   const predictedChamp  = prediction.champion?.code ?? null;
   const championCorrect = !!actualChampion && actualChampion === predictedChamp;
-  if (championCorrect) totalScore += CHAMPION_BONUS_POINTS;
 
-  // Upsert Score record
   await prisma.score.upsert({
     where: { userId },
     update: { totalScore, correctMatchCount, championCorrect },
@@ -91,7 +88,6 @@ async function scoreOneUser(
  * Safe to call multiple times — results are idempotent given the same actual results.
  */
 export async function recalculateAllScores(): Promise<UserScoreResult[]> {
-  // Load actual results from DB
   const matches = await prisma.match.findMany({
     where: { actualWinnerTeamId: { not: null } },
     include: { actualWinner: true },
@@ -102,7 +98,6 @@ export async function recalculateAllScores(): Promise<UserScoreResult[]> {
     actualResults.set(m.matchNumber, m.actualWinner?.code ?? null);
   }
 
-  // Find all users with predictions
   const predictions = await prisma.prediction.findMany({
     select: { userId: true },
   });
@@ -118,7 +113,6 @@ export async function recalculateAllScores(): Promise<UserScoreResult[]> {
 
 /**
  * Recalculate the score for a single user.
- * Called when a user's prediction is updated (pre-deadline) or when admin enters results.
  */
 export async function recalculateUserScore(userId: string): Promise<UserScoreResult> {
   const matches = await prisma.match.findMany({

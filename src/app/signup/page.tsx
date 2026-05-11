@@ -9,6 +9,7 @@ import { TOURNAMENT_NAME } from "@/lib/constants";
 export default function SignupPage() {
   const router = useRouter();
   const [username, setUsername] = useState("");
+  const [nickname, setNickname] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm]   = useState("");
   const [error, setError]       = useState<string | null>(null);
@@ -28,7 +29,7 @@ export default function SignupPage() {
     const res = await fetch("/api/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ username, nickname, password }),
     });
 
     if (!res.ok) {
@@ -38,7 +39,6 @@ export default function SignupPage() {
       return;
     }
 
-    // Auto sign-in after registration
     await signIn("credentials", { username, password, redirect: false });
     router.push("/predict");
     router.refresh();
@@ -75,6 +75,20 @@ export default function SignupPage() {
               maxLength={20}
               className="w-full bg-brand-bg border border-brand-border rounded-lg px-4 py-2.5 text-white placeholder-brand-muted focus:outline-none focus:border-brand-accent transition-colors"
               placeholder="영문자, 숫자, 밑줄 3~20자"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm text-brand-subtext mb-1.5">닉네임</label>
+            <input
+              type="text"
+              value={nickname}
+              onChange={(e) => setNickname(e.target.value)}
+              required
+              minLength={2}
+              maxLength={12}
+              className="w-full bg-brand-bg border border-brand-border rounded-lg px-4 py-2.5 text-white placeholder-brand-muted focus:outline-none focus:border-brand-accent transition-colors"
+              placeholder="한글, 영문, 숫자 2~12자"
             />
           </div>
 

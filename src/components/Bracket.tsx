@@ -7,8 +7,9 @@ import {
   buildPickMap,
   buildInitialTeams,
 } from "@/lib/bracket";
+import { MATCH_POINTS } from "@/lib/constants";
 
-// ─── Types (unchanged from original) ──────────────────────────────────────
+// ─── Types ────────────────────────────────────────────────────────────────
 
 export interface BracketTeam {
   code: string | null;
@@ -35,6 +36,7 @@ export interface BracketProps {
   disabled?: boolean;
   showResults?: boolean;
   correctPicks?: Record<number, boolean | null>;
+  pickPoints?: Record<number, number>;
   teamSeeds?: Record<string, number | null>;
   teamLogos?: Record<string, string | null>;
 }
@@ -46,33 +48,23 @@ const CARD_H = 88;
 const CANVAS_W = 1740;
 const CANVAS_H = 820;
 
-// Absolute positions for each match card: matchNumber → { left, top }
 const MATCH_POS: Record<number, { left: number; top: number }> = {
-  // WB Round 1
   4:  { left: 16,   top: 70  },
   3:  { left: 16,   top: 182 },
   1:  { left: 16,   top: 294 },
   2:  { left: 16,   top: 406 },
-  // WB Semifinals
   7:  { left: 376,  top: 126 },
   8:  { left: 376,  top: 350 },
-  // WB Final
   12: { left: 736,  top: 238 },
-  // Grand Final
   14: { left: 1456, top: 432 },
-  // LB Round 1
   5:  { left: 16,   top: 540 },
   6:  { left: 16,   top: 652 },
-  // LB Round 2
   9:  { left: 376,  top: 540 },
   10: { left: 376,  top: 652 },
-  // LB Round 3
   11: { left: 736,  top: 596 },
-  // LB Final
   13: { left: 1096, top: 596 },
 };
 
-// Round labels: { label, left, top }
 const ROUND_LABELS = [
   { label: "승자조 1라운드", left: 16,   top: 42  },
   { label: "승자조 준결승",  left: 376,  top: 42  },
@@ -86,13 +78,10 @@ const ROUND_LABELS = [
 
 // ─── SVG Connectors ────────────────────────────────────────────────────────
 
-function cardRight(mn: number)  { return MATCH_POS[mn].left + CARD_W; }
-function cardLeft(mn: number)   { return MATCH_POS[mn].left; }
-function cardMidY(mn: number)   { return MATCH_POS[mn].top + CARD_H / 2; }
+function cardRight(mn: number) { return MATCH_POS[mn].left + CARD_W; }
+function cardLeft(mn: number)  { return MATCH_POS[mn].left; }
+function cardMidY(mn: number)  { return MATCH_POS[mn].top + CARD_H / 2; }
 
-/**
- * Draw a bracket connector: two source cards connecting to one target card.
- */
 function BracketConnector({
   src1, src2, target, midX, stroke = "#3f3f46",
 }: {
@@ -103,26 +92,17 @@ function BracketConnector({
   const x2 = cardRight(src2);
   const y2 = cardMidY(src2);
   const xTarget = cardLeft(target);
-  const yTarget = cardMidY(target);
-  const yMid = (y1 + y2) / 2;
 
   return (
     <g stroke={stroke} strokeWidth={1.5} fill="none">
-      {/* src1 → midX */}
       <path d={`M ${x1} ${y1} H ${midX}`} />
-      {/* src2 → midX */}
       <path d={`M ${x2} ${y2} H ${midX}`} />
-      {/* vertical connector */}
       <path d={`M ${midX} ${y1} V ${y2}`} />
-      {/* midX → target */}
-      <path d={`M ${midX} ${yMid} H ${xTarget}`} />
+      <path d={`M ${midX} ${(y1 + y2) / 2} H ${xTarget}`} />
     </g>
   );
 }
 
-/**
- * Draw a single connector: one source card → one target card.
- */
 function SingleConnector({
   src, target, stroke = "#3f3f46",
 }: {
@@ -150,6 +130,7 @@ export default function Bracket({
   disabled,
   showResults,
   correctPicks,
+  pickPoints,
   teamSeeds,
   teamLogos,
 }: BracketProps) {
@@ -182,14 +163,12 @@ export default function Bracket({
     return propagateBracket(pickMap, initialTeams);
   }, [picks, initialTeams]);
 
-  // Resolve a team code into a full BracketTeam object for propagated (non-seeded) slots.
-  // Looks up seed and logoUrl from the caller-provided lookup maps.
   const resolveTeam = (code: string | null): BracketTeam => {
     if (!code) return { code: null };
     return {
       code,
-      seed:    teamSeeds?.[code]  ?? null,
-      logoUrl: teamLogos?.[code]  ?? null,
+      seed:    teamSeeds?.[code] ?? null,
+      logoUrl: teamLogos?.[code] ?? null,
     };
   };
 
@@ -206,6 +185,8 @@ export default function Bracket({
     const predictedWinner = picks[mn] ?? null;
     const actualWinner    = dbMatch.actualWinnerCode ?? null;
     const isCorrect       = correctPicks?.[mn] ?? null;
+    const pointsAwarded   = pickPoints?.[mn] ?? null;
+    const maxPoints       = MATCH_POINTS[mn] ?? 0;
 
     const canPick = !disabled && !!onPick && !!t1?.code && !!t2?.code;
 
@@ -228,6 +209,8 @@ export default function Bracket({
           predictedWinner={predictedWinner}
           actualWinner={actualWinner}
           isCorrect={isCorrect}
+          pointsAwarded={pointsAwarded}
+          maxPoints={maxPoints}
           showResult={showResults}
           disabled={!canPick}
           onPickWinner={canPick ? (code) => onPick!(mn, code) : undefined}
@@ -240,37 +223,22 @@ export default function Bracket({
     <div style={{ overflowX: "auto", overflowY: "visible", paddingBottom: 16 }}>
       <div style={{ position: "relative", width: CANVAS_W, height: CANVAS_H }}>
 
-        {/* SVG connector lines — behind cards */}
         <svg
           style={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }}
           width={CANVAS_W}
           height={CANVAS_H}
         >
-          {/* WB Round 1 → WB Semifinals */}
           <BracketConnector src1={4} src2={3} target={7} midX={316} />
           <BracketConnector src1={1} src2={2} target={8} midX={316} />
-
-          {/* WB Semifinals → WB Final */}
           <BracketConnector src1={7} src2={8} target={12} midX={676} />
-
-          {/* WB Final → Grand Final */}
           <SingleConnector src={12} target={14} />
-
-          {/* LB Round 1 → LB Round 2 */}
           <SingleConnector src={5} target={9} />
           <SingleConnector src={6} target={10} />
-
-          {/* LB Round 2 → LB Round 3 */}
           <BracketConnector src1={9} src2={10} target={11} midX={676} />
-
-          {/* LB Round 3 → LB Final */}
           <SingleConnector src={11} target={13} />
-
-          {/* LB Final → Grand Final */}
           <SingleConnector src={13} target={14} />
         </svg>
 
-        {/* Round labels */}
         {ROUND_LABELS.map((r) => (
           <div
             key={r.label}
@@ -288,7 +256,6 @@ export default function Bracket({
           </div>
         ))}
 
-        {/* Match cards */}
         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map(renderMatch)}
       </div>
     </div>

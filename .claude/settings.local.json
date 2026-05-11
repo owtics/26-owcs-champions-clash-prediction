@@ -9,7 +9,8 @@
       "Bash(PRISMA_MIGRATE_SKIP_GENERATE=false npx prisma migrate dev --name remove-email --accept-data-loss)",
       "Bash(mkdir -p prisma/migrations/20260511000000_remove_email)",
       "Bash(prisma/migrations/20260511000000_remove_email/migration.sql:*)",
-      "Bash(node -e \"const {PrismaClient} = require\\(''@prisma/client''\\); const p = new PrismaClient\\(\\); p.$connect\\(\\).then\\(\\(\\) => { console.log\\(''Connected''\\); return p.$disconnect\\(\\); }\\).catch\\(e => console.error\\(e\\)\\);\")"
+      "Bash(node -e \"const {PrismaClient} = require\\(''@prisma/client''\\); const p = new PrismaClient\\(\\); p.$connect\\(\\).then\\(\\(\\) => { console.log\\(''Connected''\\); return p.$disconnect\\(\\); }\\).catch\\(e => console.error\\(e\\)\\);\")",
+      "Bash(find /c/Users/ceh10/Desktop/잡다코드/match-prediction/src -type f \\\\\\(-name *.ts -o -name *.tsx \\\\\\))"
     ]
   }
 }

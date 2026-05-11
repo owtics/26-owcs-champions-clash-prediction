@@ -151,27 +151,31 @@ async function main() {
   const adminHash = await bcrypt.hash("admin1234", 12);
   await prisma.user.upsert({
     where: { username: "admin" },
-    update: {},
+    update: { nickname: "관리자", avatarUrl: "/avatars/avatar-1.png" },
     create: {
       username:     "admin",
+      nickname:     "관리자",
       passwordHash: adminHash,
       role:         "ADMIN",
+      avatarUrl:    "/avatars/avatar-1.png",
     },
   });
-  console.log("  User: admin  (password: admin1234)");
+  console.log("  User: admin  (password: admin1234, nickname: 관리자)");
 
   // ─── Sample user account ──────────────────────────────────
   const userHash = await bcrypt.hash("user1234", 12);
   await prisma.user.upsert({
     where: { username: "demo" },
-    update: {},
+    update: { nickname: "데모유저", avatarUrl: "/avatars/avatar-2.png" },
     create: {
       username:     "demo",
+      nickname:     "데모유저",
       passwordHash: userHash,
       role:         "USER",
+      avatarUrl:    "/avatars/avatar-2.png",
     },
   });
-  console.log("  User: demo   (password: user1234)");
+  console.log("  User: demo   (password: user1234, nickname: 데모유저)");
 
   console.log("\nSeed complete.");
 }

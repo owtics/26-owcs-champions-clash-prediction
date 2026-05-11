@@ -7,6 +7,8 @@ export interface LeaderboardEntry {
   rank: number;
   userId: string;
   username: string;
+  nickname: string;
+  avatarUrl: string | null;
   totalScore: number;
   correctMatchCount: number;
   championCorrect: boolean;
@@ -21,14 +23,46 @@ interface LeaderboardTableProps {
   currentUserId?: string;
 }
 
+function getPercentileBadge(rank: number, total: number): string | null {
+  if (total === 0) return null;
+  const pct = (rank / total) * 100;
+  if (pct <= 1)  return "상위 1%";
+  if (pct <= 5)  return "상위 5%";
+  if (pct <= 10) return "상위 10%";
+  if (pct <= 30) return "상위 30%";
+  return null;
+}
+
+function UserAvatar({ avatarUrl, nickname }: { avatarUrl: string | null; nickname: string }) {
+  const letter = (nickname || "?")[0].toUpperCase();
+  if (avatarUrl) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={avatarUrl}
+        alt={nickname}
+        width={32}
+        height={32}
+        className="h-8 w-8 rounded-full object-cover flex-shrink-0"
+      />
+    );
+  }
+  return (
+    <div className="h-8 w-8 rounded-full bg-brand-border flex items-center justify-center flex-shrink-0">
+      <span className="text-xs font-bold text-brand-subtext">{letter}</span>
+    </div>
+  );
+}
+
 export default function LeaderboardTable({
   entries,
   deadlinePassed,
   currentUserId,
 }: LeaderboardTableProps) {
   const showPredictions = deadlinePassed && PREDICTIONS_PUBLIC_AFTER_DEADLINE;
+  const total = entries.length;
 
-  if (entries.length === 0) {
+  if (total === 0) {
     return (
       <div className="text-center text-brand-subtext py-12">
         아직 제출된 예측이 없습니다.
@@ -57,6 +91,8 @@ export default function LeaderboardTable({
               2: "text-gray-300 font-semibold",
               3: "text-amber-600 font-semibold",
             };
+            const percentileBadge = getPercentileBadge(entry.rank, total);
+            const displayNickname = entry.nickname || entry.username;
 
             return (
               <tr
@@ -72,17 +108,30 @@ export default function LeaderboardTable({
                   </span>
                 </td>
 
-                {/* Username */}
+                {/* Player: avatar + nickname (username) + badges */}
                 <td className="py-3 pr-4">
-                  <div className="flex items-center gap-2">
-                    <span className={`font-medium ${isCurrentUser ? "text-brand-accent" : "text-brand-text"}`}>
-                      {entry.username}
-                    </span>
-                    {isCurrentUser && (
-                      <span className="text-[10px] text-brand-accent bg-brand-accent/20 px-1.5 py-0.5 rounded">
-                        나
-                      </span>
-                    )}
+                  <div className="flex items-center gap-2.5">
+                    <UserAvatar avatarUrl={entry.avatarUrl} nickname={displayNickname} />
+                    <div className="flex flex-col min-w-0">
+                      <div className="flex items-center gap-1.5 flex-wrap">
+                        <span className={`font-semibold ${isCurrentUser ? "text-brand-accent" : "text-white"}`}>
+                          {displayNickname}
+                        </span>
+                        <span className="text-brand-muted text-xs">
+                          ({entry.username})
+                        </span>
+                        {isCurrentUser && (
+                          <span className="text-[10px] text-brand-accent bg-brand-accent/20 px-1.5 py-0.5 rounded">
+                            나
+                          </span>
+                        )}
+                      </div>
+                      {percentileBadge && (
+                        <span className="text-[10px] text-brand-gold font-medium mt-0.5">
+                          {percentileBadge}
+                        </span>
+                      )}
+                    </div>
                   </div>
                 </td>
 
@@ -134,7 +183,6 @@ export default function LeaderboardTable({
         </tbody>
       </table>
 
-      {/* View prediction links (post-deadline) */}
       {showPredictions && (
         <div className="mt-4 flex flex-wrap gap-2">
           {entries.map((e) => (
@@ -143,7 +191,7 @@ export default function LeaderboardTable({
               href={`/prediction/${e.userId}`}
               className="text-xs text-brand-subtext hover:text-brand-accent transition-colors underline"
             >
-              {e.username}의 예측 →
+              {e.nickname || e.username}의 예측 →
             </Link>
           ))}
         </div>

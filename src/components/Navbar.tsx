@@ -4,6 +4,27 @@ import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import { TOURNAMENT_NAME } from "@/lib/constants";
 
+function UserAvatar({ avatarUrl, nickname }: { avatarUrl: string | null; nickname: string }) {
+  const letter = (nickname || "?")[0].toUpperCase();
+  if (avatarUrl) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={avatarUrl}
+        alt={nickname}
+        width={28}
+        height={28}
+        className="h-7 w-7 rounded-full object-cover flex-shrink-0"
+      />
+    );
+  }
+  return (
+    <div className="h-7 w-7 rounded-full bg-brand-border flex items-center justify-center flex-shrink-0">
+      <span className="text-[11px] font-bold text-brand-subtext">{letter}</span>
+    </div>
+  );
+}
+
 export default function Navbar() {
   const { data: session, status } = useSession();
 
@@ -38,7 +59,20 @@ export default function Navbar() {
                 </Link>
               )}
               <span className="text-brand-subtext">|</span>
-              <span className="text-brand-subtext">{session.user.name}</span>
+              <div className="flex items-center gap-2">
+                <UserAvatar
+                  avatarUrl={session.user.avatarUrl}
+                  nickname={session.user.nickname || session.user.name || "?"}
+                />
+                <span className="text-white font-semibold">
+                  {session.user.nickname || session.user.name}
+                </span>
+                {session.user.name && (
+                  <span className="text-brand-muted text-xs">
+                    ({session.user.name})
+                  </span>
+                )}
+              </div>
               <button
                 onClick={() => signOut({ callbackUrl: "/" })}
                 className="text-brand-subtext hover:text-brand-red transition-colors"

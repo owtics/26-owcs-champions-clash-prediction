@@ -1,6 +1,6 @@
 import { getSession } from "@/lib/auth";
 import LeaderboardTable, { LeaderboardEntry } from "@/components/LeaderboardTable";
-import { TOURNAMENT_NAME, PREDICTION_DEADLINE } from "@/lib/constants";
+import { TOURNAMENT_NAME, PREDICTION_DEADLINE, MAX_SCORE } from "@/lib/constants";
 import DeadlineBanner from "@/components/DeadlineBanner";
 import { prisma } from "@/lib/prisma";
 
@@ -12,8 +12,10 @@ async function getLeaderboard() {
     include: {
       user: {
         select: {
-          id:       true,
-          username: true,
+          id:        true,
+          username:  true,
+          nickname:  true,
+          avatarUrl: true,
           prediction: {
             select: {
               submittedAt: true,
@@ -32,19 +34,20 @@ async function getLeaderboard() {
   const rows = scores.map((s) => {
     const pred = s.user.prediction;
     return {
-      userId:           s.userId,
-      username:         s.user.username,
-      totalScore:       s.totalScore,
+      userId:            s.userId,
+      username:          s.user.username,
+      nickname:          s.user.nickname,
+      avatarUrl:         s.user.avatarUrl ?? null,
+      totalScore:        s.totalScore,
       correctMatchCount: s.correctMatchCount,
-      championCorrect:  s.championCorrect,
+      championCorrect:   s.championCorrect,
       predictedChampion: pred?.champion?.code ?? null,
-      grandFinalPick:   pred?.picks?.[0]?.predictedWinner?.code ?? null,
-      submittedAt:      pred?.submittedAt?.toISOString() ?? null,
-      updatedAt:        s.updatedAt.toISOString(),
+      grandFinalPick:    pred?.picks?.[0]?.predictedWinner?.code ?? null,
+      submittedAt:       pred?.submittedAt?.toISOString() ?? null,
+      updatedAt:         s.updatedAt.toISOString(),
     };
   });
 
-  // Tie-breaking sort
   rows.sort((a, b) => {
     if (b.totalScore !== a.totalScore) return b.totalScore - a.totalScore;
     const gfA = a.grandFinalPick ? 1 : 0;
@@ -67,7 +70,7 @@ async function getLeaderboard() {
   return { deadlinePassed, leaderboard: ranked };
 }
 
-export const revalidate = 30; // Revalidate every 30 seconds
+export const revalidate = 30;
 
 export default async function LeaderboardPage() {
   const session = await getSession();
@@ -98,11 +101,12 @@ export default async function LeaderboardPage() {
         />
       </div>
 
-      {/* Score key */}
       <div className="bg-brand-card border border-brand-border rounded-xl p-4">
         <p className="text-xs text-brand-subtext">
           <span className="font-semibold text-white">점수: </span>
-          1~4경기: 1점 · 5~10경기: 2점 · 11~13경기: 3점 · 14경기: 5점 · 우승팀 보너스: 5점
+          1~4경기: 5점 · 5~6경기: 5점 · 7~8경기: 6점 · 9~11경기: 8점 · 12~13경기: 10점 · 14경기: 20점
+          {" | "}
+          <span className="font-semibold text-white">최대 점수: {MAX_SCORE}점</span>
           {" | "}
           <span className="font-semibold text-white">동점 처리: </span>
           그랜드 파이널 예측 → 우승팀 예측 → 빠른 제출 순
