@@ -4,7 +4,22 @@ import { PREDICTION_DEADLINE } from "@/lib/constants";
 
 export const dynamic = "force-dynamic";
 
+// Simple module-level cache — avoids a DB round-trip on every single request.
+// 30-second TTL is short enough that score updates are visible quickly.
+const CACHE_TTL_MS = 30_000;
+let cachedPayload: string | null = null;
+let cacheExpiresAt = 0;
+
 export async function GET() {
+  const nowMs = Date.now();
+
+  // Serve cached response if still fresh.
+  if (cachedPayload && nowMs < cacheExpiresAt) {
+    return new NextResponse(cachedPayload, {
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+
   const now = new Date();
   const deadlinePassed = now >= PREDICTION_DEADLINE;
 
@@ -73,5 +88,11 @@ export async function GET() {
     return { rank, ...row };
   });
 
-  return NextResponse.json({ deadlinePassed, leaderboard: ranked });
+  const responseBody = JSON.stringify({ deadlinePassed, leaderboard: ranked });
+  cachedPayload = responseBody;
+  cacheExpiresAt = nowMs + CACHE_TTL_MS;
+
+  return new NextResponse(responseBody, {
+    headers: { "Content-Type": "application/json" },
+  });
 }

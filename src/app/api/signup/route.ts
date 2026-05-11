@@ -1,8 +1,26 @@
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
+import { checkRateLimit } from "@/lib/rate-limit";
+
+// bcrypt safely handles at most 72 bytes; longer inputs waste CPU with no benefit.
+const PASSWORD_MAX_LENGTH = 72;
 
 export async function POST(req: NextRequest) {
+  // Rate limit: 5 signups per IP per minute.
+  const ip =
+    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
+  const rl = checkRateLimit(`signup:${ip}`, 5, 60_000);
+  if (!rl.allowed) {
+    return NextResponse.json(
+      { error: "Too many requests. Please try again later." },
+      {
+        status: 429,
+        headers: { "Retry-After": String(rl.retryAfter) },
+      }
+    );
+  }
+
   const body = await req.json();
   const { username, password } = body as {
     username?: string;
@@ -31,6 +49,13 @@ export async function POST(req: NextRequest) {
   if (password.length < 6) {
     return NextResponse.json(
       { error: "비밀번호는 최소 6자 이상이어야 합니다." },
+      { status: 400 }
+    );
+  }
+
+  if (password.length > PASSWORD_MAX_LENGTH) {
+    return NextResponse.json(
+      { error: `비밀번호는 최대 ${PASSWORD_MAX_LENGTH}자까지 입력할 수 있습니다.` },
       { status: 400 }
     );
   }

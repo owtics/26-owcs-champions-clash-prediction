@@ -2,6 +2,14 @@ import { NextAuthOptions, getServerSession } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
+import { checkRateLimit } from "@/lib/rate-limit";
+
+// Fail fast in production if the secret is missing.
+if (process.env.NODE_ENV === "production" && !process.env.NEXTAUTH_SECRET) {
+  throw new Error(
+    "NEXTAUTH_SECRET is not set. Set it to a random 32-byte string in your environment."
+  );
+}
 
 export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
@@ -16,8 +24,19 @@ export const authOptions: NextAuthOptions = {
         username: { label: "아이디", type: "text" },
         password: { label: "비밀번호", type: "password" },
       },
-      async authorize(credentials) {
+      async authorize(credentials, req) {
         if (!credentials?.username || !credentials?.password) return null;
+
+        // Rate limit: 10 login attempts per IP per minute.
+        const forwarded = (req?.headers?.["x-forwarded-for"] as string | undefined)
+          ?.split(",")[0]
+          ?.trim();
+        const ip = forwarded ?? "unknown";
+        const rl = checkRateLimit(`login:${ip}`, 10, 60_000);
+        if (!rl.allowed) return null; // NextAuth will surface a generic error.
+
+        // Guard against bcrypt CPU-DoS via oversized passwords (>72 bytes).
+        if (credentials.password.length > 72) return null;
 
         const user = await prisma.user.findUnique({
           where: { username: credentials.username },

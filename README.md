@@ -213,6 +213,33 @@ CMD ["npm", "start"]
 
 ---
 
+## Production Checklist
+
+Before going live, verify every item below:
+
+### Security
+- [ ] `NEXTAUTH_SECRET` is set to a **random 32-byte string** (`openssl rand -base64 32`) — never use the dev placeholder
+- [ ] `DATABASE_URL` points to the **Neon pooled** connection string (URL contains `-pooler.`)
+- [ ] `NEXTAUTH_URL` is set to your **production domain** (e.g. `https://yourdomain.com`)
+- [ ] The `.env` file is **not committed** to git (verify `.gitignore` covers it)
+- [ ] Seeded **demo accounts** (`admin` / `admin1234` and `demo` / `user1234`) have passwords changed or are disabled before going public
+
+### Database
+- [ ] `prisma migrate deploy` has been run against the production database
+- [ ] DB schema matches `prisma/schema.prisma` (no unapplied migrations)
+
+### Rate Limiting
+- [ ] Login is rate-limited: **10 attempts per IP per minute** (enforced in `src/lib/auth.ts`)
+- [ ] Signup is rate-limited: **5 attempts per IP per minute** (enforced in `src/app/api/signup/route.ts`)
+- [ ] For stricter enforcement under high traffic, replace the in-memory limiter with an external store (e.g. Upstash Redis)
+
+### Behavior
+- [ ] `PREDICTION_DEADLINE` in `src/lib/constants.ts` is set to the correct UTC time
+- [ ] Leaderboard caches responses for **30 seconds** — acceptable for your refresh frequency?
+- [ ] Admin credentials are changed from defaults before announcing the app publicly
+
+---
+
 ## Development Commands
 
 ```bash
