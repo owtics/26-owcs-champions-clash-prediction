@@ -31,7 +31,7 @@ function LoginForm() {
     setLoading(false);
 
     if (result?.error) {
-      setError("아이디 또는 비밀번호가 올바르지 않습니다.");
+      setError("Incorrect username or password.");
     } else {
       router.push(callbackUrl);
       router.refresh();
@@ -43,14 +43,14 @@ function LoginForm() {
       <div className="w-full max-w-sm">
         <div className="text-center mb-8">
           <h1 className="text-2xl font-bold text-white">{TOURNAMENT_NAME}</h1>
-          <p className="text-brand-subtext mt-1">승부예측에 참여하세요</p>
+          <p className="text-brand-subtext mt-1">Join the prediction challenge</p>
         </div>
 
         <form
           onSubmit={handleSubmit}
           className="bg-brand-card border border-brand-border rounded-xl p-8 space-y-5"
         >
-          <h2 className="text-lg font-semibold text-white">로그인</h2>
+          <h2 className="text-lg font-semibold text-white">Log In</h2>
 
           {error && (
             <div className="bg-red-500/15 border border-red-500/40 rounded-lg px-4 py-3 text-sm text-red-400">
@@ -59,7 +59,7 @@ function LoginForm() {
           )}
 
           <div>
-            <label className="block text-sm text-brand-subtext mb-1.5">아이디</label>
+            <label className="block text-sm text-brand-subtext mb-1.5">Username</label>
             <input
               type="text"
               value={username}
@@ -67,12 +67,12 @@ function LoginForm() {
               required
               autoComplete="username"
               className="w-full bg-brand-bg border border-brand-border rounded-lg px-4 py-2.5 text-white placeholder-brand-muted focus:outline-none focus:border-brand-accent transition-colors"
-              placeholder="아이디 입력"
+              placeholder="Enter username"
             />
           </div>
 
           <div>
-            <label className="block text-sm text-brand-subtext mb-1.5">비밀번호</label>
+            <label className="block text-sm text-brand-subtext mb-1.5">Password</label>
             <input
               type="password"
               value={password}
@@ -89,13 +89,13 @@ function LoginForm() {
             disabled={loading}
             className="w-full py-2.5 bg-brand-accent hover:bg-blue-500 disabled:opacity-60 text-white font-semibold rounded-lg transition-colors"
           >
-            {loading ? "로그인 중…" : "로그인"}
+            {loading ? "Logging in…" : "Log In"}
           </button>
 
           <p className="text-center text-sm text-brand-subtext">
-            계정이 없으신가요?{" "}
+            Don&apos;t have an account?{" "}
             <Link href="/signup" className="text-brand-accent hover:underline">
-              회원가입
+              Sign Up
             </Link>
           </p>
         </form>

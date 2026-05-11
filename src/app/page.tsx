@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getSession } from "@/lib/auth";
-import { TOURNAMENT_NAME, TOURNAMENT_DATES, PREDICTION_DEADLINE } from "@/lib/constants";
+import { TOURNAMENT_NAME, TOURNAMENT_DATES } from "@/lib/constants";
+import { getEffectiveDeadline } from "@/lib/deadline";
 import DeadlineBanner from "@/components/DeadlineBanner";
 import { prisma } from "@/lib/prisma";
 
@@ -12,8 +13,9 @@ async function getTopScores() {
   });
 }
 
-function formatDeadlineKST() {
-  return PREDICTION_DEADLINE.toLocaleString("ko-KR", {
+async function formatDeadlineKST() {
+  const deadline = await getEffectiveDeadline();
+  return deadline.toLocaleString("en-US", {
     timeZone: "Asia/Seoul",
     year: "numeric",
     month: "long",
@@ -28,7 +30,8 @@ function formatDeadlineKST() {
 export default async function HomePage() {
   const session = await getSession();
   const topScores = await getTopScores();
-  const deadlinePassed = new Date() >= PREDICTION_DEADLINE;
+  const deadline = await getEffectiveDeadline();
+  const deadlinePassed = new Date() >= deadline;
 
   const teams = [
     { seed: 1, code: "TM",   logoUrl: "/logos/teams/tm.png"   },
@@ -56,7 +59,7 @@ export default async function HomePage() {
           />
         </div>
         <div className="inline-block px-3 py-1 bg-brand-accent/20 border border-brand-accent/40 rounded-full text-xs text-brand-accent font-medium tracking-widest uppercase mb-2">
-          토너먼트 승부예측
+          Tournament Prediction
         </div>
         <h1 className="text-5xl font-extrabold text-white tracking-tight">
           {TOURNAMENT_NAME}
@@ -73,7 +76,7 @@ export default async function HomePage() {
               href="/predict"
               className="px-8 py-3 bg-brand-accent hover:bg-blue-500 text-white font-bold rounded-lg text-base transition-colors"
             >
-              {deadlinePassed ? "내 예측 보기" : "승부예측 참여"}
+              {deadlinePassed ? "View My Prediction" : "Make a Prediction"}
             </Link>
           ) : (
             <>
@@ -81,13 +84,13 @@ export default async function HomePage() {
                 href="/signup"
                 className="px-8 py-3 bg-brand-accent hover:bg-blue-500 text-white font-bold rounded-lg text-base transition-colors"
               >
-                회원가입
+                Sign Up
               </Link>
               <Link
                 href="/login"
                 className="px-8 py-3 bg-brand-border hover:bg-brand-border/70 text-white font-semibold rounded-lg text-base transition-colors"
               >
-                로그인
+                Log In
               </Link>
             </>
           )}
@@ -95,7 +98,7 @@ export default async function HomePage() {
             href="/leaderboard"
             className="px-8 py-3 border border-brand-border hover:border-brand-subtext text-brand-subtext hover:text-white font-semibold rounded-lg text-base transition-colors"
           >
-            순위표
+            Leaderboard
           </Link>
         </div>
       </section>
@@ -104,38 +107,38 @@ export default async function HomePage() {
       <section className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="bg-brand-card border border-brand-border rounded-xl p-6">
           <h3 className="text-brand-subtext text-xs uppercase tracking-widest font-bold mb-3">
-            마감일
+            Deadline
           </h3>
-          <p className="text-white font-semibold">{formatDeadlineKST()}</p>
+          <p className="text-white font-semibold">{await formatDeadlineKST()}</p>
           <p className="text-brand-subtext text-xs mt-1">
-            이 시각 이후 예측이 잠깁니다. 서버에서 강제 적용됩니다.
+            Predictions lock after this time. Enforced server-side.
           </p>
         </div>
 
         <div className="bg-brand-card border border-brand-border rounded-xl p-6">
           <h3 className="text-brand-subtext text-xs uppercase tracking-widest font-bold mb-3">
-            방식
+            Format
           </h3>
-          <p className="text-white font-semibold">더블 엘리미네이션</p>
+          <p className="text-white font-semibold">Double Elimination</p>
           <p className="text-brand-subtext text-xs mt-1">
-            14경기 · 8팀 · 승자조 &amp; 패자조
+            14 matches · 8 teams · Winners &amp; Losers bracket
           </p>
         </div>
 
         <div className="bg-brand-card border border-brand-border rounded-xl p-6">
           <h3 className="text-brand-subtext text-xs uppercase tracking-widest font-bold mb-3">
-            점수
+            Scoring
           </h3>
-          <p className="text-white font-semibold">최대 35점</p>
+          <p className="text-white font-semibold">Max 106 pts</p>
           <p className="text-brand-subtext text-xs mt-1">
-            경기당 1~5점 + 우승팀 보너스 5점
+            5–20 pts per match depending on round
           </p>
         </div>
       </section>
 
       {/* Teams */}
       <section className="bg-brand-card border border-brand-border rounded-xl p-6">
-        <h2 className="text-lg font-bold text-white mb-4">참가 팀</h2>
+        <h2 className="text-lg font-bold text-white mb-4">Participating Teams</h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {teams.map((t) => (
             <div
@@ -152,7 +155,7 @@ export default async function HomePage() {
               </div>
               <div>
                 <div className="text-sm font-semibold text-white">{t.code}</div>
-                <div className="text-[10px] text-brand-muted">시드 {t.seed}</div>
+                <div className="text-[10px] text-brand-muted">Seed {t.seed}</div>
               </div>
             </div>
           ))}
@@ -163,9 +166,9 @@ export default async function HomePage() {
       {topScores.length > 0 && (
         <section className="bg-brand-card border border-brand-border rounded-xl p-6">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-bold text-white">상위 예측자</h2>
+            <h2 className="text-lg font-bold text-white">Top Predictors</h2>
             <Link href="/leaderboard" className="text-sm text-brand-accent hover:underline">
-              전체 순위표 →
+              Full Leaderboard →
             </Link>
           </div>
           <div className="space-y-2">
@@ -189,20 +192,21 @@ export default async function HomePage() {
 
       {topScores.length === 0 && (
         <section className="bg-brand-card border border-brand-border rounded-xl p-6 text-center">
-          <p className="text-brand-subtext">아직 제출된 예측이 없습니다.</p>
+          <p className="text-brand-subtext">No predictions submitted yet.</p>
         </section>
       )}
 
       {/* Scoring explanation */}
       <section className="bg-brand-card border border-brand-border rounded-xl p-6">
-        <h2 className="text-lg font-bold text-white mb-4">점수 계산 방식</h2>
+        <h2 className="text-lg font-bold text-white mb-4">Scoring System</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
           {[
-            { label: "승자조 1라운드 (1~4경기)", pts: "경기당 1점" },
-            { label: "패자조 1라운드 + 승자조 준결승 + 패자조 2라운드 (5~10경기)", pts: "경기당 2점" },
-            { label: "패자조 3라운드 + 승자조 결승 + 패자조 결승 (11~13경기)", pts: "경기당 3점" },
-            { label: "그랜드 파이널 (14경기)", pts: "5점" },
-            { label: "우승팀 정답 보너스", pts: "+5점" },
+            { label: "WB Round 1 (M1–4)", pts: "5 pts each" },
+            { label: "LB Round 1 (M5–6)", pts: "5 pts each" },
+            { label: "WB Semifinals (M7–8)", pts: "6 pts each" },
+            { label: "LB Round 2–3 (M9–11)", pts: "8 pts each" },
+            { label: "WB Final / LB Final (M12–13)", pts: "10 pts each" },
+            { label: "Grand Final (M14)", pts: "20 pts" },
           ].map((row) => (
             <div
               key={row.label}

@@ -20,28 +20,27 @@ interface MatchRow {
 }
 
 export default function AdminResultEditor() {
-  const [matches, setMatches] = useState<MatchRow[]>([]);
+  const [matches, setMatches]           = useState<MatchRow[]>([]);
   const [localResults, setLocalResults] = useState<Record<number, string>>({});
-  const [saving, setSaving] = useState(false);
-  const [message, setMessage] = useState<{ type: "ok" | "err"; text: string } | null>(null);
+  const [saving, setSaving]             = useState(false);
+  const [resetting, setResetting]       = useState(false);
   const [recalcLoading, setRecalcLoading] = useState(false);
+  const [message, setMessage]           = useState<{ type: "ok" | "err"; text: string } | null>(null);
 
   useEffect(() => {
     fetch("/api/admin/results")
       .then((r) => r.json())
       .then((data) => {
         setMatches(data.matches ?? []);
-        // Pre-fill with existing actual winners
         const init: Record<number, string> = {};
         for (const m of data.matches ?? []) {
           if (m.actualWinner?.code) init[m.matchNumber] = m.actualWinner.code;
         }
         setLocalResults(init);
       })
-      .catch(() => setMessage({ type: "err", text: "경기 정보를 불러오지 못했습니다." }));
+      .catch(() => setMessage({ type: "err", text: "Failed to load match data." }));
   }, []);
 
-  // ── Propagate resolved teams based on current local results ────────────
   const initialTeams = buildInitialTeams(
     matches
       .filter((m) => m.matchNumber <= 4)
@@ -84,8 +83,8 @@ export default function AdminResultEditor() {
         body: JSON.stringify({ results }),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error ?? "저장 실패");
-      setMessage({ type: "ok", text: "결과가 저장되고 점수가 재계산되었습니다." });
+      if (!res.ok) throw new Error(data.error ?? "Failed to save results.");
+      setMessage({ type: "ok", text: "Results saved and scores recalculated." });
     } catch (e: unknown) {
       setMessage({ type: "err", text: (e as Error).message });
     } finally {
@@ -97,10 +96,10 @@ export default function AdminResultEditor() {
     setRecalcLoading(true);
     setMessage(null);
     try {
-      const res = await fetch("/api/admin/recalculate", { method: "POST" });
+      const res  = await fetch("/api/admin/recalculate", { method: "POST" });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error ?? "실패");
-      setMessage({ type: "ok", text: `${data.updated}명의 점수가 재계산되었습니다.` });
+      if (!res.ok) throw new Error(data.error ?? "Recalculation failed.");
+      setMessage({ type: "ok", text: `Scores recalculated for ${data.updated} user(s).` });
     } catch (e: unknown) {
       setMessage({ type: "err", text: (e as Error).message });
     } finally {
@@ -108,33 +107,52 @@ export default function AdminResultEditor() {
     }
   }
 
+  async function handleReset() {
+    const confirmed = window.confirm(
+      "Are you sure? This will clear ALL match results and reset ALL scores to 0.\n\nUser predictions will not be affected."
+    );
+    if (!confirmed) return;
+
+    setResetting(true);
+    setMessage(null);
+    try {
+      const res  = await fetch("/api/admin/results/reset", { method: "POST" });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error ?? "Reset failed.");
+      // Clear local state
+      setLocalResults({});
+      setMatches((prev) => prev.map((m) => ({ ...m, actualWinner: null })));
+      setMessage({ type: "ok", text: "All match results and scores have been reset." });
+    } catch (e: unknown) {
+      setMessage({ type: "err", text: (e as Error).message });
+    } finally {
+      setResetting(false);
+    }
+  }
+
   const ROUND_ORDER = [
-    { label: "승자조 1라운드", nums: [1, 2, 3, 4] },
-    { label: "패자조 1라운드", nums: [5, 6] },
-    { label: "승자조 준결승",  nums: [7, 8] },
-    { label: "패자조 2라운드", nums: [9, 10] },
-    { label: "패자조 3라운드", nums: [11] },
-    { label: "승자조 결승",    nums: [12] },
-    { label: "패자조 결승",    nums: [13] },
-    { label: "그랜드 파이널",  nums: [14] },
+    { label: "WB Round 1",    nums: [1, 2, 3, 4] },
+    { label: "LB Round 1",    nums: [5, 6] },
+    { label: "WB Semifinals", nums: [7, 8] },
+    { label: "LB Round 2",    nums: [9, 10] },
+    { label: "LB Round 3",    nums: [11] },
+    { label: "WB Final",      nums: [12] },
+    { label: "LB Final",      nums: [13] },
+    { label: "Grand Final",   nums: [14] },
   ];
 
   return (
     <div className="space-y-6">
-      {/* Status message */}
       {message && (
-        <div
-          className={`rounded-lg px-4 py-3 text-sm ${
-            message.type === "ok"
-              ? "bg-green-500/15 border border-green-500/40 text-green-400"
-              : "bg-red-500/15 border border-red-500/40 text-red-400"
-          }`}
-        >
+        <div className={`rounded-lg px-4 py-3 text-sm ${
+          message.type === "ok"
+            ? "bg-green-500/15 border border-green-500/40 text-green-400"
+            : "bg-red-500/15 border border-red-500/40 text-red-400"
+        }`}>
           {message.text}
         </div>
       )}
 
-      {/* Match result inputs */}
       {ROUND_ORDER.map((round) => (
         <div key={round.label}>
           <h3 className="text-xs font-bold uppercase tracking-widest text-brand-subtext mb-3">
@@ -151,17 +169,17 @@ export default function AdminResultEditor() {
                   className="bg-brand-card border border-brand-border rounded-lg p-4"
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs text-brand-subtext">경기 {mn}</span>
+                    <span className="text-xs text-brand-subtext">Match {mn}</span>
                     {selected && (
                       <span className="text-xs text-green-400 font-medium">
-                        승자: {selected}
+                        Winner: {selected}
                       </span>
                     )}
                   </div>
 
                   {!team1 || !team2 ? (
                     <p className="text-xs text-brand-muted italic">
-                      이전 결과를 기다리는 중…
+                      Waiting for prior results…
                     </p>
                   ) : (
                     <div className="flex gap-2">
@@ -192,21 +210,38 @@ export default function AdminResultEditor() {
         </div>
       ))}
 
-      {/* Action buttons */}
-      <div className="flex gap-3 pt-2">
+      {/* Save / Recalculate */}
+      <div className="flex gap-3 pt-2 flex-wrap">
         <button
           onClick={handleSave}
           disabled={saving}
           className="px-6 py-2.5 bg-brand-accent hover:bg-blue-500 disabled:opacity-60 text-white font-semibold rounded-lg transition-colors"
         >
-          {saving ? "저장 중…" : "결과 저장"}
+          {saving ? "Saving…" : "Save Results"}
         </button>
         <button
           onClick={handleRecalculate}
           disabled={recalcLoading}
           className="px-6 py-2.5 bg-brand-border hover:bg-brand-border/80 disabled:opacity-60 text-brand-text font-semibold rounded-lg transition-colors"
         >
-          {recalcLoading ? "재계산 중…" : "점수 재계산"}
+          {recalcLoading ? "Recalculating…" : "Recalculate Scores"}
+        </button>
+      </div>
+
+      {/* Danger zone: Reset */}
+      <div className="border-t border-brand-border/50 pt-6 mt-4">
+        <h3 className="text-xs font-bold uppercase tracking-widest text-red-400 mb-3">
+          Danger Zone
+        </h3>
+        <p className="text-xs text-brand-subtext mb-3">
+          Clears all match results and resets all scores to 0. User predictions are preserved.
+        </p>
+        <button
+          onClick={handleReset}
+          disabled={resetting}
+          className="px-6 py-2.5 bg-red-500/20 hover:bg-red-500/40 disabled:opacity-60 text-red-400 font-semibold rounded-lg border border-red-500/40 transition-colors"
+        >
+          {resetting ? "Resetting…" : "Reset Match Results"}
         </button>
       </div>
     </div>

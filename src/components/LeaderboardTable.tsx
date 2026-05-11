@@ -26,10 +26,10 @@ interface LeaderboardTableProps {
 function getPercentileBadge(rank: number, total: number): string | null {
   if (total === 0) return null;
   const pct = (rank / total) * 100;
-  if (pct <= 1)  return "상위 1%";
-  if (pct <= 5)  return "상위 5%";
-  if (pct <= 10) return "상위 10%";
-  if (pct <= 30) return "상위 30%";
+  if (pct <= 1)  return "Top 1%";
+  if (pct <= 5)  return "Top 5%";
+  if (pct <= 10) return "Top 10%";
+  if (pct <= 30) return "Top 30%";
   return null;
 }
 
@@ -65,7 +65,7 @@ export default function LeaderboardTable({
   if (total === 0) {
     return (
       <div className="text-center text-brand-subtext py-12">
-        아직 제출된 예측이 없습니다.
+        No predictions submitted yet.
       </div>
     );
   }
@@ -75,24 +75,26 @@ export default function LeaderboardTable({
       <table className="w-full text-sm">
         <thead>
           <tr className="border-b border-brand-border text-brand-subtext text-left">
-            <th className="pb-3 pr-4 font-medium w-12">#</th>
-            <th className="pb-3 pr-4 font-medium">플레이어</th>
-            <th className="pb-3 pr-4 font-medium text-right">총점</th>
-            <th className="pb-3 pr-4 font-medium text-right">적중</th>
-            <th className="pb-3 pr-4 font-medium">예측 우승팀</th>
-            <th className="pb-3 font-medium text-right">제출 시각</th>
+            <th className="pb-3 pr-4 font-medium">Total Score</th>
+            <th className="pb-3 pr-4 font-medium">User</th>
+            <th className="pb-3 pr-4 font-medium text-right">Correct Matches</th>
+            <th className="pb-3 pr-4 font-medium">Predicted Champion</th>
+            <th className="pb-3 font-medium text-right">Submitted Time</th>
           </tr>
         </thead>
         <tbody>
           {entries.map((entry) => {
-            const isCurrentUser = entry.userId === currentUserId;
-            const rankColors: Record<number, string> = {
-              1: "text-brand-gold font-bold",
-              2: "text-gray-300 font-semibold",
-              3: "text-amber-600 font-semibold",
-            };
-            const percentileBadge = getPercentileBadge(entry.rank, total);
-            const displayNickname = entry.nickname || entry.username;
+            const isCurrentUser    = entry.userId === currentUserId;
+            const percentileBadge  = getPercentileBadge(entry.rank, total);
+            const displayNickname  = entry.nickname || entry.username;
+            const profileHref      = `/prediction/${entry.userId}`;
+
+            // Score color tiers
+            const scoreColor =
+              entry.rank === 1 ? "text-brand-gold font-extrabold" :
+              entry.rank === 2 ? "text-gray-300 font-bold" :
+              entry.rank === 3 ? "text-amber-600 font-bold" :
+              "text-white font-bold";
 
             return (
               <tr
@@ -101,16 +103,17 @@ export default function LeaderboardTable({
                   isCurrentUser ? "bg-brand-accent/10" : "hover:bg-brand-card/50"
                 }`}
               >
-                {/* Rank */}
+                {/* Total Score — primary ranking indicator */}
                 <td className="py-3 pr-4">
-                  <span className={rankColors[entry.rank] ?? "text-brand-subtext"}>
-                    {entry.rank}
+                  <span className={`text-lg ${scoreColor}`}>
+                    {entry.totalScore}
                   </span>
+                  <span className="text-brand-muted text-xs ml-1">pts</span>
                 </td>
 
-                {/* Player: avatar + nickname (username) + badges */}
+                {/* User: avatar + nickname (username) + badges, linked to profile */}
                 <td className="py-3 pr-4">
-                  <div className="flex items-center gap-2.5">
+                  <Link href={profileHref} className="flex items-center gap-2.5 hover:opacity-80 transition-opacity">
                     <UserAvatar avatarUrl={entry.avatarUrl} nickname={displayNickname} />
                     <div className="flex flex-col min-w-0">
                       <div className="flex items-center gap-1.5 flex-wrap">
@@ -122,7 +125,7 @@ export default function LeaderboardTable({
                         </span>
                         {isCurrentUser && (
                           <span className="text-[10px] text-brand-accent bg-brand-accent/20 px-1.5 py-0.5 rounded">
-                            나
+                            You
                           </span>
                         )}
                       </div>
@@ -132,27 +135,20 @@ export default function LeaderboardTable({
                         </span>
                       )}
                     </div>
-                  </div>
+                  </Link>
                 </td>
 
-                {/* Score */}
-                <td className="py-3 pr-4 text-right">
-                  <span className="font-bold text-white">{entry.totalScore}</span>
-                </td>
-
-                {/* Correct match count */}
+                {/* Correct Matches */}
                 <td className="py-3 pr-4 text-right text-brand-subtext">
                   {entry.correctMatchCount}
                 </td>
 
-                {/* Champion pick */}
+                {/* Predicted Champion */}
                 <td className="py-3 pr-4">
                   {showPredictions ? (
                     <div className="flex items-center gap-1.5">
                       <span className={`font-medium ${
-                        entry.championCorrect
-                          ? "text-green-400"
-                          : "text-brand-subtext"
+                        entry.championCorrect ? "text-green-400" : "text-brand-subtext"
                       }`}>
                         {entry.predictedChampion ?? "—"}
                       </span>
@@ -161,14 +157,14 @@ export default function LeaderboardTable({
                       )}
                     </div>
                   ) : (
-                    <span className="text-brand-muted text-xs italic">비공개</span>
+                    <span className="text-brand-muted text-xs italic">Hidden</span>
                   )}
                 </td>
 
-                {/* Submitted */}
+                {/* Submitted Time */}
                 <td className="py-3 text-right text-brand-subtext text-xs">
                   {entry.submittedAt
-                    ? new Date(entry.submittedAt).toLocaleString("ko-KR", {
+                    ? new Date(entry.submittedAt).toLocaleString("en-US", {
                         month: "short",
                         day: "numeric",
                         hour: "2-digit",
@@ -182,20 +178,6 @@ export default function LeaderboardTable({
           })}
         </tbody>
       </table>
-
-      {showPredictions && (
-        <div className="mt-4 flex flex-wrap gap-2">
-          {entries.map((e) => (
-            <Link
-              key={e.userId}
-              href={`/prediction/${e.userId}`}
-              className="text-xs text-brand-subtext hover:text-brand-accent transition-colors underline"
-            >
-              {e.nickname || e.username}의 예측 →
-            </Link>
-          ))}
-        </div>
-      )}
     </div>
   );
 }

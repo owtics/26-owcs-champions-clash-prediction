@@ -1,7 +1,8 @@
 import { notFound, redirect } from "next/navigation";
 import { getSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { PREDICTION_DEADLINE, PREDICTIONS_PUBLIC_AFTER_DEADLINE, MAX_SCORE } from "@/lib/constants";
+import { PREDICTIONS_PUBLIC_AFTER_DEADLINE, MAX_SCORE } from "@/lib/constants";
+import { getEffectiveDeadline } from "@/lib/deadline";
 import BracketViewer from "@/components/BracketViewer";
 import { BracketMatch, PickMap } from "@/components/Bracket";
 import DeadlineBanner from "@/components/DeadlineBanner";
@@ -37,7 +38,8 @@ export default async function PredictionViewPage({ params }: Props) {
   const { userId }     = await params;
   const session        = await getSession();
   const now            = new Date();
-  const deadlinePassed = now >= PREDICTION_DEADLINE;
+  const deadline       = await getEffectiveDeadline();
+  const deadlinePassed = now >= deadline;
   const isOwn          = session?.user?.id === userId;
 
   if (!isOwn) {
@@ -46,10 +48,10 @@ export default async function PredictionViewPage({ params }: Props) {
       return (
         <div className="flex items-center justify-center min-h-[50vh]">
           <div className="text-center space-y-3">
-            <p className="text-brand-subtext text-lg">아직 예측이 공개되지 않았습니다.</p>
-            <p className="text-brand-muted text-sm">마감 후 확인해 주세요.</p>
+            <p className="text-brand-subtext text-lg">Predictions are not public yet.</p>
+            <p className="text-brand-muted text-sm">Check back after the deadline.</p>
             <Link href="/leaderboard" className="text-brand-accent hover:underline text-sm">
-              순위표 보기 →
+              View Leaderboard →
             </Link>
           </div>
         </div>
@@ -131,7 +133,7 @@ export default async function PredictionViewPage({ params }: Props) {
           )}
           <div>
             <h1 className="text-2xl font-bold text-white">
-              {isOwn ? "내" : (
+              {isOwn ? "My Prediction" : (
                 <>
                   <span className="text-white">{displayNickname}</span>
                   {userData.nickname && (
@@ -139,14 +141,14 @@ export default async function PredictionViewPage({ params }: Props) {
                       ({userData.username})
                     </span>
                   )}
-                  의
+                  {"'s Prediction"}
                 </>
-              )}{" "}예측
+              )}
             </h1>
             {submittedAt && (
               <p className="text-brand-subtext text-sm mt-0.5">
-                제출:{" "}
-                {new Date(submittedAt).toLocaleString("ko-KR", {
+                Submitted:{" "}
+                {new Date(submittedAt).toLocaleString("en-US", {
                   timeZone: "Asia/Seoul",
                   month: "short",
                   day: "numeric",
@@ -162,7 +164,7 @@ export default async function PredictionViewPage({ params }: Props) {
           {champion && (
             <div className="flex items-center gap-2 bg-brand-gold/10 border border-brand-gold/30 rounded-lg px-3 py-2">
               <span className="text-[10px] text-brand-gold uppercase tracking-widest font-bold">
-                예측 우승팀
+                Predicted Champion
               </span>
               <span className="text-brand-gold font-bold">{champion}</span>
               {score?.championCorrect && (
@@ -189,17 +191,17 @@ export default async function PredictionViewPage({ params }: Props) {
         <div className="grid grid-cols-3 gap-4">
           <div className="bg-brand-card border border-brand-border rounded-xl p-4 text-center">
             <div className="text-2xl font-bold text-white">{score.totalScore}</div>
-            <div className="text-xs text-brand-subtext mt-1">총점 / {MAX_SCORE}점</div>
+            <div className="text-xs text-brand-subtext mt-1">Total / {MAX_SCORE}pts</div>
           </div>
           <div className="bg-brand-card border border-brand-border rounded-xl p-4 text-center">
             <div className="text-2xl font-bold text-white">{score.correctMatchCount}</div>
-            <div className="text-xs text-brand-subtext mt-1">적중 경기</div>
+            <div className="text-xs text-brand-subtext mt-1">Correct Matches</div>
           </div>
           <div className="bg-brand-card border border-brand-border rounded-xl p-4 text-center">
             <div className={`text-2xl font-bold ${score.championCorrect ? "text-green-400" : "text-brand-muted"}`}>
               {score.championCorrect ? "✓" : "✗"}
             </div>
-            <div className="text-xs text-brand-subtext mt-1">우승팀 정답</div>
+            <div className="text-xs text-brand-subtext mt-1">Champion Correct</div>
           </div>
         </div>
       )}
@@ -221,7 +223,7 @@ export default async function PredictionViewPage({ params }: Props) {
       {isOwn && !deadlinePassed && (
         <div className="text-center">
           <Link href="/predict" className="text-brand-accent hover:underline text-sm">
-            ← 예측 수정하기
+            ← Edit My Prediction
           </Link>
         </div>
       )}

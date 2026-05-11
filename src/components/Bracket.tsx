@@ -41,39 +41,57 @@ export interface BracketProps {
   teamLogos?: Record<string, string | null>;
 }
 
-// ─── Layout constants ──────────────────────────────────────────────────────
+// ─── Compact layout constants ──────────────────────────────────────────────
 
-const CARD_W = 260;
-const CARD_H = 88;
-const CANVAS_W = 1740;
-const CANVAS_H = 820;
+const CARD_W   = 220;
+const CARD_H   = 88;
+const CANVAS_W = 1380;
+const CANVAS_H = 692;
+
+// Column left positions (gap = 60px between columns)
+// col1=16  col2=296  col3=576  col4=856  col5=1136
+// WB R1 → WB Semi → WB Final →(skip col4)→ GF
+// LB R1 → LB R2  → LB R3   → LB Final  → GF
+
+// Row gap: CARD_H + 10 = 98px
+// WB start top = 60
+// LB start top = WB last card bottom + 32 = (354+88)+32 = 474
 
 const MATCH_POS: Record<number, { left: number; top: number }> = {
-  4:  { left: 16,   top: 70  },
-  3:  { left: 16,   top: 182 },
-  1:  { left: 16,   top: 294 },
-  2:  { left: 16,   top: 406 },
-  7:  { left: 376,  top: 126 },
-  8:  { left: 376,  top: 350 },
-  12: { left: 736,  top: 238 },
-  14: { left: 1456, top: 432 },
-  5:  { left: 16,   top: 540 },
-  6:  { left: 16,   top: 652 },
-  9:  { left: 376,  top: 540 },
-  10: { left: 376,  top: 652 },
-  11: { left: 736,  top: 596 },
-  13: { left: 1096, top: 596 },
+  // WB Round 1 (col1)
+  4:  { left: 16,   top: 60  },
+  3:  { left: 16,   top: 158 },
+  1:  { left: 16,   top: 256 },
+  2:  { left: 16,   top: 354 },
+  // WB Semifinals (col2)
+  7:  { left: 296,  top: 109 },   // center(M4,M3) - CARD_H/2 = 153-44=109
+  8:  { left: 296,  top: 305 },   // center(M1,M2) - 44       = 349-44=305
+  // WB Final (col3)
+  12: { left: 576,  top: 207 },   // center(M7,M8) - 44       = 251-44=207
+  // Grand Final (col5)
+  14: { left: 1136, top: 364 },   // center(M12,M13) - 44     = 408-44=364
+  // LB Round 1 (col1, below WB)
+  5:  { left: 16,   top: 474 },
+  6:  { left: 16,   top: 572 },
+  // LB Round 2 (col2)
+  9:  { left: 296,  top: 474 },
+  10: { left: 296,  top: 572 },
+  // LB Round 3 (col3)
+  11: { left: 576,  top: 523 },   // center(M9,M10) - 44      = 567-44=523
+  // LB Final (col4)
+  13: { left: 856,  top: 523 },
 };
 
+// Round labels: shown above each column section
 const ROUND_LABELS = [
-  { label: "승자조 1라운드", left: 16,   top: 42  },
-  { label: "승자조 준결승",  left: 376,  top: 42  },
-  { label: "승자조 결승",    left: 736,  top: 42  },
-  { label: "패자조 1라운드", left: 16,   top: 512 },
-  { label: "패자조 2라운드", left: 376,  top: 512 },
-  { label: "패자조 3라운드", left: 736,  top: 512 },
-  { label: "패자조 결승",    left: 1096, top: 512 },
-  { label: "그랜드 파이널",  left: 1456, top: 404 },
+  { label: "WB Round 1",    left: 16,   top: 32  },
+  { label: "WB Semifinals", left: 296,  top: 32  },
+  { label: "WB Final",      left: 576,  top: 32  },
+  { label: "LB Round 1",    left: 16,   top: 446 },
+  { label: "LB Round 2",    left: 296,  top: 446 },
+  { label: "LB Round 3",    left: 576,  top: 446 },
+  { label: "LB Final",      left: 856,  top: 446 },
+  { label: "Grand Final",   left: 1136, top: 336 },
 ];
 
 // ─── SVG Connectors ────────────────────────────────────────────────────────
@@ -228,24 +246,38 @@ export default function Bracket({
           width={CANVAS_W}
           height={CANVAS_H}
         >
-          <BracketConnector src1={4} src2={3} target={7} midX={316} />
-          <BracketConnector src1={1} src2={2} target={8} midX={316} />
-          <BracketConnector src1={7} src2={8} target={12} midX={676} />
+          {/* WB Round 1 → WB Semifinals (midX between col1_right=236 and col2_left=296) */}
+          <BracketConnector src1={4} src2={3} target={7}  midX={266} />
+          <BracketConnector src1={1} src2={2} target={8}  midX={266} />
+
+          {/* WB Semifinals → WB Final (midX between col2_right=516 and col3_left=576) */}
+          <BracketConnector src1={7} src2={8} target={12} midX={546} />
+
+          {/* WB Final → Grand Final */}
           <SingleConnector src={12} target={14} />
-          <SingleConnector src={5} target={9} />
-          <SingleConnector src={6} target={10} />
-          <BracketConnector src1={9} src2={10} target={11} midX={676} />
+
+          {/* LB Round 1 → LB Round 2 */}
+          <SingleConnector src={5}  target={9}  />
+          <SingleConnector src={6}  target={10} />
+
+          {/* LB Round 2 → LB Round 3 (midX same 546) */}
+          <BracketConnector src1={9} src2={10} target={11} midX={546} />
+
+          {/* LB Round 3 → LB Final */}
           <SingleConnector src={11} target={13} />
+
+          {/* LB Final → Grand Final */}
           <SingleConnector src={13} target={14} />
         </svg>
 
+        {/* Round labels */}
         {ROUND_LABELS.map((r) => (
           <div
             key={r.label}
             style={{ position: "absolute", left: r.left, top: r.top, zIndex: 2 }}
           >
             <span style={{
-              fontSize: 11,
+              fontSize: 10,
               fontWeight: 700,
               textTransform: "uppercase",
               letterSpacing: "0.1em",
@@ -256,6 +288,7 @@ export default function Bracket({
           </div>
         ))}
 
+        {/* Match cards */}
         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map(renderMatch)}
       </div>
     </div>

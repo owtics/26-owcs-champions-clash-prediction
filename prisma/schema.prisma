@@ -117,3 +117,9 @@ model Score {
   championCorrect Boolean  @default(false)
   updatedAt       DateTime @updatedAt
 }
+
+model AppSetting {
+  key       String   @id
+  value     String
+  updatedAt DateTime @updatedAt
+}

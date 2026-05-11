@@ -50,20 +50,20 @@ export default function MatchCard({
   if (showResult) {
     if (!actualWinner) {
       scoreBadge = (
-        <span className="text-[9px] text-gray-500 bg-gray-800 px-1.5 py-0.5 rounded font-medium">
-          대기
+        <span className="text-[9px] text-gray-500 bg-gray-800 px-1 py-0.5 rounded font-medium">
+          Pending
         </span>
       );
     } else if (isCorrect === true) {
       scoreBadge = (
         <span className="text-[9px] text-green-400 font-bold">
-          적중 +{pointsAwarded ?? 0}점/{maxPoints ?? 0}점
+          Correct +{pointsAwarded ?? 0}/{maxPoints ?? 0}pt
         </span>
       );
     } else {
       scoreBadge = (
         <span className="text-[9px] text-red-400 font-bold">
-          실패 0점/{maxPoints ?? 0}점
+          Incorrect 0/{maxPoints ?? 0}pt
         </span>
       );
     }
@@ -74,12 +74,12 @@ export default function MatchCard({
       {/* Match header */}
       <div className="bg-brand-border/40 px-3 py-1 flex items-center justify-between">
         <span className="text-[10px] text-brand-subtext font-medium uppercase tracking-widest">
-          경기 {matchNumber}
+          Match {matchNumber}
         </span>
         <div className="flex items-center gap-1">
           {scoreBadge}
           {bothTeamsKnown && !disabled && !predictedWinner && onPickWinner && !showResult && (
-            <span className="text-[9px] text-brand-accent animate-pulse">선택</span>
+            <span className="text-[9px] text-brand-accent animate-pulse">Pick</span>
           )}
         </div>
       </div>

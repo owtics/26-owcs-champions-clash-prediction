@@ -20,7 +20,7 @@ export default function SignupPage() {
     setError(null);
 
     if (password !== confirm) {
-      setError("비밀번호가 일치하지 않습니다.");
+      setError("Passwords do not match.");
       return;
     }
 
@@ -34,7 +34,7 @@ export default function SignupPage() {
 
     if (!res.ok) {
       const data = await res.json();
-      setError(data.error ?? "회원가입에 실패했습니다.");
+      setError(data.error ?? "Sign up failed. Please try again.");
       setLoading(false);
       return;
     }
@@ -49,14 +49,14 @@ export default function SignupPage() {
       <div className="w-full max-w-sm">
         <div className="text-center mb-8">
           <h1 className="text-2xl font-bold text-white">{TOURNAMENT_NAME}</h1>
-          <p className="text-brand-subtext mt-1">계정을 만들고 예측에 참여하세요</p>
+          <p className="text-brand-subtext mt-1">Create an account and join the prediction</p>
         </div>
 
         <form
           onSubmit={handleSubmit}
           className="bg-brand-card border border-brand-border rounded-xl p-8 space-y-5"
         >
-          <h2 className="text-lg font-semibold text-white">회원가입</h2>
+          <h2 className="text-lg font-semibold text-white">Sign Up</h2>
 
           {error && (
             <div className="bg-red-500/15 border border-red-500/40 rounded-lg px-4 py-3 text-sm text-red-400">
@@ -65,7 +65,7 @@ export default function SignupPage() {
           )}
 
           <div>
-            <label className="block text-sm text-brand-subtext mb-1.5">아이디</label>
+            <label className="block text-sm text-brand-subtext mb-1.5">Username</label>
             <input
               type="text"
               value={username}
@@ -74,12 +74,12 @@ export default function SignupPage() {
               minLength={3}
               maxLength={20}
               className="w-full bg-brand-bg border border-brand-border rounded-lg px-4 py-2.5 text-white placeholder-brand-muted focus:outline-none focus:border-brand-accent transition-colors"
-              placeholder="영문자, 숫자, 밑줄 3~20자"
+              placeholder="Letters, numbers, underscore (3–20 chars)"
             />
           </div>
 
           <div>
-            <label className="block text-sm text-brand-subtext mb-1.5">닉네임</label>
+            <label className="block text-sm text-brand-subtext mb-1.5">Nickname</label>
             <input
               type="text"
               value={nickname}
@@ -88,12 +88,12 @@ export default function SignupPage() {
               minLength={2}
               maxLength={12}
               className="w-full bg-brand-bg border border-brand-border rounded-lg px-4 py-2.5 text-white placeholder-brand-muted focus:outline-none focus:border-brand-accent transition-colors"
-              placeholder="한글, 영문, 숫자 2~12자"
+              placeholder="Display name (2–12 chars)"
             />
           </div>
 
           <div>
-            <label className="block text-sm text-brand-subtext mb-1.5">비밀번호</label>
+            <label className="block text-sm text-brand-subtext mb-1.5">Password</label>
             <input
               type="password"
               value={password}
@@ -101,12 +101,12 @@ export default function SignupPage() {
               required
               minLength={6}
               className="w-full bg-brand-bg border border-brand-border rounded-lg px-4 py-2.5 text-white placeholder-brand-muted focus:outline-none focus:border-brand-accent transition-colors"
-              placeholder="최소 6자 이상"
+              placeholder="At least 6 characters"
             />
           </div>
 
           <div>
-            <label className="block text-sm text-brand-subtext mb-1.5">비밀번호 확인</label>
+            <label className="block text-sm text-brand-subtext mb-1.5">Confirm Password</label>
             <input
               type="password"
               value={confirm}
@@ -122,13 +122,13 @@ export default function SignupPage() {
             disabled={loading}
             className="w-full py-2.5 bg-brand-accent hover:bg-blue-500 disabled:opacity-60 text-white font-semibold rounded-lg transition-colors"
           >
-            {loading ? "가입 중…" : "회원가입"}
+            {loading ? "Creating account…" : "Sign Up"}
           </button>
 
           <p className="text-center text-sm text-brand-subtext">
-            이미 계정이 있으신가요?{" "}
+            Already have an account?{" "}
             <Link href="/login" className="text-brand-accent hover:underline">
-              로그인
+              Log In
             </Link>
           </p>
         </form>

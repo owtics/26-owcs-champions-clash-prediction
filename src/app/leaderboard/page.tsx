@@ -1,12 +1,14 @@
 import { getSession } from "@/lib/auth";
 import LeaderboardTable, { LeaderboardEntry } from "@/components/LeaderboardTable";
-import { TOURNAMENT_NAME, PREDICTION_DEADLINE, MAX_SCORE } from "@/lib/constants";
+import { MAX_SCORE } from "@/lib/constants";
 import DeadlineBanner from "@/components/DeadlineBanner";
 import { prisma } from "@/lib/prisma";
+import { getEffectiveDeadline } from "@/lib/deadline";
 
 async function getLeaderboard() {
   const now = new Date();
-  const deadlinePassed = now >= PREDICTION_DEADLINE;
+  const deadline = await getEffectiveDeadline();
+  const deadlinePassed = now >= deadline;
 
   const scores = await prisma.score.findMany({
     include: {
@@ -79,9 +81,9 @@ export default async function LeaderboardPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-white">{TOURNAMENT_NAME} — 순위표</h1>
+        <h1 className="text-2xl font-bold text-white">Leaderboard</h1>
         <p className="text-brand-subtext text-sm mt-1">
-          {leaderboard.length}명 참가
+          {leaderboard.length} participant{leaderboard.length !== 1 ? "s" : ""}
         </p>
       </div>
 
@@ -89,7 +91,7 @@ export default async function LeaderboardPage() {
 
       {!deadlinePassed && (
         <div className="bg-brand-card border border-brand-border rounded-lg px-4 py-3 text-sm text-brand-subtext">
-          마감 전에는 예측 내용이 공개되지 않습니다.
+          Predictions are hidden until the deadline passes.
         </div>
       )}
 
@@ -103,13 +105,13 @@ export default async function LeaderboardPage() {
 
       <div className="bg-brand-card border border-brand-border rounded-xl p-4">
         <p className="text-xs text-brand-subtext">
-          <span className="font-semibold text-white">점수: </span>
-          1~4경기: 5점 · 5~6경기: 5점 · 7~8경기: 6점 · 9~11경기: 8점 · 12~13경기: 10점 · 14경기: 20점
+          <span className="font-semibold text-white">Scoring: </span>
+          M1–4: 5pts · M5–6: 5pts · M7–8: 6pts · M9–11: 8pts · M12–13: 10pts · M14: 20pts
           {" | "}
-          <span className="font-semibold text-white">최대 점수: {MAX_SCORE}점</span>
+          <span className="font-semibold text-white">Max: {MAX_SCORE}pts</span>
           {" | "}
-          <span className="font-semibold text-white">동점 처리: </span>
-          그랜드 파이널 예측 → 우승팀 예측 → 빠른 제출 순
+          <span className="font-semibold text-white">Tiebreaker: </span>
+          Grand Final pick → Champion pick → Earlier submission
         </p>
       </div>
     </div>

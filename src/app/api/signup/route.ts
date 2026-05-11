@@ -2,21 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
 import { checkRateLimit } from "@/lib/rate-limit";
+import { randomAvatar } from "@/lib/avatars";
 
 const PASSWORD_MAX_LENGTH = 72;
-
-const AVATAR_URLS = [
-  "/avatars/avatar-1.png",
-  "/avatars/avatar-2.png",
-  "/avatars/avatar-3.png",
-  "/avatars/avatar-4.png",
-  "/avatars/avatar-5.png",
-  "/avatars/avatar-6.png",
-];
-
-function randomAvatar(): string {
-  return AVATAR_URLS[Math.floor(Math.random() * AVATAR_URLS.length)];
-}
 
 export async function POST(req: NextRequest) {
   const ip =

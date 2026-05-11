@@ -36,8 +36,16 @@ export default function PredictPage() {
   const [saved, setSaved]       = useState(false);
   const [error, setError]       = useState<string | null>(null);
   const [loadingData, setLoadingData] = useState(true);
+  const [deadline, setDeadline] = useState<Date>(PREDICTION_DEADLINE);
 
-  const deadlinePassed = new Date() >= PREDICTION_DEADLINE;
+  const deadlinePassed = new Date() >= deadline;
+
+  useEffect(() => {
+    fetch("/api/admin/settings")
+      .then((r) => r.json())
+      .then((data) => { if (data.deadline) { const d = new Date(data.deadline); setDeadline(d); } })
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     if (status === "unauthenticated") router.push("/login?callbackUrl=/predict");
@@ -152,7 +160,7 @@ export default function PredictPage() {
     setSaving(false);
 
     if (!res.ok) {
-      setError(data.error ?? "저장에 실패했습니다.");
+      setError(data.error ?? "Failed to save prediction.");
     } else {
       setSaved(true);
     }
@@ -173,7 +181,7 @@ export default function PredictPage() {
   if (status === "loading" || loadingData) {
     return (
       <div className="flex items-center justify-center min-h-[50vh]">
-        <div className="text-brand-subtext">브라켓 로딩 중…</div>
+        <div className="text-brand-subtext">Loading bracket…</div>
       </div>
     );
   }
@@ -183,9 +191,9 @@ export default function PredictPage() {
       {/* Header */}
       <div className="flex items-center justify-between flex-wrap gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-white">내 승부예측</h1>
+          <h1 className="text-2xl font-bold text-white">My Prediction</h1>
           <p className="text-brand-subtext text-sm mt-0.5">
-            팀을 클릭하여 승자를 선택하세요 · {totalPicks}/14 경기 선택됨
+            Click a team to pick the winner · {totalPicks}/14 matches selected
           </p>
         </div>
         {!deadlinePassed && (
@@ -193,7 +201,7 @@ export default function PredictPage() {
             {champion && (
               <div className="flex items-center gap-2 bg-brand-gold/10 border border-brand-gold/30 rounded-lg px-3 py-2">
                 <span className="text-[10px] text-brand-gold uppercase tracking-widest font-bold">
-                  예측 우승팀
+                  Predicted Champion
                 </span>
                 <span className="text-brand-gold font-bold">{champion}</span>
               </div>
@@ -203,7 +211,7 @@ export default function PredictPage() {
               disabled={saving || totalPicks === 0}
               className="px-5 py-2 bg-brand-accent hover:bg-blue-500 disabled:opacity-50 text-white font-semibold rounded-lg transition-colors text-sm"
             >
-              {saving ? "저장 중…" : saved ? "저장됨 ✓" : "예측 저장"}
+              {saving ? "Saving…" : saved ? "Saved ✓" : "Save Prediction"}
             </button>
           </div>
         )}
@@ -220,10 +228,10 @@ export default function PredictPage() {
       {/* Deadline locked notice */}
       {deadlinePassed && (
         <div className="bg-brand-card border border-brand-border rounded-lg px-4 py-3 text-sm text-brand-subtext">
-          예측 마감 이후에는 등록하거나 수정할 수 없습니다.
+          The prediction deadline has passed. No changes can be made.
           {champion && (
             <span className="ml-2 text-brand-gold font-semibold">
-              예측 우승팀: {champion}
+              Predicted Champion: {champion}
             </span>
           )}
         </div>
@@ -273,12 +281,12 @@ export default function PredictPage() {
             } disabled:opacity-50`}
           >
             {saving
-              ? "저장 중…"
+              ? "Saving…"
               : saved
-              ? "저장됨 ✓"
+              ? "Saved ✓"
               : allPicksDone
-              ? "전체 예측 제출"
-              : `저장 (${totalPicks}/14 경기)`}
+              ? "Submit All Picks"
+              : `Save (${totalPicks}/14 matches)`}
           </button>
         </div>
       )}

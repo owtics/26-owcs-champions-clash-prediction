@@ -11,7 +11,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { PREDICTION_DEADLINE } from "@/lib/constants";
+import { getEffectiveDeadline } from "@/lib/deadline";
 import { propagateBracket, buildPickMap, buildInitialTeams } from "@/lib/bracket";
 
 // ─── GET ──────────────────────────────────────────────────────────────────
@@ -27,7 +27,7 @@ export async function GET(req: NextRequest) {
   // If requesting another user's data, check deadline + visibility rule
   if (targetUserId !== session.user.id) {
     const now = new Date();
-    if (now < PREDICTION_DEADLINE) {
+    if (now < (await getEffectiveDeadline())) {
       return NextResponse.json(
         { error: "Predictions are private before the deadline." },
         { status: 403 }
@@ -63,7 +63,7 @@ export async function POST(req: NextRequest) {
 
   // ── Server-side deadline check ──────────────────────────────────────────
   const now = new Date();
-  if (now >= PREDICTION_DEADLINE) {
+  if (now >= (await getEffectiveDeadline())) {
     return NextResponse.json(
       { error: "The prediction deadline has passed. Predictions are now locked." },
       { status: 403 }

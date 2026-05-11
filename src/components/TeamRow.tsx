@@ -65,7 +65,7 @@ export default function TeamRow({
 
       {/* Team code */}
       <span className={`text-sm font-semibold tracking-wide flex-1 ${textColor}`}>
-        {code ?? "미정"}
+        {code ?? "TBD"}
       </span>
 
       {/* Winner indicator */}

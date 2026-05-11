@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
-import { TOURNAMENT_NAME } from "@/lib/constants";
 
 function UserAvatar({ avatarUrl, nickname }: { avatarUrl: string | null; nickname: string }) {
   const letter = (nickname || "?")[0].toUpperCase();
@@ -35,31 +34,31 @@ export default function Navbar() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/logos/site/logo.png"
-            alt={TOURNAMENT_NAME}
+            alt="OWTICS.GG"
             className="h-9 w-9 object-contain"
           />
           <span className="text-white font-bold text-lg tracking-wide">
-            {TOURNAMENT_NAME}
+            OWTICS.GG Prediction
           </span>
         </Link>
 
         <div className="flex items-center gap-4 text-sm">
           <Link href="/leaderboard" className="text-brand-subtext hover:text-white transition-colors">
-            순위표
+            Leaderboard
           </Link>
 
           {status === "loading" ? null : session ? (
             <>
               <Link href="/predict" className="text-brand-subtext hover:text-white transition-colors">
-                내 예측
+                My Prediction
               </Link>
               {session.user.role === "ADMIN" && (
                 <Link href="/admin" className="text-brand-gold hover:text-yellow-300 transition-colors">
-                  관리자
+                  Admin
                 </Link>
               )}
               <span className="text-brand-subtext">|</span>
-              <div className="flex items-center gap-2">
+              <Link href="/settings" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
                 <UserAvatar
                   avatarUrl={session.user.avatarUrl}
                   nickname={session.user.nickname || session.user.name || "?"}
@@ -72,24 +71,24 @@ export default function Navbar() {
                     ({session.user.name})
                   </span>
                 )}
-              </div>
+              </Link>
               <button
                 onClick={() => signOut({ callbackUrl: "/" })}
                 className="text-brand-subtext hover:text-brand-red transition-colors"
               >
-                로그아웃
+                Log Out
               </button>
             </>
           ) : (
             <>
               <Link href="/login" className="text-brand-subtext hover:text-white transition-colors">
-                로그인
+                Login
               </Link>
               <Link
                 href="/signup"
                 className="px-3 py-1 bg-brand-accent text-white rounded-md hover:bg-blue-500 transition-colors"
               >
-                회원가입
+                Sign Up
               </Link>
             </>
           )}
