@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(normalizedSiteUrl),
 
   title: "OWTICS.GG Pick'Ems",
-  description: "OWCS Champions Clash Pick'em & Prediction Leaderboard",
+  description: "OWCS Champions Clash Pick'Ems & Prediction Leaderboard",
 
   icons: {
     icon: "/logos/site/favicon.ico",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     url: normalizedSiteUrl,
     siteName: "OWTICS.GG Pick'Ems",
     title: "OWTICS.GG Pick'Ems",
-    description: "OWCS Champions Clash Pick'em & Prediction Leaderboard",
+    description: "OWCS Champions Clash Pick'Ems & Prediction Leaderboard",
     images: [
       {
         url: previewImage,
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "OWTICS.GG Pick'Ems",
-    description: "OWCS Champions Clash Pick'em & Prediction Leaderboard",
+    description: "OWCS Champions Clash Pick'Ems & Prediction Leaderboard",
     images: [previewImage],
   },
 };
