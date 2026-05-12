@@ -19,13 +19,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: "OWTICS.GG Pick'Ems",
     description: "OWCS Champions Clash Pick'em & Prediction Leaderboard",
-    images: [{ url: "/logos/tournament/favicon.ico" }],
+    images: [{ url: "/logos/site/favicon.ico" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "OWTICS.GG Pick'Ems",
     description: "OWCS Champions Clash Pick'em & Prediction Leaderboard",
-    images: ["/logos/tournament/favicon.ico"],
+    images: ["/logos/site/favicon.ico"],
   },
 };
 
