@@ -11,7 +11,7 @@ const siteUrl =
 const normalizedSiteUrl = siteUrl.endsWith("/") ? siteUrl.slice(0, -1) : siteUrl;
 
 const previewImage =
-  `${normalizedSiteUrl}/logos/tournament/logo.png`;
+  `${normalizedSiteUrl}/logos/tournament/logo2.png`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(normalizedSiteUrl),
