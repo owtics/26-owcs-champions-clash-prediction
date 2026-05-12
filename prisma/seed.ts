@@ -148,7 +148,7 @@ async function main() {
   }
 
   // ─── Admin account ────────────────────────────────────────
-  const adminHash = await bcrypt.hash("admin1234", 12);
+  const adminHash = await bcrypt.hash("dhqxlrtmwlwl", 12);
   await prisma.user.upsert({
     where: { username: "admin" },
     update: { nickname: "관리자", avatarUrl: "/avatars/avatar-1.png" },
@@ -160,10 +160,10 @@ async function main() {
       avatarUrl:    "/avatars/avatar-1.png",
     },
   });
-  console.log("  User: admin  (password: admin1234, nickname: 관리자)");
+  console.log("  User: admin  (password: dhqxlrtmwlwl, nickname: 관리자)");
 
   // ─── Sample user account ──────────────────────────────────
-  const userHash = await bcrypt.hash("user1234", 12);
+  const userHash = await bcrypt.hash("dhqxlrtm", 12);
   await prisma.user.upsert({
     where: { username: "demo" },
     update: { nickname: "데모유저", avatarUrl: "/avatars/avatar-2.png" },
@@ -175,7 +175,7 @@ async function main() {
       avatarUrl:    "/avatars/avatar-2.png",
     },
   });
-  console.log("  User: demo   (password: user1234, nickname: 데모유저)");
+  console.log("  User: demo   (password: dhqxlrtm, nickname: 데모유저)");
 
   console.log("\nSeed complete.");
 }

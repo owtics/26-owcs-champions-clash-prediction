@@ -61,8 +61,8 @@ After seeding, two accounts are available:
 
 | Role  | Email                        | Password   |
 |-------|------------------------------|------------|
-| Admin | admin@championsclash.gg      | admin1234  |
-| User  | demo@championsclash.gg       | user1234   |
+| Admin | admin@championsclash.gg      | dhqxlrtmwlwl  |
+| User  | demo@championsclash.gg       | dhqxlrtm   |
 
 ---
 
@@ -222,7 +222,7 @@ Before going live, verify every item below:
 - [ ] `DATABASE_URL` points to the **Neon pooled** connection string (URL contains `-pooler.`)
 - [ ] `NEXTAUTH_URL` is set to your **production domain** (e.g. `https://yourdomain.com`)
 - [ ] The `.env` file is **not committed** to git (verify `.gitignore` covers it)
-- [ ] Seeded **demo accounts** (`admin` / `admin1234` and `demo` / `user1234`) have passwords changed or are disabled before going public
+- [ ] Seeded **demo accounts** (`admin` / `dhqxlrtmwlwl` and `demo` / `dhqxlrtm`) have passwords changed or are disabled before going public
 
 ### Database
 - [ ] `prisma migrate deploy` has been run against the production database

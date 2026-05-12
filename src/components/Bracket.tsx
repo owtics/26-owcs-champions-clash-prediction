@@ -53,7 +53,7 @@ export interface BracketProps {
 const CARD_W   = 200;
 const CARD_H   = 104;   // increased to account for status strip height
 const CANVAS_W = 1195;
-const CANVAS_H = 1000;
+const CANVAS_H = 960;
 
 // Column layout: col1=4, col2=236, col3=475, col4=720, col5=990
 // CARD_H=104, vertical gap between cards=56px
@@ -74,15 +74,15 @@ const MATCH_POS: Record<number, { left: number; top: number }> = {
   // Grand Final (col5)
   14: { left: 990, top: 500 },   // center(M12,M13): (332+772)/2 − 52 = 500
   // LB Round 1 (col1, below WB)
-  5:  { left: 4,   top: 690 },
-  6:  { left: 4,   top: 850 },
+  5:  { left: 4,   top: 660 },
+  6:  { left: 4,   top: 800 },
   // LB Round 2 (col2)
-  9:  { left: 236, top: 690 },
-  10: { left: 236, top: 850 },
+  9:  { left: 236, top: 660 },
+  10: { left: 236, top: 800 },
   // LB Round 3 (col3)
-  11: { left: 475, top: 770 },   // center(M9,M10): (692+852)/2 − 52 = 720
+  11: { left: 475, top: 720 },   // center(M9,M10): (692+852)/2 − 52 = 720
   // LB Final (col4)
-  13: { left: 720, top: 770 },
+  13: { left: 720, top: 720 },
 };
 
 // Round labels: shown above each column section
@@ -90,10 +90,10 @@ const ROUND_LABELS = [
   { label: "WB Round 1",    left: 64,   top: -5  },
   { label: "WB Semifinals", left: 300,  top: -5  },
   { label: "WB Final",      left: 790,  top: -5  },
-  { label: "LB Round 1",    left: 64,   top: 648 },
-  { label: "LB Round 2",    left: 300,  top: 648 },
-  { label: "LB Round 3",    left: 540,  top: 648 },
-  { label: "LB Final",      left: 790,  top: 648 },
+  { label: "LB Round 1",    left: 64,   top: 632 },
+  { label: "LB Round 2",    left: 300,  top: 632 },
+  { label: "LB Round 3",    left: 540,  top: 632 },
+  { label: "LB Final",      left: 790,  top: 632 },
   { label: "Grand Final",   left: 1048, top: 465 },
 ];
 

@@ -69,13 +69,28 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "이미 사용 중인 아이디입니다." }, { status: 409 });
   }
 
+  const existingNickname = await prisma.user.findUnique({ where: { nickname } });
+  if (existingNickname) {
+    return NextResponse.json({ error: "이미 사용 중인 닉네임입니다." }, { status: 409 });
+  }
+
   const passwordHash = await bcrypt.hash(password, 12);
   const avatarUrl    = randomAvatar();
 
-  const user = await prisma.user.create({
-    data: { username, nickname, passwordHash, avatarUrl, role: "USER" },
-    select: { id: true, username: true, nickname: true },
-  });
-
-  return NextResponse.json({ user }, { status: 201 });
+  try {
+    const user = await prisma.user.create({
+      data: { username, nickname, passwordHash, avatarUrl, role: "USER" },
+      select: { id: true, username: true, nickname: true },
+    });
+    return NextResponse.json({ user }, { status: 201 });
+  } catch (e: unknown) {
+    // P2002 = unique constraint violation (race between check and write)
+    if (
+      typeof e === "object" && e !== null &&
+      "code" in e && (e as { code: string }).code === "P2002"
+    ) {
+      return NextResponse.json({ error: "이미 사용 중인 아이디 또는 닉네임입니다." }, { status: 409 });
+    }
+    throw e;
+  }
 }

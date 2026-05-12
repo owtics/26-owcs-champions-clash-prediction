@@ -1,67 +1,111 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { PREDICTION_DEADLINE } from "@/lib/constants";
+import { getEffectiveDeadline } from "@/lib/deadline";
 
 export const dynamic = "force-dynamic";
 
-const CACHE_TTL_MS = 30_000;
-let cachedPayload: string | null = null;
-let cacheExpiresAt = 0;
+const DEFAULT_LIMIT = 20;
+const MAX_LIMIT = 100;
 
-export async function GET() {
-  const nowMs = Date.now();
+/**
+ * A user is considered "submitted" when they have at least one PredictionPick row.
+ * This is true even if the tournament is ongoing and no Score record exists yet.
+ */
+const SUBMITTED_WHERE = {
+  prediction: {
+    picks: { some: {} },
+  },
+} as const;
 
-  if (cachedPayload && nowMs < cacheExpiresAt) {
-    return new NextResponse(cachedPayload, {
-      headers: { "Content-Type": "application/json" },
-    });
-  }
+export async function GET(req: NextRequest) {
+  const url = new URL(req.url);
+  const limit = Math.min(
+    Math.max(1, parseInt(url.searchParams.get("limit") ?? String(DEFAULT_LIMIT), 10)),
+    MAX_LIMIT
+  );
+  const offset = Math.max(0, parseInt(url.searchParams.get("offset") ?? "0", 10));
+  const search = url.searchParams.get("search")?.trim() ?? "";
 
   const now = new Date();
-  const deadlinePassed = now >= PREDICTION_DEADLINE;
+  const deadline = await getEffectiveDeadline();
+  const deadlinePassed = now >= deadline;
 
-  const scores = await prisma.score.findMany({
-    include: {
-      user: {
-        select: {
-          id:        true,
-          username:  true,
-          nickname:  true,
-          avatarUrl: true,
-          prediction: {
-            select: {
-              submittedAt: true,
-              updatedAt:   true,
-              champion:    { select: { code: true, name: true } },
-              picks: {
-                where: { matchNumber: 14 },
-                select: { predictedWinner: { select: { code: true } } },
-              },
+  // Base: only users who have submitted picks. Search adds nickname filter on top.
+  const where = search
+    ? {
+        AND: [
+          SUBMITTED_WHERE,
+          {
+            nickname: {
+              contains: search,
+              mode: "insensitive" as const,
+            },
+          },
+        ],
+      }
+    : SUBMITTED_WHERE;
+
+  // Run three queries in parallel:
+  //   1. Page of users (with optional score + prediction data)
+  //   2. Filtered count  → drives hasMore
+  //   3. Total submitted count (no search) → drives percentile denominator
+  const [users, filteredCount, totalParticipants] = await Promise.all([
+    prisma.user.findMany({
+      where,
+      select: {
+        id:        true,
+        username:  true,
+        nickname:  true,
+        avatarUrl: true,
+        // score is optional — null before admin runs score calculation
+        score: {
+          select: {
+            totalScore:        true,
+            correctMatchCount: true,
+            championCorrect:   true,
+            updatedAt:         true,
+          },
+        },
+        prediction: {
+          select: {
+            submittedAt: true,
+            champion:    { select: { code: true } },
+            // Only fetch the Grand Final pick (match 14) for tiebreaker
+            picks: {
+              where:  { matchNumber: 14 },
+              select: { predictedWinner: { select: { code: true } } },
             },
           },
         },
       },
-    },
-    orderBy: [{ totalScore: "desc" }],
-  });
+      // Order by score.totalScore (nulls last in PostgreSQL for DESC — users without
+      // a score record yet appear after scored participants). Secondary: id for stability.
+      orderBy: [{ score: { totalScore: "desc" } }, { id: "asc" }],
+      skip: offset,
+      take: limit,
+    }),
+    prisma.user.count({ where }),
+    // Global submitted count (no search filter) — always needed for percentile
+    search ? prisma.user.count({ where: SUBMITTED_WHERE }) : Promise.resolve(0),
+  ]);
 
-  const rows = scores.map((s) => {
-    const pred = s.user.prediction;
-    return {
-      userId:            s.userId,
-      username:          s.user.username,
-      nickname:          s.user.nickname,
-      avatarUrl:         s.user.avatarUrl ?? null,
-      totalScore:        s.totalScore,
-      correctMatchCount: s.correctMatchCount,
-      championCorrect:   s.championCorrect,
-      predictedChampion: pred?.champion?.code ?? null,
-      grandFinalPick:    pred?.picks?.[0]?.predictedWinner?.code ?? null,
-      submittedAt:       pred?.submittedAt ?? null,
-      updatedAt:         s.updatedAt,
-    };
-  });
+  const rows = users.map((u) => ({
+    userId:            u.id,
+    username:          u.username,
+    nickname:          u.nickname,
+    avatarUrl:         u.avatarUrl ?? null,
+    totalScore:        u.score?.totalScore        ?? 0,
+    correctMatchCount: u.score?.correctMatchCount ?? 0,
+    championCorrect:   u.score?.championCorrect   ?? false,
+    predictedChampion: u.prediction?.champion?.code                      ?? null,
+    grandFinalPick:    u.prediction?.picks?.[0]?.predictedWinner?.code   ?? null,
+    submittedAt:       u.prediction?.submittedAt?.toISOString()           ?? null,
+    updatedAt:         u.score?.updatedAt.toISOString()
+                       ?? u.prediction?.submittedAt?.toISOString()
+                       ?? new Date().toISOString(),
+  }));
 
+  // Apply full tiebreaker sort within the fetched page
   rows.sort((a, b) => {
     if (b.totalScore !== a.totalScore) return b.totalScore - a.totalScore;
     const gfA = a.grandFinalPick ? 1 : 0;
@@ -75,17 +119,11 @@ export async function GET() {
     return ta - tb;
   });
 
-  let rank = 1;
-  const ranked = rows.map((row, i) => {
-    if (i > 0 && rows[i].totalScore < rows[i - 1].totalScore) rank = i + 1;
-    return { rank, ...row };
-  });
-
-  const responseBody = JSON.stringify({ deadlinePassed, leaderboard: ranked });
-  cachedPayload = responseBody;
-  cacheExpiresAt = nowMs + CACHE_TTL_MS;
-
-  return new NextResponse(responseBody, {
-    headers: { "Content-Type": "application/json" },
+  return NextResponse.json({
+    leaderboard:       rows,
+    hasMore:           offset + limit < filteredCount,
+    // When search is active, use global submitted count for percentile accuracy
+    totalParticipants: search ? totalParticipants : filteredCount,
+    deadlinePassed,
   });
 }

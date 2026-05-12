@@ -26,14 +26,16 @@ export const authOptions: NextAuthOptions = {
       async authorize(credentials, req) {
         if (!credentials?.username || !credentials?.password) return null;
 
+        // Reject oversized inputs before touching the DB
+        if (credentials.username.length > 40) return null;
+        if (credentials.password.length > 72) return null;
+
         const forwarded = (req?.headers?.["x-forwarded-for"] as string | undefined)
           ?.split(",")[0]
           ?.trim();
         const ip = forwarded ?? "unknown";
         const rl = checkRateLimit(`login:${ip}`, 10, 60_000);
         if (!rl.allowed) return null;
-
-        if (credentials.password.length > 72) return null;
 
         const user = await prisma.user.findUnique({
           where: { username: credentials.username },

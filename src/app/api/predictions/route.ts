@@ -24,14 +24,14 @@ export async function GET(req: NextRequest) {
   const url = new URL(req.url);
   const targetUserId = url.searchParams.get("userId") ?? session.user.id;
 
-  // If requesting another user's data, check deadline + visibility rule
-  if (targetUserId !== session.user.id) {
-    const now = new Date();
-    if (now < (await getEffectiveDeadline())) {
-      return NextResponse.json(
-        { error: "Predictions are private before the deadline." },
-        { status: 403 }
-      );
+  // Privacy enforcement for other users' predictions
+  if (targetUserId !== session.user.id && session.user.role !== "ADMIN") {
+    const targetUser = await prisma.user.findUnique({
+      where: { id: targetUserId },
+      select: { isPredictionPublic: true },
+    });
+    if (!targetUser || targetUser.isPredictionPublic === false) {
+      return NextResponse.json({ error: "This prediction is private." }, { status: 403 });
     }
   }
 
@@ -65,7 +65,7 @@ export async function POST(req: NextRequest) {
   const now = new Date();
   if (now >= (await getEffectiveDeadline())) {
     return NextResponse.json(
-      { error: "The prediction deadline has passed. Predictions are now locked." },
+      { error: "Predictions are closed." },
       { status: 403 }
     );
   }

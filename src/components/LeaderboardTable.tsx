@@ -21,6 +21,8 @@ interface LeaderboardTableProps {
   entries: LeaderboardEntry[];
   deadlinePassed: boolean;
   currentUserId?: string;
+  /** Total number of scored participants across the whole leaderboard (for percentile). */
+  totalParticipants?: number;
 }
 
 function formatPercentile(rank: number, total: number): string {
@@ -54,9 +56,11 @@ export default function LeaderboardTable({
   entries,
   deadlinePassed,
   currentUserId,
+  totalParticipants,
 }: LeaderboardTableProps) {
   const showPredictions = deadlinePassed && PREDICTIONS_PUBLIC_AFTER_DEADLINE;
-  const total = entries.length;
+  // Use totalParticipants from the full dataset when provided (for accurate percentile with pagination)
+  const total = totalParticipants ?? entries.length;
 
   if (total === 0) {
     return (
