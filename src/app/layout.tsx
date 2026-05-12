@@ -10,20 +10,20 @@ const siteUrl =
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "OWTICS.GG Prediction",
+  title: "OWTICS.GG Pick'Ems",
   description: "OWCS Champions Clash Pick'em & Prediction Leaderboard",
   icons: {
     icon: "/logos/site/favicon.ico",
     shortcut: "/logos/site/favicon.ico",
   },
   openGraph: {
-    title: "OWTICS.GG Prediction",
+    title: "OWTICS.GG Pick'Ems",
     description: "OWCS Champions Clash Pick'em & Prediction Leaderboard",
     images: [{ url: "/logos/tournament/favicon.ico" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "OWTICS.GG Prediction",
+    title: "OWTICS.GG Pick'Ems",
     description: "OWCS Champions Clash Pick'em & Prediction Leaderboard",
     images: ["/logos/tournament/favicon.ico"],
   },
