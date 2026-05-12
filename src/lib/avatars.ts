@@ -16,8 +16,8 @@ export const ALLOWED_AVATARS: readonly string[] = [
   "/avatars/avatar-40.png", "/avatars/avatar-41.png", "/avatars/avatar-42.png",
   "/avatars/avatar-43.png", "/avatars/avatar-44.png", "/avatars/avatar-45.png",
   "/avatars/avatar-46.png", "/avatars/avatar-47.png", "/avatars/avatar-48.png",
-  "/avatars/avatar-49.png",
-  "/avatars/default.png",
+  "/avatars/avatar-49.png", "/avatars/avatar-50.png", "/avatars/avatar-51.png",
+   "/avatars/avatar-52.png", "/avatars/default.png",
 ];
 
 /** Returns a random non-default avatar path from the first 49. */
