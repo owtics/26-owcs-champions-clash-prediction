@@ -12,7 +12,16 @@
       "Bash(node -e \"const {PrismaClient} = require\\(''@prisma/client''\\); const p = new PrismaClient\\(\\); p.$connect\\(\\).then\\(\\(\\) => { console.log\\(''Connected''\\); return p.$disconnect\\(\\); }\\).catch\\(e => console.error\\(e\\)\\);\")",
       "Bash(find /c/Users/ceh10/Desktop/잡다코드/match-prediction/src -type f \\\\\\(-name *.ts -o -name *.tsx \\\\\\))",
       "Bash(npx next:*)",
-      "Bash(gh auth:*)"
+      "Bash(gh auth:*)",
+      "Bash(gh org:*)",
+      "Bash(gh repo:*)",
+      "Read(//c/Users/ceh10/.local/share/com.vercel.cli/**)",
+      "Read(//c/Users/ceh10/Desktop/잡다코드/match-prediction/$APPDATA/Local/com.vercel.cli/**)",
+      "Read(//c/Users/ceh10/**)",
+      "Bash(VERCEL_TOKEN=\"vca_5nyRPQyYxS7GXYqVfomLYfUtReNMQzjTABv0EN3hkK9JBgyAc53MllxC\" curl -s -H \"Authorization: Bearer $VERCEL_TOKEN\" \"https://api.vercel.com/v9/projects/26-owcs-champions-clash-prediction\")",
+      "Bash(python3 -c \":*)",
+      "Bash(gh api:*)",
+      "Bash(VERCEL_TOKEN=\"vca_5nyRPQyYxS7GXYqVfomLYfUtReNMQzjTABv0EN3hkK9JBgyAc53MllxC\" curl -s -H \"Authorization: Bearer $VERCEL_TOKEN\" \"https://api.vercel.com/v1/integrations/git/github/repositories?limit=50\")"
     ]
   }
 }

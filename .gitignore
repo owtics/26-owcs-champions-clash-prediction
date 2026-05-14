@@ -4,3 +4,5 @@ node_modules/
 .next/
 prisma/dev.db
 prisma/dev.db-journal
+.claude/settings.local.json
+tsconfig.tsbuildinfo

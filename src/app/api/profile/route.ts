@@ -1,8 +1,9 @@
 /**
- * GET  /api/profile  — returns the logged-in user's editable profile fields
- * PATCH /api/profile  — updates nickname and/or isPredictionPublic
+ * GET    /api/profile  — returns the logged-in user's editable profile fields
+ * PATCH  /api/profile  — updates nickname and/or isPredictionPublic
+ * DELETE /api/profile  — permanently deletes the current user's account
  *
- * Only the authenticated user can read/edit their own profile.
+ * Only the authenticated user can read/edit/delete their own profile.
  */
 
 import { NextRequest, NextResponse } from "next/server";
@@ -94,4 +95,39 @@ export async function PATCH(req: NextRequest) {
     }
     throw e;
   }
+}
+
+export async function DELETE() {
+  const session = await getSession();
+  if (!session) {
+    return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
+  }
+
+  if (session.user.role === "ADMIN") {
+    return NextResponse.json(
+      { error: "Admin accounts cannot be deleted from profile settings." },
+      { status: 403 }
+    );
+  }
+
+  const userId = session.user.id;
+
+  const user = await prisma.user.findUnique({
+    where: { id: userId },
+    select: { id: true },
+  });
+  if (!user) {
+    return NextResponse.json({ error: "User not found." }, { status: 404 });
+  }
+
+  await prisma.$transaction([
+    prisma.predictionPick.deleteMany({
+      where: { prediction: { userId } },
+    }),
+    prisma.prediction.deleteMany({ where: { userId } }),
+    prisma.score.deleteMany({ where: { userId } }),
+    prisma.user.delete({ where: { id: userId } }),
+  ]);
+
+  return NextResponse.json({ success: true });
 }

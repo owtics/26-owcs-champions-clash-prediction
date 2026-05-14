@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { ALLOWED_AVATARS } from "@/lib/avatars";
 
@@ -13,6 +13,12 @@ export default function SettingsPage() {
   const [nickname, setNickname]             = useState("");
   const [nicknameSaving, setNicknameSaving] = useState(false);
   const [nicknameMsg, setNicknameMsg]       = useState<{ type: "ok" | "err"; text: string } | null>(null);
+
+  // ── Delete account state ────────────────────────────────────────────────
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deleteConfirmInput, setDeleteConfirmInput] = useState("");
+  const [deleteError, setDeleteError] = useState<string | null>(null);
+  const [deleteInProgress, setDeleteInProgress] = useState(false);
 
   // ── Avatar state ────────────────────────────────────────────────────────
   const [selectedAvatar, setSelectedAvatar] = useState<string | null>(null);
@@ -122,6 +128,20 @@ export default function SettingsPage() {
       setVisibilityMsg({ type: "err", text: (e as Error).message });
     } finally {
       setVisibilitySaving(false);
+    }
+  }
+
+  async function handleDeleteAccount() {
+    setDeleteError(null);
+    setDeleteInProgress(true);
+    try {
+      const res = await fetch("/api/profile", { method: "DELETE" });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error ?? "Failed to delete account.");
+      await signOut({ callbackUrl: "/" });
+    } catch (e: unknown) {
+      setDeleteError((e as Error).message);
+      setDeleteInProgress(false);
     }
   }
 
@@ -312,6 +332,64 @@ export default function SettingsPage() {
           {visibilitySaving && <span className="ml-2 text-brand-muted">Saving…</span>}
         </p>
       </div>
+
+      {/* ── Danger Zone ──────────────────────────────────────────────────── */}
+      <div className="bg-brand-card border border-red-500/40 rounded-xl p-6 space-y-4">
+        <h2 className="text-sm font-bold text-red-400 uppercase tracking-widest">Danger Zone</h2>
+        <p className="text-xs text-brand-subtext">
+          Deleting your account is permanent. Your predictions, score, and profile data will be removed.
+        </p>
+        <button
+          onClick={() => { setShowDeleteModal(true); setDeleteConfirmInput(""); setDeleteError(null); }}
+          className="px-5 py-2.5 bg-red-600 hover:bg-red-500 text-white font-semibold rounded-lg transition-colors text-sm"
+        >
+          Delete Account
+        </button>
+      </div>
+
+      {/* ── Delete confirmation modal ─────────────────────────────────────── */}
+      {showDeleteModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4">
+          <div className="bg-brand-card border border-red-500/50 rounded-xl p-6 w-full max-w-md space-y-4 shadow-2xl">
+            <h3 className="text-lg font-bold text-red-400">Delete Account</h3>
+            <p className="text-sm text-brand-subtext">
+              This action is <strong className="text-white">permanent and irreversible</strong>. Your predictions, score, and profile will be deleted.
+            </p>
+            <p className="text-sm text-brand-subtext">
+              Type your username <strong className="text-white">{session?.user?.name}</strong> to confirm:
+            </p>
+            <input
+              type="text"
+              value={deleteConfirmInput}
+              onChange={(e) => setDeleteConfirmInput(e.target.value)}
+              placeholder={session?.user?.name ?? "username"}
+              className="w-full bg-brand-bg border border-brand-border rounded-lg px-4 py-2.5 text-white placeholder-brand-muted focus:outline-none focus:border-red-500 transition-colors"
+              disabled={deleteInProgress}
+            />
+            {deleteError && (
+              <div className="rounded-lg px-4 py-2.5 text-sm bg-red-500/15 border border-red-500/40 text-red-400">
+                {deleteError}
+              </div>
+            )}
+            <div className="flex gap-3 pt-1">
+              <button
+                onClick={() => setShowDeleteModal(false)}
+                disabled={deleteInProgress}
+                className="flex-1 py-2.5 px-4 rounded-lg border border-brand-border text-brand-subtext hover:text-white hover:border-brand-subtext font-semibold text-sm transition-colors disabled:opacity-60"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleDeleteAccount}
+                disabled={deleteInProgress || deleteConfirmInput !== session?.user?.name}
+                className="flex-1 py-2.5 px-4 rounded-lg bg-red-600 hover:bg-red-500 disabled:opacity-60 text-white font-semibold text-sm transition-colors"
+              >
+                {deleteInProgress ? "Deleting…" : "Delete My Account"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
