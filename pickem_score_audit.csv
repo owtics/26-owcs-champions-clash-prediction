@@ -1,0 +1,1120 @@
+user_id,match_id,match_title,selected_team,actual_winner,normalized_selected_team,normalized_actual_winner,selected_matches_winner,score,reason
+cmp277jw9002qtwr67npylmtn,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp277jw9002qtwr67npylmtn,5,WBG vs SSG,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp277jw9002qtwr67npylmtn,6,Match 6,AG,(not set),ag,(not set),False,0,no_actual_winner_set
+cmp277jw9002qtwr67npylmtn,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp277jw9002qtwr67npylmtn,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp277jw9002qtwr67npylmtn,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp277jw9002qtwr67npylmtn,10,Match 10,AG,(not set),ag,(not set),False,0,no_actual_winner_set
+cmp277jw9002qtwr67npylmtn,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp277jw9002qtwr67npylmtn,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp277jw9002qtwr67npylmtn,13,Match 13,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp277jw9002qtwr67npylmtn,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp463pxa000wjed2mvetewyq,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp463pxa000wjed2mvetewyq,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp463pxa000wjed2mvetewyq,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp463pxa000wjed2mvetewyq,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp463pxa000wjed2mvetewyq,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp463pxa000wjed2mvetewyq,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp463pxa000wjed2mvetewyq,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp463pxa000wjed2mvetewyq,10,Match 10,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp463pxa000wjed2mvetewyq,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp463pxa000wjed2mvetewyq,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp463pxa000wjed2mvetewyq,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp463pxa000wjed2mvetewyq,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmpcweb6z00006gslljzc7egu,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmpcweb6z00006gslljzc7egu,2,ZETA vs SSG,ZETA,ZETA,zeta,zeta,True,0,names_match_after_normalization_but_score_is_0
+cmpcweb6z00006gslljzc7egu,3,DAL vs CR,CR,CR,cr,cr,True,0,names_match_after_normalization_but_score_is_0
+cmpcweb6z00006gslljzc7egu,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmpcweb6z00006gslljzc7egu,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmpcweb6z00006gslljzc7egu,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmpcweb6z00006gslljzc7egu,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmpcweb6z00006gslljzc7egu,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmpcweb6z00006gslljzc7egu,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmpcweb6z00006gslljzc7egu,10,Match 10,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmpcweb6z00006gslljzc7egu,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmpcweb6z00006gslljzc7egu,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmpcweb6z00006gslljzc7egu,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmpcweb6z00006gslljzc7egu,14,Match 14,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp5rnpkp0000v1drnwzrk79f,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp5rnpkp0000v1drnwzrk79f,2,ZETA vs SSG,ZETA,ZETA,zeta,zeta,True,0,names_match_after_normalization_but_score_is_0
+cmp5rnpkp0000v1drnwzrk79f,3,DAL vs CR,CR,CR,cr,cr,True,0,names_match_after_normalization_but_score_is_0
+cmp5rnpkp0000v1drnwzrk79f,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp5rnpkp0000v1drnwzrk79f,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp5rnpkp0000v1drnwzrk79f,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp5rnpkp0000v1drnwzrk79f,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp5rnpkp0000v1drnwzrk79f,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp5rnpkp0000v1drnwzrk79f,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp5rnpkp0000v1drnwzrk79f,10,Match 10,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp5rnpkp0000v1drnwzrk79f,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp5rnpkp0000v1drnwzrk79f,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp5rnpkp0000v1drnwzrk79f,13,Match 13,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp5rnpkp0000v1drnwzrk79f,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp22muce0030hsqraxttt8zg,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp22muce0030hsqraxttt8zg,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp22muce0030hsqraxttt8zg,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp22muce0030hsqraxttt8zg,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp22muce0030hsqraxttt8zg,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp22muce0030hsqraxttt8zg,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp22muce0030hsqraxttt8zg,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp22muce0030hsqraxttt8zg,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp22muce0030hsqraxttt8zg,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp22muce0030hsqraxttt8zg,12,Match 12,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp22muce0030hsqraxttt8zg,13,Match 13,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp22muce0030hsqraxttt8zg,14,Match 14,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp23vznb002k4h0lg9askxt8,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp23vznb002k4h0lg9askxt8,5,WBG vs SSG,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp23vznb002k4h0lg9askxt8,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp23vznb002k4h0lg9askxt8,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp23vznb002k4h0lg9askxt8,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp23vznb002k4h0lg9askxt8,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp23vznb002k4h0lg9askxt8,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp23vznb002k4h0lg9askxt8,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp23vznb002k4h0lg9askxt8,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp23vznb002k4h0lg9askxt8,13,Match 13,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp23vznb002k4h0lg9askxt8,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2uqv3d0000yz7gyc3jnwzv,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp2uqv3d0000yz7gyc3jnwzv,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2uqv3d0000yz7gyc3jnwzv,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp2uqv3d0000yz7gyc3jnwzv,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp2uqv3d0000yz7gyc3jnwzv,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp2uqv3d0000yz7gyc3jnwzv,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2uqv3d0000yz7gyc3jnwzv,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2uqv3d0000yz7gyc3jnwzv,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp2uqv3d0000yz7gyc3jnwzv,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2uqv3d0000yz7gyc3jnwzv,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2uqv3d0000yz7gyc3jnwzv,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp2uqv3d0000yz7gyc3jnwzv,14,Match 14,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp3omax9000gopraq5s3tb7p,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp3omax9000gopraq5s3tb7p,5,WBG vs SSG,SSG,(not set),ssg,(not set),False,0,no_actual_winner_set
+cmp3omax9000gopraq5s3tb7p,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp3omax9000gopraq5s3tb7p,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp3omax9000gopraq5s3tb7p,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp3omax9000gopraq5s3tb7p,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp3omax9000gopraq5s3tb7p,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp3omax9000gopraq5s3tb7p,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp3omax9000gopraq5s3tb7p,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp3omax9000gopraq5s3tb7p,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp3omax9000gopraq5s3tb7p,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp27dazl001fcmueicb70prh,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp27dazl001fcmueicb70prh,5,WBG vs SSG,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp27dazl001fcmueicb70prh,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp27dazl001fcmueicb70prh,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp27dazl001fcmueicb70prh,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp27dazl001fcmueicb70prh,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp27dazl001fcmueicb70prh,10,Match 10,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp27dazl001fcmueicb70prh,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp27dazl001fcmueicb70prh,12,Match 12,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp27dazl001fcmueicb70prh,13,Match 13,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp27dazl001fcmueicb70prh,14,Match 14,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp3ywt2g00009oblsxenv9wi,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp3ywt2g00009oblsxenv9wi,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp3ywt2g00009oblsxenv9wi,5,WBG vs SSG,SSG,(not set),ssg,(not set),False,0,no_actual_winner_set
+cmp3ywt2g00009oblsxenv9wi,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp3ywt2g00009oblsxenv9wi,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp3ywt2g00009oblsxenv9wi,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp3ywt2g00009oblsxenv9wi,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp3ywt2g00009oblsxenv9wi,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp3ywt2g00009oblsxenv9wi,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp3ywt2g00009oblsxenv9wi,12,Match 12,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp3ywt2g00009oblsxenv9wi,13,Match 13,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp3ywt2g00009oblsxenv9wi,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2pso9d00004qgafs7z0wak,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp2pso9d00004qgafs7z0wak,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2pso9d00004qgafs7z0wak,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp2pso9d00004qgafs7z0wak,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp2pso9d00004qgafs7z0wak,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp2pso9d00004qgafs7z0wak,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2pso9d00004qgafs7z0wak,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2pso9d00004qgafs7z0wak,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp2pso9d00004qgafs7z0wak,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2pso9d00004qgafs7z0wak,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2pso9d00004qgafs7z0wak,13,Match 13,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2pso9d00004qgafs7z0wak,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp3amzgv0000ukpwts97oa7t,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp3amzgv0000ukpwts97oa7t,5,WBG vs SSG,SSG,(not set),ssg,(not set),False,0,no_actual_winner_set
+cmp3amzgv0000ukpwts97oa7t,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp3amzgv0000ukpwts97oa7t,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp3amzgv0000ukpwts97oa7t,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp3amzgv0000ukpwts97oa7t,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp3amzgv0000ukpwts97oa7t,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp3amzgv0000ukpwts97oa7t,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp3amzgv0000ukpwts97oa7t,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp3amzgv0000ukpwts97oa7t,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp3amzgv0000ukpwts97oa7t,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2djacf00004b2htf9xxdxl,3,DAL vs CR,DAL,CR,dal,cr,False,0,wrong_prediction
+cmp2djacf00004b2htf9xxdxl,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2djacf00004b2htf9xxdxl,5,WBG vs SSG,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp2djacf00004b2htf9xxdxl,6,Match 6,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp2djacf00004b2htf9xxdxl,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2djacf00004b2htf9xxdxl,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2djacf00004b2htf9xxdxl,9,Match 9,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp2djacf00004b2htf9xxdxl,10,Match 10,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp2djacf00004b2htf9xxdxl,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp2djacf00004b2htf9xxdxl,12,Match 12,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2djacf00004b2htf9xxdxl,13,Match 13,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2djacf00004b2htf9xxdxl,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2ffv9300001qdip0o5zox4,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp2ffv9300001qdip0o5zox4,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2ffv9300001qdip0o5zox4,5,WBG vs SSG,SSG,(not set),ssg,(not set),False,0,no_actual_winner_set
+cmp2ffv9300001qdip0o5zox4,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp2ffv9300001qdip0o5zox4,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp2ffv9300001qdip0o5zox4,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2ffv9300001qdip0o5zox4,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2ffv9300001qdip0o5zox4,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp2ffv9300001qdip0o5zox4,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2ffv9300001qdip0o5zox4,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2ffv9300001qdip0o5zox4,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp2ffv9300001qdip0o5zox4,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2ae805000093bj8uahffjx,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp2ae805000093bj8uahffjx,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2ae805000093bj8uahffjx,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp2ae805000093bj8uahffjx,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp2ae805000093bj8uahffjx,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2ae805000093bj8uahffjx,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2ae805000093bj8uahffjx,9,Match 9,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp2ae805000093bj8uahffjx,10,Match 10,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp2ae805000093bj8uahffjx,11,Match 11,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp2ae805000093bj8uahffjx,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2ae805000093bj8uahffjx,13,Match 13,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2ae805000093bj8uahffjx,14,Match 14,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp27w42i002rtwr6b7aguh6b,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp27w42i002rtwr6b7aguh6b,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp27w42i002rtwr6b7aguh6b,5,WBG vs SSG,SSG,(not set),ssg,(not set),False,0,no_actual_winner_set
+cmp27w42i002rtwr6b7aguh6b,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp27w42i002rtwr6b7aguh6b,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp27w42i002rtwr6b7aguh6b,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp27w42i002rtwr6b7aguh6b,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp27w42i002rtwr6b7aguh6b,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp27w42i002rtwr6b7aguh6b,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp27w42i002rtwr6b7aguh6b,12,Match 12,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp27w42i002rtwr6b7aguh6b,13,Match 13,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp27w42i002rtwr6b7aguh6b,14,Match 14,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp3v0u4v0000w100bazmp30c,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp3v0u4v0000w100bazmp30c,2,ZETA vs SSG,ZETA,ZETA,zeta,zeta,True,0,names_match_after_normalization_but_score_is_0
+cmp3v0u4v0000w100bazmp30c,3,DAL vs CR,CR,CR,cr,cr,True,0,names_match_after_normalization_but_score_is_0
+cmp3v0u4v0000w100bazmp30c,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp3v0u4v0000w100bazmp30c,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp3v0u4v0000w100bazmp30c,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp3v0u4v0000w100bazmp30c,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp3v0u4v0000w100bazmp30c,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp3v0u4v0000w100bazmp30c,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp3v0u4v0000w100bazmp30c,10,Match 10,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp3v0u4v0000w100bazmp30c,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp3v0u4v0000w100bazmp30c,12,Match 12,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp3v0u4v0000w100bazmp30c,13,Match 13,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp3v0u4v0000w100bazmp30c,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmpf5zyue0000zxaq5x0r7ajd,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmpf5zyue0000zxaq5x0r7ajd,2,ZETA vs SSG,ZETA,ZETA,zeta,zeta,True,0,names_match_after_normalization_but_score_is_0
+cmpf5zyue0000zxaq5x0r7ajd,3,DAL vs CR,DAL,CR,dal,cr,False,0,wrong_prediction
+cmpf5zyue0000zxaq5x0r7ajd,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmpf5zyue0000zxaq5x0r7ajd,5,WBG vs SSG,SSG,(not set),ssg,(not set),False,0,no_actual_winner_set
+cmpf5zyue0000zxaq5x0r7ajd,6,Match 6,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmpf5zyue0000zxaq5x0r7ajd,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmpf5zyue0000zxaq5x0r7ajd,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmpf5zyue0000zxaq5x0r7ajd,9,Match 9,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmpf5zyue0000zxaq5x0r7ajd,10,Match 10,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmpf5zyue0000zxaq5x0r7ajd,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmpf5zyue0000zxaq5x0r7ajd,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmpf5zyue0000zxaq5x0r7ajd,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmpf5zyue0000zxaq5x0r7ajd,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp24mor000334h0l1ljsvgza,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp24mor000334h0l1ljsvgza,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp24mor000334h0l1ljsvgza,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp24mor000334h0l1ljsvgza,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp24mor000334h0l1ljsvgza,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp24mor000334h0l1ljsvgza,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp24mor000334h0l1ljsvgza,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp24mor000334h0l1ljsvgza,10,Match 10,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp24mor000334h0l1ljsvgza,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp24mor000334h0l1ljsvgza,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp24mor000334h0l1ljsvgza,13,Match 13,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp24mor000334h0l1ljsvgza,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmpfm8kvm000010yxlmdszrqe,1,WBG vs VP,VP,VP,vp,vp,True,0,names_match_after_normalization_but_score_is_0
+cmpfm8kvm000010yxlmdszrqe,2,ZETA vs SSG,ZETA,ZETA,zeta,zeta,True,0,names_match_after_normalization_but_score_is_0
+cmpfm8kvm000010yxlmdszrqe,3,DAL vs CR,CR,CR,cr,cr,True,0,names_match_after_normalization_but_score_is_0
+cmpfm8kvm000010yxlmdszrqe,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmpfm8kvm000010yxlmdszrqe,5,WBG vs SSG,SSG,(not set),ssg,(not set),False,0,no_actual_winner_set
+cmpfm8kvm000010yxlmdszrqe,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmpfm8kvm000010yxlmdszrqe,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmpfm8kvm000010yxlmdszrqe,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmpfm8kvm000010yxlmdszrqe,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmpfm8kvm000010yxlmdszrqe,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmpfm8kvm000010yxlmdszrqe,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmpfm8kvm000010yxlmdszrqe,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmpfm8kvm000010yxlmdszrqe,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmpfm8kvm000010yxlmdszrqe,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2hk9xh0000bl3g2qph7yr5,4,TM vs AG,AG,(not set),ag,(not set),False,0,no_actual_winner_set
+cmp2hk9xh0000bl3g2qph7yr5,5,WBG vs SSG,SSG,(not set),ssg,(not set),False,0,no_actual_winner_set
+cmp2hk9xh0000bl3g2qph7yr5,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp2hk9xh0000bl3g2qph7yr5,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp2hk9xh0000bl3g2qph7yr5,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2hk9xh0000bl3g2qph7yr5,9,Match 9,AG,(not set),ag,(not set),False,0,no_actual_winner_set
+cmp2hk9xh0000bl3g2qph7yr5,10,Match 10,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp2hk9xh0000bl3g2qph7yr5,11,Match 11,AG,(not set),ag,(not set),False,0,no_actual_winner_set
+cmp2hk9xh0000bl3g2qph7yr5,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2hk9xh0000bl3g2qph7yr5,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp2hk9xh0000bl3g2qph7yr5,14,Match 14,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp3opxab0000mw4wpogf59xg,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp3opxab0000mw4wpogf59xg,5,WBG vs SSG,SSG,(not set),ssg,(not set),False,0,no_actual_winner_set
+cmp3opxab0000mw4wpogf59xg,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp3opxab0000mw4wpogf59xg,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp3opxab0000mw4wpogf59xg,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp3opxab0000mw4wpogf59xg,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp3opxab0000mw4wpogf59xg,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp3opxab0000mw4wpogf59xg,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp3opxab0000mw4wpogf59xg,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp3opxab0000mw4wpogf59xg,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp3opxab0000mw4wpogf59xg,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp21whm9000ghsqrvi8g829k,3,DAL vs CR,DAL,CR,dal,cr,False,0,wrong_prediction
+cmp21whm9000ghsqrvi8g829k,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp21whm9000ghsqrvi8g829k,5,WBG vs SSG,SSG,(not set),ssg,(not set),False,0,no_actual_winner_set
+cmp21whm9000ghsqrvi8g829k,6,Match 6,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp21whm9000ghsqrvi8g829k,7,Match 7,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp21whm9000ghsqrvi8g829k,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp21whm9000ghsqrvi8g829k,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp21whm9000ghsqrvi8g829k,10,Match 10,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp21whm9000ghsqrvi8g829k,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp21whm9000ghsqrvi8g829k,12,Match 12,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp21whm9000ghsqrvi8g829k,13,Match 13,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp237e4m00004h0lufjpmj7m,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp237e4m00004h0lufjpmj7m,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp237e4m00004h0lufjpmj7m,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp237e4m00004h0lufjpmj7m,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp237e4m00004h0lufjpmj7m,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp237e4m00004h0lufjpmj7m,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp237e4m00004h0lufjpmj7m,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp237e4m00004h0lufjpmj7m,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp237e4m00004h0lufjpmj7m,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp237e4m00004h0lufjpmj7m,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp237e4m00004h0lufjpmj7m,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp237e4m00004h0lufjpmj7m,14,Match 14,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp269al5000gtwr6u2m4flk8,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp269al5000gtwr6u2m4flk8,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp269al5000gtwr6u2m4flk8,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp269al5000gtwr6u2m4flk8,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp269al5000gtwr6u2m4flk8,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp269al5000gtwr6u2m4flk8,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp269al5000gtwr6u2m4flk8,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp269al5000gtwr6u2m4flk8,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp269al5000gtwr6u2m4flk8,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp269al5000gtwr6u2m4flk8,12,Match 12,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp269al5000gtwr6u2m4flk8,13,Match 13,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp269al5000gtwr6u2m4flk8,14,Match 14,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp34a92f000010oyym71zgek,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp34a92f000010oyym71zgek,5,WBG vs SSG,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp34a92f000010oyym71zgek,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp34a92f000010oyym71zgek,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp34a92f000010oyym71zgek,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp34a92f000010oyym71zgek,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp34a92f000010oyym71zgek,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp34a92f000010oyym71zgek,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp34a92f000010oyym71zgek,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp34a92f000010oyym71zgek,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp34a92f000010oyym71zgek,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2bbcza00009th3kk7ek7a7,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2bbcza00009th3kk7ek7a7,5,WBG vs SSG,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp2bbcza00009th3kk7ek7a7,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp2bbcza00009th3kk7ek7a7,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2bbcza00009th3kk7ek7a7,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2bbcza00009th3kk7ek7a7,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp2bbcza00009th3kk7ek7a7,10,Match 10,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp2bbcza00009th3kk7ek7a7,11,Match 11,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp2bbcza00009th3kk7ek7a7,12,Match 12,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2bbcza00009th3kk7ek7a7,13,Match 13,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2bbcza00009th3kk7ek7a7,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2d76im000w75vgp9pfbvc8,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp2d76im000w75vgp9pfbvc8,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2d76im000w75vgp9pfbvc8,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp2d76im000w75vgp9pfbvc8,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp2d76im000w75vgp9pfbvc8,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2d76im000w75vgp9pfbvc8,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2d76im000w75vgp9pfbvc8,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp2d76im000w75vgp9pfbvc8,10,Match 10,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp2d76im000w75vgp9pfbvc8,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp2d76im000w75vgp9pfbvc8,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2d76im000w75vgp9pfbvc8,13,Match 13,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2d76im000w75vgp9pfbvc8,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp22b56r0005gxw4l8et5rva,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp22b56r0005gxw4l8et5rva,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp22b56r0005gxw4l8et5rva,5,WBG vs SSG,SSG,(not set),ssg,(not set),False,0,no_actual_winner_set
+cmp22b56r0005gxw4l8et5rva,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp22b56r0005gxw4l8et5rva,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp22b56r0005gxw4l8et5rva,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp22b56r0005gxw4l8et5rva,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp22b56r0005gxw4l8et5rva,10,Match 10,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp22b56r0005gxw4l8et5rva,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp22b56r0005gxw4l8et5rva,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp22b56r0005gxw4l8et5rva,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp22b56r0005gxw4l8et5rva,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp22a0r90004gxw4lxbngk2k,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp22a0r90004gxw4lxbngk2k,5,WBG vs SSG,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp22a0r90004gxw4lxbngk2k,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp22a0r90004gxw4lxbngk2k,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp22a0r90004gxw4lxbngk2k,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp22a0r90004gxw4lxbngk2k,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp22a0r90004gxw4lxbngk2k,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp22a0r90004gxw4lxbngk2k,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp22a0r90004gxw4lxbngk2k,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp22a0r90004gxw4lxbngk2k,13,Match 13,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp22a0r90004gxw4lxbngk2k,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp223e9a0001gxw4nqg07r36,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp223e9a0001gxw4nqg07r36,5,WBG vs SSG,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp223e9a0001gxw4nqg07r36,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp223e9a0001gxw4nqg07r36,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp223e9a0001gxw4nqg07r36,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp223e9a0001gxw4nqg07r36,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp223e9a0001gxw4nqg07r36,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp223e9a0001gxw4nqg07r36,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp223e9a0001gxw4nqg07r36,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp223e9a0001gxw4nqg07r36,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp223e9a0001gxw4nqg07r36,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp89n9wb0000flz3b1ejx9wi,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp89n9wb0000flz3b1ejx9wi,2,ZETA vs SSG,ZETA,ZETA,zeta,zeta,True,0,names_match_after_normalization_but_score_is_0
+cmp89n9wb0000flz3b1ejx9wi,3,DAL vs CR,CR,CR,cr,cr,True,0,names_match_after_normalization_but_score_is_0
+cmp89n9wb0000flz3b1ejx9wi,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp89n9wb0000flz3b1ejx9wi,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp89n9wb0000flz3b1ejx9wi,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp89n9wb0000flz3b1ejx9wi,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp89n9wb0000flz3b1ejx9wi,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp89n9wb0000flz3b1ejx9wi,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp89n9wb0000flz3b1ejx9wi,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp89n9wb0000flz3b1ejx9wi,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp89n9wb0000flz3b1ejx9wi,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp89n9wb0000flz3b1ejx9wi,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp89n9wb0000flz3b1ejx9wi,14,Match 14,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp28ho25002ccmuee0010wml,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp28ho25002ccmuee0010wml,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp28ho25002ccmuee0010wml,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp28ho25002ccmuee0010wml,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp28ho25002ccmuee0010wml,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp28ho25002ccmuee0010wml,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp28ho25002ccmuee0010wml,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp28ho25002ccmuee0010wml,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp28ho25002ccmuee0010wml,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp28ho25002ccmuee0010wml,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp28ho25002ccmuee0010wml,13,Match 13,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp28ho25002ccmuee0010wml,14,Match 14,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp6uf5sq00009maqqj3ix8h8,1,WBG vs VP,VP,VP,vp,vp,True,0,names_match_after_normalization_but_score_is_0
+cmp6uf5sq00009maqqj3ix8h8,2,ZETA vs SSG,ZETA,ZETA,zeta,zeta,True,0,names_match_after_normalization_but_score_is_0
+cmp6uf5sq00009maqqj3ix8h8,3,DAL vs CR,CR,CR,cr,cr,True,0,names_match_after_normalization_but_score_is_0
+cmp6uf5sq00009maqqj3ix8h8,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp6uf5sq00009maqqj3ix8h8,5,WBG vs SSG,SSG,(not set),ssg,(not set),False,0,no_actual_winner_set
+cmp6uf5sq00009maqqj3ix8h8,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp6uf5sq00009maqqj3ix8h8,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp6uf5sq00009maqqj3ix8h8,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp6uf5sq00009maqqj3ix8h8,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp6uf5sq00009maqqj3ix8h8,10,Match 10,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp6uf5sq00009maqqj3ix8h8,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp6uf5sq00009maqqj3ix8h8,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp6uf5sq00009maqqj3ix8h8,13,Match 13,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp6uf5sq00009maqqj3ix8h8,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp28jdg1000xewez5trot44x,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp28jdg1000xewez5trot44x,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp28jdg1000xewez5trot44x,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp28jdg1000xewez5trot44x,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp28jdg1000xewez5trot44x,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp28jdg1000xewez5trot44x,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp28jdg1000xewez5trot44x,9,Match 9,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp28jdg1000xewez5trot44x,10,Match 10,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp28jdg1000xewez5trot44x,11,Match 11,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp28jdg1000xewez5trot44x,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp28jdg1000xewez5trot44x,13,Match 13,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp28jdg1000xewez5trot44x,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp23xtrd001e115fdr7o4mh8,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp23xtrd001e115fdr7o4mh8,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp23xtrd001e115fdr7o4mh8,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp23xtrd001e115fdr7o4mh8,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp23xtrd001e115fdr7o4mh8,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp23xtrd001e115fdr7o4mh8,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp23xtrd001e115fdr7o4mh8,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp23xtrd001e115fdr7o4mh8,10,Match 10,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp23xtrd001e115fdr7o4mh8,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp23xtrd001e115fdr7o4mh8,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp23xtrd001e115fdr7o4mh8,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp23xtrd001e115fdr7o4mh8,14,Match 14,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp7mcamz0000sw49p0rv3e0w,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp7mcamz0000sw49p0rv3e0w,2,ZETA vs SSG,ZETA,ZETA,zeta,zeta,True,0,names_match_after_normalization_but_score_is_0
+cmp7mcamz0000sw49p0rv3e0w,3,DAL vs CR,CR,CR,cr,cr,True,0,names_match_after_normalization_but_score_is_0
+cmp7mcamz0000sw49p0rv3e0w,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp7mcamz0000sw49p0rv3e0w,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp7mcamz0000sw49p0rv3e0w,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp7mcamz0000sw49p0rv3e0w,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp7mcamz0000sw49p0rv3e0w,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp7mcamz0000sw49p0rv3e0w,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp7mcamz0000sw49p0rv3e0w,10,Match 10,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp7mcamz0000sw49p0rv3e0w,11,Match 11,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp7mcamz0000sw49p0rv3e0w,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp7mcamz0000sw49p0rv3e0w,13,Match 13,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp7mcamz0000sw49p0rv3e0w,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp26i1pg000hqgix4nphk9ps,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp26i1pg000hqgix4nphk9ps,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp26i1pg000hqgix4nphk9ps,5,WBG vs SSG,SSG,(not set),ssg,(not set),False,0,no_actual_winner_set
+cmp26i1pg000hqgix4nphk9ps,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp26i1pg000hqgix4nphk9ps,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp26i1pg000hqgix4nphk9ps,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp26i1pg000hqgix4nphk9ps,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp26i1pg000hqgix4nphk9ps,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp26i1pg000hqgix4nphk9ps,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp26i1pg000hqgix4nphk9ps,12,Match 12,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp26i1pg000hqgix4nphk9ps,13,Match 13,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp26i1pg000hqgix4nphk9ps,14,Match 14,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp290rni002dcmuecer1n4dd,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp290rni002dcmuecer1n4dd,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp290rni002dcmuecer1n4dd,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp290rni002dcmuecer1n4dd,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp290rni002dcmuecer1n4dd,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp290rni002dcmuecer1n4dd,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp290rni002dcmuecer1n4dd,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp290rni002dcmuecer1n4dd,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp290rni002dcmuecer1n4dd,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp290rni002dcmuecer1n4dd,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp290rni002dcmuecer1n4dd,13,Match 13,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp290rni002dcmuecer1n4dd,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp22cm8h0023hsqr0gnxxh2r,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp22cm8h0023hsqr0gnxxh2r,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp22cm8h0023hsqr0gnxxh2r,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp22cm8h0023hsqr0gnxxh2r,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp22cm8h0023hsqr0gnxxh2r,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp22cm8h0023hsqr0gnxxh2r,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp22cm8h0023hsqr0gnxxh2r,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp22cm8h0023hsqr0gnxxh2r,10,Match 10,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp22cm8h0023hsqr0gnxxh2r,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp22cm8h0023hsqr0gnxxh2r,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp22cm8h0023hsqr0gnxxh2r,13,Match 13,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp22cm8h0023hsqr0gnxxh2r,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp22vtxm0036f8l95m9ubc54,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp22vtxm0036f8l95m9ubc54,2,ZETA vs SSG,ZETA,ZETA,zeta,zeta,True,0,names_match_after_normalization_but_score_is_0
+cmp22vtxm0036f8l95m9ubc54,3,DAL vs CR,CR,CR,cr,cr,True,0,names_match_after_normalization_but_score_is_0
+cmp22vtxm0036f8l95m9ubc54,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp22vtxm0036f8l95m9ubc54,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp22vtxm0036f8l95m9ubc54,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp22vtxm0036f8l95m9ubc54,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp22vtxm0036f8l95m9ubc54,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp22vtxm0036f8l95m9ubc54,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp22vtxm0036f8l95m9ubc54,10,Match 10,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp22vtxm0036f8l95m9ubc54,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp22vtxm0036f8l95m9ubc54,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp22vtxm0036f8l95m9ubc54,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp22vtxm0036f8l95m9ubc54,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2acpe00001hsrywl3ubwue,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2acpe00001hsrywl3ubwue,5,WBG vs SSG,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp2acpe00001hsrywl3ubwue,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp2acpe00001hsrywl3ubwue,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp2acpe00001hsrywl3ubwue,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2acpe00001hsrywl3ubwue,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2acpe00001hsrywl3ubwue,10,Match 10,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp2acpe00001hsrywl3ubwue,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2acpe00001hsrywl3ubwue,12,Match 12,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp2acpe00001hsrywl3ubwue,13,Match 13,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2acpe00001hsrywl3ubwue,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmpalkiu10000146rhb25s842,1,WBG vs VP,VP,VP,vp,vp,True,0,names_match_after_normalization_but_score_is_0
+cmpalkiu10000146rhb25s842,2,ZETA vs SSG,ZETA,ZETA,zeta,zeta,True,0,names_match_after_normalization_but_score_is_0
+cmpalkiu10000146rhb25s842,3,DAL vs CR,CR,CR,cr,cr,True,0,names_match_after_normalization_but_score_is_0
+cmpalkiu10000146rhb25s842,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmpalkiu10000146rhb25s842,5,WBG vs SSG,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmpalkiu10000146rhb25s842,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmpalkiu10000146rhb25s842,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmpalkiu10000146rhb25s842,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmpalkiu10000146rhb25s842,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmpalkiu10000146rhb25s842,10,Match 10,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmpalkiu10000146rhb25s842,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmpalkiu10000146rhb25s842,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmpalkiu10000146rhb25s842,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmpalkiu10000146rhb25s842,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2eyx9n0000dybdet44h2wl,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp2eyx9n0000dybdet44h2wl,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2eyx9n0000dybdet44h2wl,5,WBG vs SSG,SSG,(not set),ssg,(not set),False,0,no_actual_winner_set
+cmp2eyx9n0000dybdet44h2wl,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp2eyx9n0000dybdet44h2wl,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2eyx9n0000dybdet44h2wl,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2eyx9n0000dybdet44h2wl,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp2eyx9n0000dybdet44h2wl,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp2eyx9n0000dybdet44h2wl,11,Match 11,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp2eyx9n0000dybdet44h2wl,12,Match 12,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2eyx9n0000dybdet44h2wl,13,Match 13,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2eyx9n0000dybdet44h2wl,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp42pe16000070vrvv0qb8wa,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp42pe16000070vrvv0qb8wa,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp42pe16000070vrvv0qb8wa,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp42pe16000070vrvv0qb8wa,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp42pe16000070vrvv0qb8wa,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp42pe16000070vrvv0qb8wa,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp42pe16000070vrvv0qb8wa,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp42pe16000070vrvv0qb8wa,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp42pe16000070vrvv0qb8wa,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp42pe16000070vrvv0qb8wa,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp42pe16000070vrvv0qb8wa,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp6pxrkq0000ey5r3rkozanw,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp6pxrkq0000ey5r3rkozanw,2,ZETA vs SSG,ZETA,ZETA,zeta,zeta,True,0,names_match_after_normalization_but_score_is_0
+cmp6pxrkq0000ey5r3rkozanw,3,DAL vs CR,CR,CR,cr,cr,True,0,names_match_after_normalization_but_score_is_0
+cmp6pxrkq0000ey5r3rkozanw,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp6pxrkq0000ey5r3rkozanw,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp6pxrkq0000ey5r3rkozanw,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp6pxrkq0000ey5r3rkozanw,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp6pxrkq0000ey5r3rkozanw,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp6pxrkq0000ey5r3rkozanw,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp6pxrkq0000ey5r3rkozanw,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp6pxrkq0000ey5r3rkozanw,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp6pxrkq0000ey5r3rkozanw,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp6pxrkq0000ey5r3rkozanw,13,Match 13,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp6pxrkq0000ey5r3rkozanw,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp67yki60000zd45tqxfb86l,1,WBG vs VP,VP,VP,vp,vp,True,0,names_match_after_normalization_but_score_is_0
+cmp67yki60000zd45tqxfb86l,2,ZETA vs SSG,ZETA,ZETA,zeta,zeta,True,0,names_match_after_normalization_but_score_is_0
+cmp67yki60000zd45tqxfb86l,3,DAL vs CR,CR,CR,cr,cr,True,0,names_match_after_normalization_but_score_is_0
+cmp67yki60000zd45tqxfb86l,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp67yki60000zd45tqxfb86l,5,WBG vs SSG,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp67yki60000zd45tqxfb86l,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp67yki60000zd45tqxfb86l,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp67yki60000zd45tqxfb86l,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp67yki60000zd45tqxfb86l,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp67yki60000zd45tqxfb86l,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp67yki60000zd45tqxfb86l,11,Match 11,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp67yki60000zd45tqxfb86l,12,Match 12,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp67yki60000zd45tqxfb86l,13,Match 13,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp67yki60000zd45tqxfb86l,14,Match 14,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp24l56300324h0lreq1jsmz,3,DAL vs CR,DAL,CR,dal,cr,False,0,wrong_prediction
+cmp24l56300324h0lreq1jsmz,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp24l56300324h0lreq1jsmz,5,WBG vs SSG,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp24l56300324h0lreq1jsmz,6,Match 6,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp24l56300324h0lreq1jsmz,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp24l56300324h0lreq1jsmz,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp24l56300324h0lreq1jsmz,9,Match 9,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp24l56300324h0lreq1jsmz,10,Match 10,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp24l56300324h0lreq1jsmz,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp24l56300324h0lreq1jsmz,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp24l56300324h0lreq1jsmz,13,Match 13,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp24l56300324h0lreq1jsmz,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp284fw6000wewezs3tj04cj,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp284fw6000wewezs3tj04cj,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp284fw6000wewezs3tj04cj,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp284fw6000wewezs3tj04cj,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp284fw6000wewezs3tj04cj,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp284fw6000wewezs3tj04cj,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp284fw6000wewezs3tj04cj,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp284fw6000wewezs3tj04cj,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp284fw6000wewezs3tj04cj,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp284fw6000wewezs3tj04cj,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp284fw6000wewezs3tj04cj,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp284fw6000wewezs3tj04cj,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp54j1u000002vnmggiqsavn,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp54j1u000002vnmggiqsavn,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp54j1u000002vnmggiqsavn,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp54j1u000002vnmggiqsavn,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp54j1u000002vnmggiqsavn,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp54j1u000002vnmggiqsavn,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp54j1u000002vnmggiqsavn,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp54j1u000002vnmggiqsavn,10,Match 10,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp54j1u000002vnmggiqsavn,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp54j1u000002vnmggiqsavn,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp54j1u000002vnmggiqsavn,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp54j1u000002vnmggiqsavn,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2cojm5000075vgyydvuog7,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2cojm5000075vgyydvuog7,5,WBG vs SSG,SSG,(not set),ssg,(not set),False,0,no_actual_winner_set
+cmp2cojm5000075vgyydvuog7,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp2cojm5000075vgyydvuog7,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2cojm5000075vgyydvuog7,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2cojm5000075vgyydvuog7,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp2cojm5000075vgyydvuog7,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp2cojm5000075vgyydvuog7,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp2cojm5000075vgyydvuog7,12,Match 12,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2cojm5000075vgyydvuog7,13,Match 13,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2cojm5000075vgyydvuog7,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp230isy0012gxw4e5stogmz,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp230isy0012gxw4e5stogmz,5,WBG vs SSG,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp230isy0012gxw4e5stogmz,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp230isy0012gxw4e5stogmz,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp230isy0012gxw4e5stogmz,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp230isy0012gxw4e5stogmz,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp230isy0012gxw4e5stogmz,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp230isy0012gxw4e5stogmz,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp230isy0012gxw4e5stogmz,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp230isy0012gxw4e5stogmz,13,Match 13,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp230isy0012gxw4e5stogmz,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp29zv7k0000hsrytg8lxgzn,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp29zv7k0000hsrytg8lxgzn,5,WBG vs SSG,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp29zv7k0000hsrytg8lxgzn,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp29zv7k0000hsrytg8lxgzn,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp29zv7k0000hsrytg8lxgzn,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp29zv7k0000hsrytg8lxgzn,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp29zv7k0000hsrytg8lxgzn,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp29zv7k0000hsrytg8lxgzn,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp29zv7k0000hsrytg8lxgzn,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp29zv7k0000hsrytg8lxgzn,13,Match 13,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp29zv7k0000hsrytg8lxgzn,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2695fm0001cmuelgcjyw2l,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2695fm0001cmuelgcjyw2l,5,WBG vs SSG,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp2695fm0001cmuelgcjyw2l,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp2695fm0001cmuelgcjyw2l,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2695fm0001cmuelgcjyw2l,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2695fm0001cmuelgcjyw2l,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp2695fm0001cmuelgcjyw2l,10,Match 10,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp2695fm0001cmuelgcjyw2l,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp2695fm0001cmuelgcjyw2l,12,Match 12,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2695fm0001cmuelgcjyw2l,13,Match 13,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2695fm0001cmuelgcjyw2l,14,Match 14,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2y9x8700008k2wmyqg8bg8,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp2y9x8700008k2wmyqg8bg8,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2y9x8700008k2wmyqg8bg8,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp2y9x8700008k2wmyqg8bg8,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp2y9x8700008k2wmyqg8bg8,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp2y9x8700008k2wmyqg8bg8,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2y9x8700008k2wmyqg8bg8,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2y9x8700008k2wmyqg8bg8,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp2y9x8700008k2wmyqg8bg8,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2y9x8700008k2wmyqg8bg8,12,Match 12,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp2y9x8700008k2wmyqg8bg8,13,Match 13,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2y9x8700008k2wmyqg8bg8,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp29k1vx0000s2x6z8g2lsnk,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp29k1vx0000s2x6z8g2lsnk,5,WBG vs SSG,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp29k1vx0000s2x6z8g2lsnk,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp29k1vx0000s2x6z8g2lsnk,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp29k1vx0000s2x6z8g2lsnk,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp29k1vx0000s2x6z8g2lsnk,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp29k1vx0000s2x6z8g2lsnk,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp29k1vx0000s2x6z8g2lsnk,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp29k1vx0000s2x6z8g2lsnk,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp29k1vx0000s2x6z8g2lsnk,13,Match 13,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp29k1vx0000s2x6z8g2lsnk,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp225gnw0002gxw4p7d3w1fa,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp225gnw0002gxw4p7d3w1fa,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp225gnw0002gxw4p7d3w1fa,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp225gnw0002gxw4p7d3w1fa,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp225gnw0002gxw4p7d3w1fa,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp225gnw0002gxw4p7d3w1fa,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp225gnw0002gxw4p7d3w1fa,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp225gnw0002gxw4p7d3w1fa,10,Match 10,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp225gnw0002gxw4p7d3w1fa,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp225gnw0002gxw4p7d3w1fa,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp225gnw0002gxw4p7d3w1fa,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp225gnw0002gxw4p7d3w1fa,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmpfg3fr800003464rknn6j1r,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmpfg3fr800003464rknn6j1r,2,ZETA vs SSG,ZETA,ZETA,zeta,zeta,True,0,names_match_after_normalization_but_score_is_0
+cmpfg3fr800003464rknn6j1r,3,DAL vs CR,CR,CR,cr,cr,True,0,names_match_after_normalization_but_score_is_0
+cmpfg3fr800003464rknn6j1r,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmpfg3fr800003464rknn6j1r,5,WBG vs SSG,SSG,(not set),ssg,(not set),False,0,no_actual_winner_set
+cmpfg3fr800003464rknn6j1r,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmpfg3fr800003464rknn6j1r,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmpfg3fr800003464rknn6j1r,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmpfg3fr800003464rknn6j1r,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmpfg3fr800003464rknn6j1r,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmpfg3fr800003464rknn6j1r,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmpfg3fr800003464rknn6j1r,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmpfg3fr800003464rknn6j1r,13,Match 13,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmpfg3fr800003464rknn6j1r,14,Match 14,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp26egoc0000qgixjbfzg8qg,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp26egoc0000qgixjbfzg8qg,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp26egoc0000qgixjbfzg8qg,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp26egoc0000qgixjbfzg8qg,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp26egoc0000qgixjbfzg8qg,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp26egoc0000qgixjbfzg8qg,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp26egoc0000qgixjbfzg8qg,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp26egoc0000qgixjbfzg8qg,10,Match 10,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp26egoc0000qgixjbfzg8qg,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp26egoc0000qgixjbfzg8qg,12,Match 12,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp26egoc0000qgixjbfzg8qg,13,Match 13,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp26egoc0000qgixjbfzg8qg,14,Match 14,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmpavib24000013w9f7fce46e,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmpavib24000013w9f7fce46e,2,ZETA vs SSG,ZETA,ZETA,zeta,zeta,True,0,names_match_after_normalization_but_score_is_0
+cmpavib24000013w9f7fce46e,3,DAL vs CR,CR,CR,cr,cr,True,0,names_match_after_normalization_but_score_is_0
+cmpavib24000013w9f7fce46e,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmpavib24000013w9f7fce46e,5,WBG vs SSG,SSG,(not set),ssg,(not set),False,0,no_actual_winner_set
+cmpavib24000013w9f7fce46e,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmpavib24000013w9f7fce46e,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmpavib24000013w9f7fce46e,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmpavib24000013w9f7fce46e,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmpavib24000013w9f7fce46e,10,Match 10,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmpavib24000013w9f7fce46e,11,Match 11,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmpavib24000013w9f7fce46e,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmpavib24000013w9f7fce46e,13,Match 13,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmpavib24000013w9f7fce46e,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmpe5kuaz0000pdtplisrrnvs,1,WBG vs VP,VP,VP,vp,vp,True,0,names_match_after_normalization_but_score_is_0
+cmpe5kuaz0000pdtplisrrnvs,2,ZETA vs SSG,ZETA,ZETA,zeta,zeta,True,0,names_match_after_normalization_but_score_is_0
+cmpe5kuaz0000pdtplisrrnvs,3,DAL vs CR,CR,CR,cr,cr,True,0,names_match_after_normalization_but_score_is_0
+cmpe5kuaz0000pdtplisrrnvs,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmpe5kuaz0000pdtplisrrnvs,5,WBG vs SSG,SSG,(not set),ssg,(not set),False,0,no_actual_winner_set
+cmpe5kuaz0000pdtplisrrnvs,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmpe5kuaz0000pdtplisrrnvs,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmpe5kuaz0000pdtplisrrnvs,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmpe5kuaz0000pdtplisrrnvs,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmpe5kuaz0000pdtplisrrnvs,10,Match 10,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmpe5kuaz0000pdtplisrrnvs,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmpe5kuaz0000pdtplisrrnvs,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmpe5kuaz0000pdtplisrrnvs,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmpe5kuaz0000pdtplisrrnvs,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp3kyx7t0000f2dd2ds2rf17,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp3kyx7t0000f2dd2ds2rf17,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp3kyx7t0000f2dd2ds2rf17,5,WBG vs SSG,SSG,(not set),ssg,(not set),False,0,no_actual_winner_set
+cmp3kyx7t0000f2dd2ds2rf17,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp3kyx7t0000f2dd2ds2rf17,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp3kyx7t0000f2dd2ds2rf17,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp3kyx7t0000f2dd2ds2rf17,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp3kyx7t0000f2dd2ds2rf17,10,Match 10,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp3kyx7t0000f2dd2ds2rf17,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp3kyx7t0000f2dd2ds2rf17,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp3kyx7t0000f2dd2ds2rf17,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp3kyx7t0000f2dd2ds2rf17,14,Match 14,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp23p3lb000i115fno6tesgg,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp23p3lb000i115fno6tesgg,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp23p3lb000i115fno6tesgg,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp23p3lb000i115fno6tesgg,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp23p3lb000i115fno6tesgg,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp23p3lb000i115fno6tesgg,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp23p3lb000i115fno6tesgg,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp23p3lb000i115fno6tesgg,10,Match 10,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp23p3lb000i115fno6tesgg,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp23p3lb000i115fno6tesgg,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp23p3lb000i115fno6tesgg,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp23p3lb000i115fno6tesgg,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp26jfvz0002cmueq46riwew,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp26jfvz0002cmueq46riwew,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp26jfvz0002cmueq46riwew,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp26jfvz0002cmueq46riwew,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp26jfvz0002cmueq46riwew,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp26jfvz0002cmueq46riwew,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp26jfvz0002cmueq46riwew,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp26jfvz0002cmueq46riwew,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp26jfvz0002cmueq46riwew,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp26jfvz0002cmueq46riwew,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp26jfvz0002cmueq46riwew,13,Match 13,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp26jfvz0002cmueq46riwew,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp225t8k000hf8l9xy94me3k,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp225t8k000hf8l9xy94me3k,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp225t8k000hf8l9xy94me3k,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp225t8k000hf8l9xy94me3k,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp225t8k000hf8l9xy94me3k,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp225t8k000hf8l9xy94me3k,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp225t8k000hf8l9xy94me3k,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp225t8k000hf8l9xy94me3k,10,Match 10,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp225t8k000hf8l9xy94me3k,11,Match 11,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp225t8k000hf8l9xy94me3k,12,Match 12,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp225t8k000hf8l9xy94me3k,13,Match 13,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp225t8k000hf8l9xy94me3k,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp23lzrw0000tpqx50lymcef,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp23lzrw0000tpqx50lymcef,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp23lzrw0000tpqx50lymcef,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp23lzrw0000tpqx50lymcef,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp23lzrw0000tpqx50lymcef,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp23lzrw0000tpqx50lymcef,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp23lzrw0000tpqx50lymcef,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp23lzrw0000tpqx50lymcef,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp23lzrw0000tpqx50lymcef,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp23lzrw0000tpqx50lymcef,12,Match 12,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp23lzrw0000tpqx50lymcef,13,Match 13,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp23lzrw0000tpqx50lymcef,14,Match 14,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp25vjhb0000cmueb9vs96sf,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp25vjhb0000cmueb9vs96sf,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp25vjhb0000cmueb9vs96sf,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp25vjhb0000cmueb9vs96sf,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp25vjhb0000cmueb9vs96sf,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp25vjhb0000cmueb9vs96sf,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp25vjhb0000cmueb9vs96sf,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp25vjhb0000cmueb9vs96sf,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp25vjhb0000cmueb9vs96sf,11,Match 11,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp25vjhb0000cmueb9vs96sf,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp25vjhb0000cmueb9vs96sf,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp25vjhb0000cmueb9vs96sf,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp24v8wj000gzwzfmmt9dof8,3,DAL vs CR,DAL,CR,dal,cr,False,0,wrong_prediction
+cmp24v8wj000gzwzfmmt9dof8,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp24v8wj000gzwzfmmt9dof8,5,WBG vs SSG,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp24v8wj000gzwzfmmt9dof8,6,Match 6,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp24v8wj000gzwzfmmt9dof8,7,Match 7,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp24v8wj000gzwzfmmt9dof8,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp24v8wj000gzwzfmmt9dof8,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp24v8wj000gzwzfmmt9dof8,10,Match 10,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp24v8wj000gzwzfmmt9dof8,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp24v8wj000gzwzfmmt9dof8,12,Match 12,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp24v8wj000gzwzfmmt9dof8,13,Match 13,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp24v8wj000gzwzfmmt9dof8,14,Match 14,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp5q4rbu0000tw48f6fln5ec,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp5q4rbu0000tw48f6fln5ec,2,ZETA vs SSG,ZETA,ZETA,zeta,zeta,True,0,names_match_after_normalization_but_score_is_0
+cmp5q4rbu0000tw48f6fln5ec,3,DAL vs CR,CR,CR,cr,cr,True,0,names_match_after_normalization_but_score_is_0
+cmp5q4rbu0000tw48f6fln5ec,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp5q4rbu0000tw48f6fln5ec,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp5q4rbu0000tw48f6fln5ec,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp5q4rbu0000tw48f6fln5ec,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp5q4rbu0000tw48f6fln5ec,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp5q4rbu0000tw48f6fln5ec,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp5q4rbu0000tw48f6fln5ec,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp5q4rbu0000tw48f6fln5ec,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp5q4rbu0000tw48f6fln5ec,12,Match 12,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp5q4rbu0000tw48f6fln5ec,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp5q4rbu0000tw48f6fln5ec,14,Match 14,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp3q6csy0000jzyycrqjk5xt,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp3q6csy0000jzyycrqjk5xt,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp3q6csy0000jzyycrqjk5xt,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp3q6csy0000jzyycrqjk5xt,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp3q6csy0000jzyycrqjk5xt,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp3q6csy0000jzyycrqjk5xt,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp3q6csy0000jzyycrqjk5xt,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp3q6csy0000jzyycrqjk5xt,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp3q6csy0000jzyycrqjk5xt,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp3q6csy0000jzyycrqjk5xt,12,Match 12,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp3q6csy0000jzyycrqjk5xt,13,Match 13,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp3q6csy0000jzyycrqjk5xt,14,Match 14,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp22dh5s0026hsqrnj64bhnb,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp22dh5s0026hsqrnj64bhnb,5,WBG vs SSG,SSG,(not set),ssg,(not set),False,0,no_actual_winner_set
+cmp22dh5s0026hsqrnj64bhnb,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp22dh5s0026hsqrnj64bhnb,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp22dh5s0026hsqrnj64bhnb,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp22dh5s0026hsqrnj64bhnb,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp22dh5s0026hsqrnj64bhnb,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp22dh5s0026hsqrnj64bhnb,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp22dh5s0026hsqrnj64bhnb,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp22dh5s0026hsqrnj64bhnb,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp22dh5s0026hsqrnj64bhnb,14,Match 14,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp4541mw0000lfguop37uq79,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp4541mw0000lfguop37uq79,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp4541mw0000lfguop37uq79,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp4541mw0000lfguop37uq79,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp4541mw0000lfguop37uq79,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp4541mw0000lfguop37uq79,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp4541mw0000lfguop37uq79,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp4541mw0000lfguop37uq79,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp4541mw0000lfguop37uq79,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp4541mw0000lfguop37uq79,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp4541mw0000lfguop37uq79,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp4541mw0000lfguop37uq79,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp244eno00314h0lqjl8v4pc,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp244eno00314h0lqjl8v4pc,5,WBG vs SSG,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp244eno00314h0lqjl8v4pc,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp244eno00314h0lqjl8v4pc,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp244eno00314h0lqjl8v4pc,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp244eno00314h0lqjl8v4pc,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp244eno00314h0lqjl8v4pc,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp244eno00314h0lqjl8v4pc,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp244eno00314h0lqjl8v4pc,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp244eno00314h0lqjl8v4pc,13,Match 13,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp244eno00314h0lqjl8v4pc,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp7kpo24000gomdi3kr5ltdm,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp7kpo24000gomdi3kr5ltdm,2,ZETA vs SSG,ZETA,ZETA,zeta,zeta,True,0,names_match_after_normalization_but_score_is_0
+cmp7kpo24000gomdi3kr5ltdm,3,DAL vs CR,CR,CR,cr,cr,True,0,names_match_after_normalization_but_score_is_0
+cmp7kpo24000gomdi3kr5ltdm,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp7kpo24000gomdi3kr5ltdm,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp7kpo24000gomdi3kr5ltdm,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp7kpo24000gomdi3kr5ltdm,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp7kpo24000gomdi3kr5ltdm,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp7kpo24000gomdi3kr5ltdm,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp7kpo24000gomdi3kr5ltdm,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp7kpo24000gomdi3kr5ltdm,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp7kpo24000gomdi3kr5ltdm,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp7kpo24000gomdi3kr5ltdm,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp7kpo24000gomdi3kr5ltdm,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp6mtq6h000013bb7we96uv3,1,WBG vs VP,VP,VP,vp,vp,True,0,names_match_after_normalization_but_score_is_0
+cmp6mtq6h000013bb7we96uv3,2,ZETA vs SSG,ZETA,ZETA,zeta,zeta,True,0,names_match_after_normalization_but_score_is_0
+cmp6mtq6h000013bb7we96uv3,3,DAL vs CR,CR,CR,cr,cr,True,0,names_match_after_normalization_but_score_is_0
+cmp6mtq6h000013bb7we96uv3,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp6mtq6h000013bb7we96uv3,5,WBG vs SSG,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp6mtq6h000013bb7we96uv3,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp6mtq6h000013bb7we96uv3,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp6mtq6h000013bb7we96uv3,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp6mtq6h000013bb7we96uv3,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp6mtq6h000013bb7we96uv3,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp6mtq6h000013bb7we96uv3,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp6mtq6h000013bb7we96uv3,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp6mtq6h000013bb7we96uv3,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp6mtq6h000013bb7we96uv3,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp44lmbr000013ahxzs2z0hl,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp44lmbr000013ahxzs2z0hl,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp44lmbr000013ahxzs2z0hl,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp44lmbr000013ahxzs2z0hl,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp44lmbr000013ahxzs2z0hl,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp22c7er0022hsqrxhnupc9h,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp22c7er0022hsqrxhnupc9h,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp22c7er0022hsqrxhnupc9h,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp22c7er0022hsqrxhnupc9h,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp22c7er0022hsqrxhnupc9h,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp22c7er0022hsqrxhnupc9h,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp22c7er0022hsqrxhnupc9h,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp22c7er0022hsqrxhnupc9h,10,Match 10,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp22c7er0022hsqrxhnupc9h,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp22c7er0022hsqrxhnupc9h,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp22c7er0022hsqrxhnupc9h,13,Match 13,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp22c7er0022hsqrxhnupc9h,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp22697l0003gxw44ypf8977,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp22697l0003gxw44ypf8977,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp22697l0003gxw44ypf8977,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp22697l0003gxw44ypf8977,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp22697l0003gxw44ypf8977,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp22697l0003gxw44ypf8977,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp22697l0003gxw44ypf8977,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp22697l0003gxw44ypf8977,10,Match 10,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp22697l0003gxw44ypf8977,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp22697l0003gxw44ypf8977,12,Match 12,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp22697l0003gxw44ypf8977,13,Match 13,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp22697l0003gxw44ypf8977,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp6tf0v00000yhvakxej01l2,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp6tf0v00000yhvakxej01l2,2,ZETA vs SSG,ZETA,ZETA,zeta,zeta,True,0,names_match_after_normalization_but_score_is_0
+cmp6tf0v00000yhvakxej01l2,3,DAL vs CR,CR,CR,cr,cr,True,0,names_match_after_normalization_but_score_is_0
+cmp6tf0v00000yhvakxej01l2,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp6tf0v00000yhvakxej01l2,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp6tf0v00000yhvakxej01l2,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp6tf0v00000yhvakxej01l2,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp6tf0v00000yhvakxej01l2,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp6tf0v00000yhvakxej01l2,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp6tf0v00000yhvakxej01l2,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp6tf0v00000yhvakxej01l2,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp6tf0v00000yhvakxej01l2,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp6tf0v00000yhvakxej01l2,13,Match 13,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp6tf0v00000yhvakxej01l2,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2khkg70000tuzzlgfe3rdo,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2khkg70000tuzzlgfe3rdo,5,WBG vs SSG,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp2khkg70000tuzzlgfe3rdo,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp2khkg70000tuzzlgfe3rdo,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp2khkg70000tuzzlgfe3rdo,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2khkg70000tuzzlgfe3rdo,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2khkg70000tuzzlgfe3rdo,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp2khkg70000tuzzlgfe3rdo,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2khkg70000tuzzlgfe3rdo,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2khkg70000tuzzlgfe3rdo,13,Match 13,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2khkg70000tuzzlgfe3rdo,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp5w0oiw0000cxhe4benmczr,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp5w0oiw0000cxhe4benmczr,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp5w0oiw0000cxhe4benmczr,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp5w0oiw0000cxhe4benmczr,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp5w0oiw0000cxhe4benmczr,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp5w0oiw0000cxhe4benmczr,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp5w0oiw0000cxhe4benmczr,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp5w0oiw0000cxhe4benmczr,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp5w0oiw0000cxhe4benmczr,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp5w0oiw0000cxhe4benmczr,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp5w0oiw0000cxhe4benmczr,13,Match 13,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp5w0oiw0000cxhe4benmczr,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp29pn20003qcmuex0l52w1f,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp29pn20003qcmuex0l52w1f,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp29pn20003qcmuex0l52w1f,5,WBG vs SSG,SSG,(not set),ssg,(not set),False,0,no_actual_winner_set
+cmp29pn20003qcmuex0l52w1f,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp29pn20003qcmuex0l52w1f,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp29pn20003qcmuex0l52w1f,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp29pn20003qcmuex0l52w1f,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp29pn20003qcmuex0l52w1f,10,Match 10,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp29pn20003qcmuex0l52w1f,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp29pn20003qcmuex0l52w1f,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp29pn20003qcmuex0l52w1f,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp29pn20003qcmuex0l52w1f,14,Match 14,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp26zafn001dtwr6lzt1qelj,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp26zafn001dtwr6lzt1qelj,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp26zafn001dtwr6lzt1qelj,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp26zafn001dtwr6lzt1qelj,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp26zafn001dtwr6lzt1qelj,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp26zafn001dtwr6lzt1qelj,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp26zafn001dtwr6lzt1qelj,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp26zafn001dtwr6lzt1qelj,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp26zafn001dtwr6lzt1qelj,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp26zafn001dtwr6lzt1qelj,12,Match 12,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp26zafn001dtwr6lzt1qelj,13,Match 13,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp26zafn001dtwr6lzt1qelj,14,Match 14,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp61hi6x000099szo3671xeg,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp61hi6x000099szo3671xeg,2,ZETA vs SSG,ZETA,ZETA,zeta,zeta,True,0,names_match_after_normalization_but_score_is_0
+cmp61hi6x000099szo3671xeg,3,DAL vs CR,CR,CR,cr,cr,True,0,names_match_after_normalization_but_score_is_0
+cmp61hi6x000099szo3671xeg,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp61hi6x000099szo3671xeg,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp61hi6x000099szo3671xeg,6,Match 6,AG,(not set),ag,(not set),False,0,no_actual_winner_set
+cmp61hi6x000099szo3671xeg,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp61hi6x000099szo3671xeg,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp61hi6x000099szo3671xeg,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp61hi6x000099szo3671xeg,10,Match 10,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp61hi6x000099szo3671xeg,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp61hi6x000099szo3671xeg,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp61hi6x000099szo3671xeg,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp61hi6x000099szo3671xeg,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2f9yjz0001dybdzkl9rdrw,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp2f9yjz0001dybdzkl9rdrw,3,DAL vs CR,DAL,CR,dal,cr,False,0,wrong_prediction
+cmp2f9yjz0001dybdzkl9rdrw,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2f9yjz0001dybdzkl9rdrw,5,WBG vs SSG,SSG,(not set),ssg,(not set),False,0,no_actual_winner_set
+cmp2f9yjz0001dybdzkl9rdrw,6,Match 6,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp2f9yjz0001dybdzkl9rdrw,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2f9yjz0001dybdzkl9rdrw,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2f9yjz0001dybdzkl9rdrw,9,Match 9,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp2f9yjz0001dybdzkl9rdrw,10,Match 10,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp2f9yjz0001dybdzkl9rdrw,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp2f9yjz0001dybdzkl9rdrw,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2f9yjz0001dybdzkl9rdrw,13,Match 13,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2f9yjz0001dybdzkl9rdrw,14,Match 14,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp21thix0000gxw47ibsz43l,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp21thix0000gxw47ibsz43l,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp21thix0000gxw47ibsz43l,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp21thix0000gxw47ibsz43l,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp21thix0000gxw47ibsz43l,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp21thix0000gxw47ibsz43l,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp21thix0000gxw47ibsz43l,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp21thix0000gxw47ibsz43l,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp21thix0000gxw47ibsz43l,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp21thix0000gxw47ibsz43l,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp21thix0000gxw47ibsz43l,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp21thix0000gxw47ibsz43l,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp23afzs0000115f9t4xco8u,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp23afzs0000115f9t4xco8u,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp23afzs0000115f9t4xco8u,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp23afzs0000115f9t4xco8u,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp23afzs0000115f9t4xco8u,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp23afzs0000115f9t4xco8u,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp23afzs0000115f9t4xco8u,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp23afzs0000115f9t4xco8u,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp23afzs0000115f9t4xco8u,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp23afzs0000115f9t4xco8u,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp23afzs0000115f9t4xco8u,13,Match 13,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp23afzs0000115f9t4xco8u,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp45s50n000013jefky36yfq,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp45s50n000013jefky36yfq,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp45s50n000013jefky36yfq,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp45s50n000013jefky36yfq,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp45s50n000013jefky36yfq,7,Match 7,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp45s50n000013jefky36yfq,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp45s50n000013jefky36yfq,9,Match 9,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp45s50n000013jefky36yfq,10,Match 10,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp45s50n000013jefky36yfq,11,Match 11,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp45s50n000013jefky36yfq,12,Match 12,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp45s50n000013jefky36yfq,13,Match 13,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp45s50n000013jefky36yfq,14,Match 14,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp221gxh000gf8l9kkpnizkn,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp221gxh000gf8l9kkpnizkn,3,DAL vs CR,DAL,CR,dal,cr,False,0,wrong_prediction
+cmp221gxh000gf8l9kkpnizkn,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp221gxh000gf8l9kkpnizkn,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp221gxh000gf8l9kkpnizkn,6,Match 6,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp221gxh000gf8l9kkpnizkn,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp221gxh000gf8l9kkpnizkn,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp221gxh000gf8l9kkpnizkn,9,Match 9,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp221gxh000gf8l9kkpnizkn,10,Match 10,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp221gxh000gf8l9kkpnizkn,11,Match 11,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp221gxh000gf8l9kkpnizkn,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp221gxh000gf8l9kkpnizkn,13,Match 13,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp221gxh000gf8l9kkpnizkn,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmpf4ur4p0000f3lh6sl6qu5t,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmpf4ur4p0000f3lh6sl6qu5t,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmpf4ur4p0000f3lh6sl6qu5t,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmpf4ur4p0000f3lh6sl6qu5t,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmpf4ur4p0000f3lh6sl6qu5t,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmpf4ur4p0000f3lh6sl6qu5t,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmpf4ur4p0000f3lh6sl6qu5t,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmpf4ur4p0000f3lh6sl6qu5t,10,Match 10,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmpf4ur4p0000f3lh6sl6qu5t,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmpf4ur4p0000f3lh6sl6qu5t,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmpf4ur4p0000f3lh6sl6qu5t,13,Match 13,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmpf4ur4p0000f3lh6sl6qu5t,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmpet77h00000g58kx810qpvl,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmpet77h00000g58kx810qpvl,2,ZETA vs SSG,ZETA,ZETA,zeta,zeta,True,0,names_match_after_normalization_but_score_is_0
+cmpet77h00000g58kx810qpvl,3,DAL vs CR,CR,CR,cr,cr,True,0,names_match_after_normalization_but_score_is_0
+cmpet77h00000g58kx810qpvl,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmpet77h00000g58kx810qpvl,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmpet77h00000g58kx810qpvl,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmpet77h00000g58kx810qpvl,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmpet77h00000g58kx810qpvl,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmpet77h00000g58kx810qpvl,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmpet77h00000g58kx810qpvl,10,Match 10,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmpet77h00000g58kx810qpvl,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmpet77h00000g58kx810qpvl,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmpet77h00000g58kx810qpvl,13,Match 13,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmpet77h00000g58kx810qpvl,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2aea9d000193bjj881q0ru,1,WBG vs VP,WBG,VP,wbg,vp,False,0,wrong_prediction
+cmp2aea9d000193bjj881q0ru,4,TM vs AG,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2aea9d000193bjj881q0ru,5,WBG vs SSG,VP,(not set),vp,(not set),False,0,no_actual_winner_set
+cmp2aea9d000193bjj881q0ru,6,Match 6,DAL,(not set),dal,(not set),False,0,no_actual_winner_set
+cmp2aea9d000193bjj881q0ru,7,Match 7,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2aea9d000193bjj881q0ru,8,VP vs ZETA,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2aea9d000193bjj881q0ru,9,Match 9,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp2aea9d000193bjj881q0ru,10,Match 10,WBG,(not set),wbg,(not set),False,0,no_actual_winner_set
+cmp2aea9d000193bjj881q0ru,11,Match 11,CR,(not set),cr,(not set),False,0,no_actual_winner_set
+cmp2aea9d000193bjj881q0ru,12,Match 12,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set
+cmp2aea9d000193bjj881q0ru,13,Match 13,TM,(not set),tm,(not set),False,0,no_actual_winner_set
+cmp2aea9d000193bjj881q0ru,14,Match 14,ZETA,(not set),zeta,(not set),False,0,no_actual_winner_set

@@ -1,0 +1,15 @@
+tournament_sheet,match_id,match_title,team_top,team_bottom,selected_team,pick_count,total_picks,pick_rate,actual_winner,advanced_team,next_match_id,next_match_pick_count,next_match_total_picks,next_match_pick_rate
+OWCS Champions Clash,M1,TM vs WBG,TM,WBG,TM,820,1000,0.82,TM,TM,M7,640,900,0.71
+OWCS Champions Clash,M2,ZETA vs DAL,ZETA,DAL,ZETA,610,1000,0.61,DAL,DAL,M5,290,850,0.34
+OWCS Champions Clash,M3,CR vs SSG,SSG,CR,SSG,680,1000,0.68,SSG,SSG,M8,510,900,0.57
+OWCS Champions Clash,M4,VP vs AG,VP,AG,VP,720,1000,0.72,VP,VP,M8,380,900,0.42
+OWCS Champions Clash,M5,WBG vs DAL,WBG,DAL,WBG,540,850,0.64,WBG,WBG,M9,320,800,0.40
+OWCS Champions Clash,M6,CR vs AG,CR,AG,CR,620,850,0.73,CR,CR,M9,480,800,0.60
+OWCS Champions Clash,M7,TM vs ZETA,TM,ZETA,TM,700,900,0.78,TM,TM,M12,580,800,0.73
+OWCS Champions Clash,M8,SSG vs VP,VP,SSG,SSG,460,900,0.51,VP,VP,M10,350,750,0.47
+OWCS Champions Clash,M9,WBG vs CR,WBG,CR,CR,410,800,0.51,CR,CR,M11,390,700,0.56
+OWCS Champions Clash,M10,DAL vs VP,VP,DAL,VP,480,750,0.64,DAL,DAL,M11,310,700,0.44
+OWCS Champions Clash,M11,CR vs DAL,CR,DAL,CR,430,700,0.61,CR,CR,M13,350,650,0.54
+OWCS Champions Clash,M12,TM vs SSG,TM,SSG,TM,590,800,0.74,TM,TM,M14,520,600,0.87
+OWCS Champions Clash,M13,CR vs WBG,CR,WBG,CR,340,650,0.52,WBG,WBG,M14,80,600,0.13
+OWCS Champions Clash,M14,TM vs WBG,TM,WBG,TM,500,600,0.83,TM,TM,,,,
